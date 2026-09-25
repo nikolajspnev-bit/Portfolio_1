@@ -85,14 +85,24 @@
     node.textContent = "@" + username;
   });
 
+  /* ---------- YouTube-Kanal-Link überall einsetzen ---------- */
+  var ytConfig = config.youtube || {};
+  if (ytConfig.channelUrl) {
+    document.querySelectorAll("[data-yt-channel]").forEach(function (link) {
+      link.href = ytConfig.channelUrl;
+    });
+    var ytHandle = ytConfig.channelUrl.match(/@([\w.-]+)/);
+    document.querySelectorAll("[data-yt-handle]").forEach(function (node) {
+      node.textContent = ytHandle ? "@" + ytHandle[1] : "Kanal";
+    });
+  }
+
   /* ---------- Hero-Collage (Startseite) ---------- */
   var collage = document.querySelector("[data-hero-collage]");
-  if (collage && Array.isArray(window.PROJECTS)) {
-    var coverOf = function (project) {
-      var first = (project.images || [])[0];
-      return project.cover || (first && (first.src || first));
-    };
-    var withCover = window.PROJECTS.filter(coverOf);
+  if (collage && window.PortfolioMedia) {
+    var withCover = window.PortfolioMedia.normalizeProjects(window.PROJECTS).filter(function (project) {
+      return project.cover;
+    });
     var featured = withCover.filter(function (project) {
       return project.featured;
     });
@@ -103,7 +113,7 @@
     );
     featured.slice(0, 3).forEach(function (project) {
       collage.appendChild(
-        el("span", { class: "card" }, [el("img", { src: coverOf(project), alt: "", loading: "eager", decoding: "async" })])
+        el("span", { class: "card" }, [el("img", { src: project.cover, alt: "", loading: "eager", decoding: "async" })])
       );
     });
     if (collage.children.length) {

@@ -17,4 +17,20 @@ window.SITE_CONFIG = {
     // Wie viele Posts insgesamt angezeigt werden (1 großer + kleine daneben).
     postCount: 5,
   },
+
+  youtube: {
+    // Link zu deinem YouTube-Kanal (für den "Abonnieren"-Button).
+    channelUrl: "https://www.youtube.com/@nikolajtry",
+
+    // Damit automatisch deine NEUESTEN Videos erscheinen, trage hier deine
+    // Kanal-ID ein – sie beginnt mit "UC…" (wo du sie findest: siehe README.md).
+    // Solange das Feld leer ist, zeigt die Seite eine "Abonnieren"-Karte an.
+    channelId: "",
+
+    // Wie viele Videos insgesamt angezeigt werden (1 großes + kleine daneben).
+    videoCount: 4,
+
+    // Sollen YouTube Shorts auch angezeigt werden? (true = ja, false = nein)
+    shorts: true,
+  },
 };

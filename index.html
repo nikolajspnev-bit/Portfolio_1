@@ -169,8 +169,30 @@
       </div>
     </section>
 
+    <!-- ================= YOUTUBE ================= -->
+    <section class="section section-alt" id="youtube">
+      <div class="container">
+        <div class="insta-head">
+          <div class="section-head reveal">
+            <span class="eyebrow">04 — YouTube</span>
+            <h2>Neu auf <span class="accent">YouTube</span>.</h2>
+            <p>Mein neuestes Video – direkt von meinem Kanal. Klick drauf, um es auf YouTube anzusehen.</p>
+          </div>
+          <a class="btn btn-ghost reveal" href="https://www.youtube.com/@nikolajtry" target="_blank" rel="noopener" data-yt-channel>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.8 15.1V8.9l5.4 3.1-5.4 3.1Z"/></svg>
+            <span data-yt-handle>@nikolajtry</span> abonnieren
+          </a>
+        </div>
+
+        <!-- wird von js/youtube.js gefüllt (Einstellungen in js/config.js) -->
+        <div data-yt-feed aria-live="polite">
+          <div class="insta-skeleton yt-skeleton" aria-label="YouTube-Videos werden geladen"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= LINKS (Fancy Bio) ================= -->
-    <section class="section" style="padding-top:0">
+    <section class="section">
       <div class="container">
         <div class="links-band reveal">
           <div>
@@ -190,7 +212,7 @@
     <section class="section section-alt" id="kontakt">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">04 — Kontakt</span>
+          <span class="eyebrow">05 — Kontakt</span>
           <h2>Lass uns zusammen etwas <span class="accent">erschaffen</span>.</h2>
           <p>Du hast ein Projekt, ein Event oder eine Idee? Schreib mir oder ruf einfach an – ich melde mich schnell bei dir.</p>
         </div>
@@ -233,6 +255,7 @@
       <nav class="footer-links" aria-label="Footer">
         <a href="portfolio.html">Portfolio</a>
         <a href="https://www.instagram.com/nikolajtry/" target="_blank" rel="noopener" data-insta-profile>Instagram</a>
+        <a href="https://www.youtube.com/@nikolajtry" target="_blank" rel="noopener" data-yt-channel>YouTube</a>
         <a href="https://fancy-bio.com/nikolajtry" target="_blank" rel="noopener">Links</a>
         <a href="impressum.html">Impressum</a>
         <a href="impressum.html#datenschutz">Datenschutz</a>
@@ -242,6 +265,8 @@
 
   <script src="js/config.js"></script>
   <script src="js/projekte.js"></script>
+  <script src="js/media.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/youtube.js"></script>
 </body>
 </html>

@@ -5,16 +5,17 @@ läuft kostenlos auf **GitHub Pages**. Funktioniert auf Desktop und Handy.
 
 | Seite | Inhalt |
 | --- | --- |
-| `index.html` (Start) | Über mich, Leistungen, neuester Instagram-Post, Link-Button zu Fancy Bio, Kontakt |
-| `portfolio.html` (Portfolio) | Projekt-Übersicht (Shootings) mit Filter → Tippen öffnet das ganze Shooting → Großansicht |
+| `index.html` (Start) | Über mich, Leistungen, neuester Instagram-Post, neueste YouTube-Videos, Link-Button zu Fancy Bio, Kontakt |
+| `portfolio.html` (Portfolio) | Projekt-Übersicht (Shootings) mit Filter → Tippen öffnet das ganze Shooting mit Fotos & Videos → Großansicht |
 | `impressum.html` | Impressum & Datenschutz (Platzhalter – bitte ausfüllen!) |
 
 ## Die wichtigsten Dateien zum Bearbeiten
 
 | Datei | Wofür |
 | --- | --- |
-| `js/projekte.js` | Deine Projekte/Shootings im Portfolio |
-| `js/config.js` | Instagram-Name und Instagram-Feed |
+| `js/projekte.js` | Deine Projekte/Shootings im Portfolio (Fotos & Videos) |
+| `js/config.js` | Instagram- und YouTube-Einstellungen |
+| `videos/` | Ordner für eigene Videodateien (MP4) |
 | `index.html` | Texte der Startseite (Über mich, Leistungen, Kontakt) |
 | `images/about.svg` | Dein Portrait für "Über mich" (ersetzen, siehe unten) |
 | `css/style.css` | Design – ganz oben bei `:root` kannst du z. B. das Orange (`--orange`) ändern |
@@ -22,7 +23,7 @@ läuft kostenlos auf **GitHub Pages**. Funktioniert auf Desktop und Handy.
 ## 1. Eigene Shootings ins Portfolio
 
 Das Portfolio ist nach **Projekten** aufgebaut: In der Übersicht sieht man pro Shooting ein Cover-Bild.
-Tippt man darauf, öffnet sich das Shooting mit allen Bildern (und optional einem Video). Jedes Projekt
+Tippt man darauf, öffnet sich das Shooting mit allen Fotos und Videos. Jedes Projekt
 hat einen eigenen Link zum Teilen, z. B. `portfolio.html#/golden-hour`.
 
 So legst du ein neues Shooting an:
@@ -50,19 +51,33 @@ So legst du ein neues Shooting an:
 - Mit `featured: true` erscheint das Cover zusätzlich in der Collage oben auf der Startseite (die ersten 3).
 - Heißen deine Dateien anders, geht auch eine Liste: `images: ["images/portfolio/x/a.jpg", "images/portfolio/x/b.jpg"]`.
 
-### Video zu einem Projekt
+### Videos im Portfolio
 
-Ein Projekt kann zusätzlich ein Video haben – es erscheint dann über den Bildern:
+Jedes Projekt kann beliebig viele Videos haben – sie erscheinen im Shooting unter „Videos“ über den Fotos
+und spielen beim Antippen groß ab. Einfach den Link in `videos: [ … ]` eintragen:
 
 ```js
-youtube: "VIDEO-ID",          // aus youtube.com/watch?v=VIDEO-ID
-vimeo: "123456789",           // oder Vimeo
-video: "videos/clip.mp4",     // oder eigene Videodatei
-vertical: true,               // für Hochformat-Videos (Reels/TikTok)
+{
+  id: "festival-2026",
+  title: "Festival 2026",
+  category: "Event",
+  images: bilder("festival-2026", 10),
+  videos: [
+    "https://www.youtube.com/watch?v=XXXXXXXXXXX",   // YouTube-Video
+    "https://youtube.com/shorts/XXXXXXXXXXX",         // YouTube Short → wird automatisch hochkant gezeigt
+    "https://vimeo.com/123456789",                     // Vimeo
+    "videos/aftermovie.mp4",                            // eigene Datei aus dem Ordner videos/
+  ],
+},
 ```
 
-YouTube und Vimeo werden erst geladen, wenn jemand auf „Abspielen“ tippt (datenschutzfreundlich,
-YouTube im „nocookie“-Modus).
+- Ein Projekt darf auch **nur aus Videos** bestehen (dann einfach `images` weglassen).
+- Mit mehr Angaben: `{ link: "videos/reel.mp4", cover: "images/portfolio/x/cover.jpg", title: "Mein Reel", vertical: true }`
+  – `cover` ist das Vorschaubild (bei YouTube automatisch), `vertical: true` für Hochformat.
+- **Tipp:** Lade längere Videos am besten auf YouTube hoch und trage nur den Link ein. Eigene Dateien
+  sollten klein sein (als MP4, unter ca. 50 MB – GitHub erlaubt max. 100 MB pro Datei).
+- YouTube und Vimeo werden erst geladen, wenn jemand auf „Abspielen“ tippt (YouTube im datenschutzfreundlichen „nocookie“-Modus).
+- Die Beispiel-Videos in `videos/` sind nur Platzhalter.
 
 ### Über-mich-Foto
 
@@ -91,7 +106,29 @@ erscheint stattdessen eine „Folge mir auf Instagram“-Karte.
 
 Prüfe außerdem in `js/config.js`, ob `username` dein richtiger Instagram-Name ist.
 
-## 3. Online stellen mit GitHub Pages
+## 3. YouTube: immer das neueste Video
+
+Auf der Startseite erscheint automatisch dein **neuestes YouTube-Video** groß (mit Titel und Datum),
+daneben die 3 davor. Ein Klick öffnet das Video auf YouTube. Dafür brauchst du nur deine **Kanal-ID**
+– kein Konto bei einem anderen Dienst:
+
+1. Deine Kanal-ID finden (beginnt mit `UC…`, ca. 24 Zeichen):
+   - am PC: YouTube öffnen → Profilbild → **Einstellungen** → **Erweiterte Einstellungen** → „Kanal-ID“ kopieren
+     (direkter Link: <https://www.youtube.com/account_advanced>), **oder**
+   - auf deiner Kanalseite unter der Beschreibung auf „…mehr“ → **Kanal teilen** → **Kanal-ID kopieren**.
+2. In `js/config.js` bei `youtube` eintragen:
+
+   ```js
+   channelId: "UCxxxxxxxxxxxxxxxxxxxxxx",
+   ```
+
+Fertig. Neue Videos erscheinen automatisch (mit etwas Verzögerung, meist unter einer Stunde).
+Mit `shorts: false` blendest du Shorts aus, mit `videoCount` stellst du die Anzahl ein.
+Solange keine Kanal-ID eingetragen ist, erscheint eine „Abonniere meinen YouTube-Kanal“-Karte.
+
+*Technik: Die Seite liest den öffentlichen RSS-Feed deines Kanals über den kostenlosen Dienst rss2json.com.*
+
+## 4. Online stellen mit GitHub Pages
 
 1. Auf GitHub im Repository auf **Settings → Pages** gehen.
 2. Bei *Source* „Deploy from a branch“ wählen, Branch **main** und Ordner **/ (root)** → *Save*.
@@ -100,7 +137,7 @@ Prüfe außerdem in `js/config.js`, ob `username` dein richtiger Instagram-Name 
 
 Eine eigene Domain (z. B. `nikolajtry.media`) kannst du dort später unter *Custom domain* eintragen.
 
-## 4. Vor dem Veröffentlichen: Impressum
+## 5. Vor dem Veröffentlichen: Impressum
 
 Als Freelancer brauchst du in Deutschland ein Impressum. Fülle in `impressum.html` alle Angaben in
 `[eckigen Klammern]` aus und ersetze den Datenschutz-Teil durch eine vollständige Datenschutzerklärung
@@ -108,7 +145,7 @@ Als Freelancer brauchst du in Deutschland ein Impressum. Fülle in `impressum.ht
 
 ## Lokal ansehen
 
-Am besten über einen kleinen lokalen Server (dann funktionieren Schriften und Instagram-Feed wie online):
+Am besten über einen kleinen lokalen Server (dann funktionieren Schriften, Instagram- und YouTube-Feed wie online):
 
 ```bash
 python3 -m http.server 8000

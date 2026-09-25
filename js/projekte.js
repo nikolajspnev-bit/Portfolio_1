@@ -3,7 +3,7 @@
  *  PORTFOLIO – DEINE PROJEKTE / SHOOTINGS
  * ============================================================
  *  Jedes Projekt erscheint im Portfolio als Kachel (Cover-Bild).
- *  Tippt man darauf, öffnet sich das Shooting mit allen Bildern.
+ *  Tippt man darauf, öffnet sich das Shooting mit allen Bildern und Videos.
  *
  *  So legst du ein neues Shooting an:
  *  1. Ordner anlegen:  images/portfolio/<name>/   (z. B. images/portfolio/hochzeit-anna/)
@@ -29,14 +29,26 @@
  *    description  optional, kurzer Text zum Projekt
  *    cover        optional, Cover-Bild der Kachel (sonst wird das erste Bild genommen)
  *    featured     true = Cover erscheint in der Collage auf der Startseite (die ersten 3)
- *    images       die Bilder des Shootings – entweder mit bilder("ordner", anzahl)
+ *    images       die Bilder des Shootings (optional bei reinen Video-Projekten) – mit bilder("ordner", anzahl)
  *                 oder als Liste: ["images/portfolio/x/a.jpg", "images/portfolio/x/b.jpg"]
  *
- *  Video zum Projekt (optional, eins davon):
- *    youtube      YouTube-Video-ID, z. B. "dQw4w9WgXcQ" aus youtube.com/watch?v=dQw4w9WgXcQ
- *    vimeo        Vimeo-Video-ID, z. B. "76979871"
- *    video        eigene Videodatei, z. B. "videos/aftermovie.mp4"
- *    vertical     true = Hochformat-Video (Reel/TikTok)
+ *  VIDEOS (optional) – beliebig viele pro Projekt, einfach den Link einfügen:
+ *
+ *     videos: [
+ *       "https://www.youtube.com/watch?v=XXXXXXXXXXX",   // YouTube-Video
+ *       "https://youtube.com/shorts/XXXXXXXXXXX",         // YouTube Short (wird hochkant gezeigt)
+ *       "https://vimeo.com/123456789",                     // Vimeo
+ *       "videos/aftermovie.mp4",                            // eigene Datei aus dem Ordner videos/
+ *     ],
+ *
+ *     Mit mehr Angaben geht es auch so:
+ *       { link: "videos/reel.mp4", cover: "images/portfolio/x/cover.jpg", title: "Mein Reel", vertical: true }
+ *       cover     Vorschaubild (bei YouTube automatisch, bei eigenen Dateien empfohlen)
+ *       title     Titel des Videos
+ *       vertical  true = Hochformat (Reel/TikTok)
+ *
+ *     Tipp: Große Videos besser auf YouTube hochladen und nur den Link eintragen –
+ *     eigene Dateien sollten klein sein (unter ca. 50 MB).
  *
  *  Reihenfolge hier = Reihenfolge auf der Seite (am besten neuestes Projekt oben).
  */
@@ -51,6 +63,7 @@ function bilder(ordner, anzahl, endung) {
 }
 
 // Die folgenden Projekte sind PLATZHALTER – ersetze sie durch deine eigenen Shootings.
+// (Die Ordner images/portfolio/… und videos/ enthalten nur Platzhalter-Dateien.)
 window.PROJECTS = [
   {
     id: "golden-hour",
@@ -68,8 +81,11 @@ window.PROJECTS = [
     category: "Event",
     date: "2026",
     location: "Open Air",
-    description: "Fotos vom Festival – die Energie der Menge, Lichter und die besten Momente auf und vor der Bühne.",
-    // youtube: "DEINE-VIDEO-ID",   ← hier z. B. das Aftermovie eintragen
+    description: "Aftermovie und Fotos vom Festival – die Energie der Menge, Lichter und die besten Momente auf und vor der Bühne.",
+    videos: [
+      // Platzhalter-Video – ersetze es z. B. durch "https://www.youtube.com/watch?v=…"
+      { link: "videos/festival-aftermovie.mp4", cover: "images/portfolio/sommer-festival/video-cover.jpg", title: "Aftermovie" },
+    ],
     featured: true,
     images: bilder("sommer-festival", 7, "svg"),
   },
@@ -97,8 +113,10 @@ window.PROJECTS = [
     category: "Social Media",
     date: "2026",
     description: "Kurzvideos im Hochformat für Instagram und TikTok – geplant, gedreht und geschnitten.",
-    // youtube: "DEINE-VIDEO-ID",
-    vertical: true,
+    videos: [
+      // Platzhalter-Video – ersetze es z. B. durch "https://youtube.com/shorts/…"
+      { link: "videos/reel-01.mp4", cover: "images/portfolio/reels-content/video-cover.jpg", title: "Reel", vertical: true },
+    ],
     featured: true,
     images: bilder("reels-content", 4, "svg"),
   },

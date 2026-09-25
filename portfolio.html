@@ -39,7 +39,7 @@
         <div class="container">
           <span class="eyebrow reveal">Portfolio</span>
           <h1 class="reveal" style="--delay:.08s">Meine <span class="accent">Arbeiten</span>.</h1>
-          <p class="reveal" style="--delay:.16s">Eine Auswahl meiner Shootings und Projekte. Tippe auf ein Projekt, um alle Bilder zu sehen.</p>
+          <p class="reveal" style="--delay:.16s">Eine Auswahl meiner Shootings und Projekte. Tippe auf ein Projekt, um alle Fotos und Videos zu sehen.</p>
         </div>
       </section>
 
@@ -64,8 +64,14 @@
           <ul class="project-meta" data-p-meta></ul>
           <p class="project-desc" data-p-desc></p>
         </header>
-        <div class="project-video" data-p-video hidden></div>
-        <ul class="gallery" data-p-images aria-label="Bilder des Shootings"></ul>
+        <section class="shoot-section" data-p-videos-wrap hidden>
+          <h2 class="shoot-heading">Videos</h2>
+          <ul class="video-grid" data-p-videos></ul>
+        </section>
+        <section class="shoot-section" data-p-images-wrap hidden>
+          <h2 class="shoot-heading" data-p-images-heading>Fotos</h2>
+          <ul class="gallery" data-p-images aria-label="Bilder des Shootings"></ul>
+        </section>
         <div class="project-next" data-p-next></div>
       </div>
     </article>
@@ -99,6 +105,7 @@
       <nav class="footer-links" aria-label="Footer">
         <a href="index.html">Start</a>
         <a href="https://www.instagram.com/nikolajtry/" target="_blank" rel="noopener" data-insta-profile>Instagram</a>
+        <a href="https://www.youtube.com/@nikolajtry" target="_blank" rel="noopener" data-yt-channel>YouTube</a>
         <a href="https://fancy-bio.com/nikolajtry" target="_blank" rel="noopener">Links</a>
         <a href="impressum.html">Impressum</a>
         <a href="impressum.html#datenschutz">Datenschutz</a>
@@ -131,6 +138,7 @@
 
   <script src="js/config.js"></script>
   <script src="js/projekte.js"></script>
+  <script src="js/media.js"></script>
   <script src="js/main.js"></script>
   <script src="js/portfolio.js"></script>
 </body>

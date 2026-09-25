@@ -899,6 +899,147 @@ main {
 }
 
 /* ============================================================
+   YouTube
+   ============================================================ */
+.yt-grid {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 900px) {
+  .yt-grid.has-more {
+    grid-template-columns: 1.55fr 1fr;
+    align-items: start;
+  }
+}
+.yt-grid:not(.has-more) .yt-latest {
+  max-width: 860px;
+  width: 100%;
+  margin-inline: auto;
+}
+.yt-skeleton {
+  aspect-ratio: 16 / 9;
+  max-width: 860px;
+}
+
+.yt-thumb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+.yt-thumb img {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* schneidet die schwarzen Ränder der YouTube-Vorschaubilder ab */
+  transition: transform 0.7s var(--ease);
+}
+
+.yt-latest {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color 0.3s;
+}
+.yt-latest:hover {
+  border-color: rgba(255, 107, 26, 0.6);
+}
+.yt-latest:hover .yt-thumb img,
+.yt-item:hover .yt-thumb img {
+  transform: scale(1.04);
+}
+.yt-latest:hover .video-play {
+  transform: scale(1.1);
+}
+.yt-latest-info {
+  display: grid;
+  gap: 8px;
+  padding: clamp(16px, 2.6vw, 24px);
+}
+.yt-latest-info time,
+.yt-item-text time {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.yt-latest-title {
+  font: 700 clamp(1.1rem, 2.2vw, 1.5rem) / 1.25 var(--font-display);
+}
+.yt-latest-info .open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--orange);
+}
+.yt-latest-info .open svg {
+  width: 16px;
+  height: 16px;
+}
+
+.yt-list {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.yt-item {
+  display: grid;
+  grid-template-columns: minmax(0, 44%) minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.yt-item:hover {
+  border-color: rgba(255, 107, 26, 0.6);
+  background: var(--surface-2);
+}
+.yt-item .yt-thumb {
+  border-radius: 8px;
+}
+.yt-mini-play {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--on-orange);
+}
+.yt-mini-play svg {
+  width: 14px;
+  height: 14px;
+  margin-left: 2px;
+}
+.yt-item-text {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.yt-item-title {
+  font-weight: 600;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================================
    Link-Banner (Fancy Bio)
    ============================================================ */
 .links-band {
@@ -1125,7 +1266,8 @@ main {
   isolation: isolate;
   transition: border-color 0.3s;
 }
-.project-card img {
+.project-card img,
+.project-card video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1143,6 +1285,7 @@ main {
   border-color: rgba(255, 107, 26, 0.6);
 }
 .project-card:hover img,
+.project-card:hover video,
 .project-card:focus-visible img {
   transform: scale(1.06);
 }
@@ -1333,58 +1476,94 @@ main {
   font-size: 1.1rem;
 }
 
-/* Video zum Projekt */
-.project-video {
+/* Abschnitte im Shooting: Videos / Fotos */
+.shoot-section + .shoot-section {
+  margin-top: clamp(32px, 5vw, 56px);
+}
+.shoot-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font: 600 0.8rem/1 var(--font-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.shoot-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Video-Kacheln */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  align-items: start;
+  gap: clamp(10px, 1.6vw, 16px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.video-grid.all-vertical {
+  grid-template-columns: repeat(auto-fit, minmax(min(46%, 240px), 1fr));
+}
+.video-item {
+  animation: fade-up 0.6s var(--ease) both;
+}
+.video-tile {
   position: relative;
-  max-width: 1100px;
-  aspect-ratio: 16 / 9;
-  margin: 0 auto clamp(20px, 3vw, 32px);
-  overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: #000;
-}
-.project-video.is-vertical {
-  max-width: 400px;
-  aspect-ratio: 9 / 16;
-}
-.project-video iframe,
-.project-video video {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-.video-poster {
-  position: absolute;
-  inset: 0;
   display: grid;
   place-items: center;
   width: 100%;
+  aspect-ratio: 16 / 9;
   padding: 0;
-  border: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   background: #000;
   color: var(--text);
   cursor: pointer;
+  isolation: isolate;
 }
-.video-poster img {
+.video-item.is-vertical .video-tile {
+  aspect-ratio: 9 / 16;
+  max-width: 380px;
+  margin-inline: auto;
+}
+/* Hochformat zwischen Querformat-Videos etwas kleiner halten */
+.video-grid:not(.all-vertical) .video-item.is-vertical .video-tile {
+  max-width: 300px;
+}
+.video-tile img,
+.video-tile video {
   position: absolute;
+  z-index: -1;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.7;
-  transition: opacity 0.3s, transform 0.8s var(--ease);
+  transition: transform 0.8s var(--ease), opacity 0.3s;
 }
-.video-poster:hover img {
-  opacity: 0.85;
-  transform: scale(1.03);
+.video-tile::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.8));
+}
+.video-tile:hover img,
+.video-tile:hover video,
+.video-tile:focus-visible img {
+  transform: scale(1.04);
 }
 .video-play {
-  position: relative;
   display: grid;
   place-items: center;
-  width: 76px;
-  height: 76px;
+  width: clamp(56px, 8vw, 76px);
+  height: clamp(56px, 8vw, 76px);
   border-radius: 50%;
   background: var(--orange);
   color: var(--on-orange);
@@ -1392,23 +1571,33 @@ main {
   transition: transform 0.35s var(--ease);
 }
 .video-play svg {
-  width: 28px;
-  height: 28px;
-  margin-left: 4px;
+  width: 40%;
+  height: 40%;
+  margin-left: 6%;
 }
-.video-poster:hover .video-play {
-  transform: scale(1.08);
+.video-tile:hover .video-play,
+.video-tile:focus-visible .video-play {
+  transform: scale(1.1);
 }
-.video-hint {
+.video-info {
   position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(13, 13, 14, 0.75);
-  font-size: 0.82rem;
-  white-space: nowrap;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  gap: 2px;
+  padding: clamp(12px, 2vw, 18px);
+  text-align: left;
+}
+.video-source {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.video-title {
+  font: 700 clamp(0.95rem, 1.8vw, 1.15rem) / 1.25 var(--font-display);
 }
 
 /* Bilder des Shootings (Masonry) */
@@ -1471,7 +1660,8 @@ main {
   isolation: isolate;
   transition: border-color 0.3s;
 }
-.next-project img {
+.next-project img,
+.next-project video {
   position: absolute;
   z-index: -2;
   inset: 0;
@@ -1661,6 +1851,23 @@ main {
   animation: lb-in 0.35s var(--ease);
   user-select: none;
   -webkit-user-drag: none;
+}
+.lb-media .embed {
+  width: min(100cqw, 100cqh * 16 / 9);
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  animation: lb-in 0.35s var(--ease);
+}
+.lb-media .embed.is-vertical {
+  width: min(100cqw, 100cqh * 9 / 16);
+  aspect-ratio: 9 / 16;
+}
+.lb-media iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 .lb-caption {
   display: flex;
