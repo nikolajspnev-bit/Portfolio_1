@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d120c"/><stop offset="1" stop-color="#ff9a3d"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#fff0d6" stop-opacity=".55"/><stop offset="1" stop-color="#fff0d6" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="1200" fill="url(#s)"/>
+<circle cx="307" cy="440" r="329" fill="url(#g)"/>
+<circle cx="307" cy="440" r="103" fill="#fff0d6"/>
+<polygon points="0,1200 0,691 171,599 343,595 514,615 686,703 857,601 1029,700 1200,687 1200,1200" fill="#2a1a12" opacity="0.75"/><polygon points="0,1200 0,729 133,785 267,773 400,768 533,849 667,723 800,713 933,841 1067,766 1200,738 1200,1200" fill="#1d130e" opacity="0.83"/><polygon points="0,1200 0,881 109,885 218,950 327,868 436,869 545,909 655,905 764,950 873,937 982,884 1091,867 1200,937 1200,1200" fill="#130d0a" opacity="0.91"/><polygon points="0,1200 0,1060 92,982 185,1039 277,1050 369,1032 462,997 554,1044 646,1039 738,995 831,1031 923,997 1015,983 1108,1007 1200,1006 1200,1200" fill="#0b0807" opacity="0.99"/>
+
+<text x="59" y="1141" font-family="Arial,Helvetica,sans-serif" font-size="42" fill="#fff" fill-opacity=".75" letter-spacing="3.4">PLATZHALTER · FOTO 05</text>
+</svg>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio – Nikolaj | Fotografie &amp; Videografie</title>
+  <meta name="description" content="Portfolio von Nikolaj: Fotos und Videos – Portraits, Events, Reels, Imagefilme und mehr.">
+  <meta name="theme-color" content="#0d0d0e">
+  <meta property="og:title" content="Portfolio – Nikolaj">
+  <meta property="og:description" content="Fotos und Videos – Portraits, Events, Reels, Imagefilme und mehr.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/syne-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html" aria-label="nikolajtry.media – Startseite">
+        <span class="logo-mark" aria-hidden="true">N</span>
+        <span class="logo-text">nikolajtry<span>.media</span></span>
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="index.html">Start</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow reveal">Portfolio</span>
+        <h1 class="reveal" style="--delay:.08s">Meine <span class="accent">Arbeiten</span>.</h1>
+        <p class="reveal" style="--delay:.16s">Eine Auswahl meiner Fotos und Videos. Tippe auf ein Bild, um es groß anzusehen – Videos starten direkt.</p>
+      </div>
+    </section>
+
+    <section class="container" aria-label="Galerie">
+      <div class="filters" role="group" aria-label="Arbeiten filtern" data-filters></div>
+      <!-- Inhalte kommen aus js/gallery-data.js -->
+      <ul class="gallery" data-gallery></ul>
+      <noscript><p class="gallery-empty">Bitte aktiviere JavaScript, um die Galerie zu sehen.</p></noscript>
+    </section>
+
+    <section class="section">
+      <div class="container cta-band reveal">
+        <span class="eyebrow">Projekt anfragen</span>
+        <h2>Gefällt dir, was du <span class="accent">siehst</span>?</h2>
+        <p>Dann lass uns über dein Projekt sprechen – ich freue mich auf deine Nachricht.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:nikolajtry.media@gmail.com?subject=Anfrage%20%C3%BCber%20dein%20Portfolio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+            E-Mail schreiben
+          </a>
+          <a class="btn btn-ghost" href="tel:+4915902631729">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +49 1590 2631729
+          </a>
+          <a class="btn btn-ghost" href="https://fancy-bio.com/nikolajtry" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg>
+            Alle Links
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span data-year>2026</span> Nikolaj · nikolajtry.media</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html">Start</a>
+        <a href="https://www.instagram.com/nikolajtry/" target="_blank" rel="noopener" data-insta-profile>Instagram</a>
+        <a href="https://fancy-bio.com/nikolajtry" target="_blank" rel="noopener">Links</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="impressum.html#datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Großansicht -->
+  <dialog class="lightbox" aria-label="Großansicht" data-lightbox>
+    <div class="lb-top">
+      <span class="lb-counter" data-lb-counter></span>
+      <button class="lb-btn" type="button" aria-label="Schließen" data-lb-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <figure class="lb-stage" data-lb-stage>
+      <div class="lb-media" data-lb-media></div>
+      <figcaption class="lb-caption">
+        <span class="lb-cat" data-lb-cat></span>
+        <span class="lb-title" data-lb-title></span>
+      </figcaption>
+      <button class="lb-btn lb-nav lb-prev" type="button" aria-label="Vorheriges" data-lb-prev>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="lb-btn lb-nav lb-next" type="button" aria-label="Nächstes" data-lb-next>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </figure>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/gallery-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

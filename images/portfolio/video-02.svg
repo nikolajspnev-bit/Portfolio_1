@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1216"/><stop offset="1" stop-color="#b8603a"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#ffd2a8" stop-opacity=".55"/><stop offset="1" stop-color="#ffd2a8" stop-opacity="0"/></radialGradient></defs>
+<rect width="1600" height="900" fill="url(#s)"/>
+<circle cx="624" cy="383" r="267" fill="url(#g)"/>
+<circle cx="624" cy="383" r="83" fill="#ffd2a8"/>
+<polygon points="0,900 0,490 229,506 457,493 686,497 914,457 1143,446 1371,464 1600,530 1600,900" fill="#2a1a12" opacity="0.75"/><polygon points="0,900 0,535 178,570 356,577 533,591 711,578 889,622 1067,631 1244,592 1422,554 1600,624 1600,900" fill="#1d130e" opacity="0.83"/><polygon points="0,900 0,704 145,672 291,700 436,707 582,712 727,653 873,652 1018,700 1164,656 1309,656 1455,638 1600,697 1600,900" fill="#130d0a" opacity="0.91"/><polygon points="0,900 0,749 123,745 246,772 369,740 492,782 615,739 738,794 862,742 985,743 1108,763 1231,781 1354,764 1477,778 1600,749 1600,900" fill="#0b0807" opacity="0.99"/>
+
+<text x="44" y="856" font-family="Arial,Helvetica,sans-serif" font-size="32" fill="#fff" fill-opacity=".75" letter-spacing="2.5">PLATZHALTER · VIDEO 02</text>
+</svg>
