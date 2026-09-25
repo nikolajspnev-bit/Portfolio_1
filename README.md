@@ -17,7 +17,7 @@ läuft kostenlos auf **GitHub Pages**. Funktioniert auf Desktop und Handy.
 | `js/config.js` | Instagram- und YouTube-Einstellungen |
 | `videos/` | Ordner für eigene Videodateien (MP4) |
 | `index.html` | Texte der Startseite (Über mich, Leistungen, Kontakt) |
-| `images/about.svg` | Dein Portrait für "Über mich" (ersetzen, siehe unten) |
+| `images/about.jpg` | Dein Portrait für "Über mich" |
 | `css/style.css` | Design – ganz oben bei `:root` kannst du z. B. das Orange (`--orange`) ändern |
 
 ## 1. Eigene Shootings ins Portfolio
@@ -81,8 +81,8 @@ und spielen beim Antippen groß ab. Einfach den Link in `videos: [ … ]` eintra
 
 ### Über-mich-Foto
 
-Lege ein Foto von dir als `images/about.jpg` ab und ändere in `index.html` die Zeile
-`<img src="images/about.svg" …>` zu `<img src="images/about.jpg" …>`.
+Das Portrait liegt unter `images/about.jpg` (Format 4:5, Hochformat). Für ein neues Foto einfach die Datei
+mit gleichem Namen ersetzen – am besten vorher auf 4:5 zuschneiden.
 
 ## 2. Instagram: immer der neueste Post
 
