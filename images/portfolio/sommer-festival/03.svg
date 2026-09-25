@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0c16"/><stop offset="1" stop-color="#e0513a"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#ffc1a0" stop-opacity=".55"/><stop offset="1" stop-color="#ffc1a0" stop-opacity="0"/></radialGradient></defs>
+<rect width="1600" height="1067" fill="url(#s)"/>
+<circle cx="550" cy="359" r="273" fill="url(#g)"/>
+<circle cx="550" cy="359" r="85" fill="#ffc1a0"/>
+<polygon points="0,1067 0,588 178,590 356,625 533,532 711,551 889,581 1067,502 1244,539 1422,493 1600,548 1600,1067" fill="#2b1220" opacity="0.78"/><polygon points="0,1067 0,645 145,731 291,723 436,717 582,723 727,756 873,704 1018,712 1164,760 1309,753 1455,665 1600,658 1600,1067" fill="#200d18" opacity="0.85"/><polygon points="0,1067 0,790 160,872 320,822 480,850 640,818 800,822 960,818 1120,810 1280,800 1440,822 1600,812 1600,1067" fill="#150912" opacity="0.92"/><polygon points="0,1067 0,918 133,898 267,893 400,936 533,947 667,922 800,930 933,928 1067,929 1200,907 1333,934 1467,921 1600,941 1600,1067" fill="#0c060a" opacity="0.99"/>
+<text x="800" y="149" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="36" fill="#fff" fill-opacity=".6" letter-spacing="2.9">PLATZHALTER · FESTIVAL 03</text>
+</svg>

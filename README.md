@@ -6,44 +6,63 @@ läuft kostenlos auf **GitHub Pages**. Funktioniert auf Desktop und Handy.
 | Seite | Inhalt |
 | --- | --- |
 | `index.html` (Start) | Über mich, Leistungen, neuester Instagram-Post, Link-Button zu Fancy Bio, Kontakt |
-| `portfolio.html` (Portfolio) | Galerie mit Filter (Alle / Fotografie / Videografie) und Großansicht |
+| `portfolio.html` (Portfolio) | Projekt-Übersicht (Shootings) mit Filter → Tippen öffnet das ganze Shooting → Großansicht |
 | `impressum.html` | Impressum & Datenschutz (Platzhalter – bitte ausfüllen!) |
 
 ## Die wichtigsten Dateien zum Bearbeiten
 
 | Datei | Wofür |
 | --- | --- |
-| `js/gallery-data.js` | Deine Fotos & Videos im Portfolio |
+| `js/projekte.js` | Deine Projekte/Shootings im Portfolio |
 | `js/config.js` | Instagram-Name und Instagram-Feed |
 | `index.html` | Texte der Startseite (Über mich, Leistungen, Kontakt) |
 | `images/about.svg` | Dein Portrait für "Über mich" (ersetzen, siehe unten) |
 | `css/style.css` | Design – ganz oben bei `:root` kannst du z. B. das Orange (`--orange`) ändern |
 
-## 1. Eigene Bilder ins Portfolio
+## 1. Eigene Shootings ins Portfolio
 
-1. Bilder in den Ordner `images/portfolio/` legen, z. B. `images/portfolio/hochzeit-01.jpg`
-   *(Tipp: vorher auf ca. 2000 px Breite verkleinern, als JPG oder WebP – dann lädt die Seite schnell.)*
-2. In `js/gallery-data.js` einen Eintrag hinzufügen:
+Das Portfolio ist nach **Projekten** aufgebaut: In der Übersicht sieht man pro Shooting ein Cover-Bild.
+Tippt man darauf, öffnet sich das Shooting mit allen Bildern (und optional einem Video). Jedes Projekt
+hat einen eigenen Link zum Teilen, z. B. `portfolio.html#/golden-hour`.
+
+So legst du ein neues Shooting an:
+
+1. Ordner anlegen, z. B. `images/portfolio/hochzeit-anna/`
+2. Die Bilder hineinlegen und durchnummerieren: `01.jpg`, `02.jpg`, `03.jpg` …
+   *(Tipp: vorher auf ca. 2000 px Breite verkleinern, als JPG – dann lädt die Seite schnell.)*
+3. In `js/projekte.js` einen Eintrag hinzufügen:
 
    ```js
-   { type: "foto", src: "images/portfolio/hochzeit-01.jpg", title: "Hochzeit am See", category: "Hochzeit" },
+   {
+     id: "hochzeit-anna",
+     title: "Hochzeit Anna & Tom",
+     category: "Hochzeit",
+     date: "Mai 2026",
+     location: "Hamburg",
+     description: "Ein kurzer Text zum Shooting.",
+     images: bilder("hochzeit-anna", 12),   // lädt 01.jpg bis 12.jpg aus dem Ordner
+   },
    ```
-3. Die Platzhalter (`foto-01.svg` …) aus der Liste und dem Ordner löschen.
+4. Die Platzhalter-Projekte (und ihre Ordner in `images/portfolio/`) löschen.
 
-Mit `featured: true` erscheint ein Bild zusätzlich in der Collage oben auf der Startseite (die ersten 3).
+- Das **erste Bild** ist automatisch das Cover. Ein anderes Cover setzt du mit `cover: "images/portfolio/hochzeit-anna/07.jpg"`.
+- Aus den **Kategorien** entstehen automatisch die Filter-Buttons über der Übersicht.
+- Mit `featured: true` erscheint das Cover zusätzlich in der Collage oben auf der Startseite (die ersten 3).
+- Heißen deine Dateien anders, geht auch eine Liste: `images: ["images/portfolio/x/a.jpg", "images/portfolio/x/b.jpg"]`.
 
-### Videos
+### Video zu einem Projekt
 
-Für ein Video brauchst du ein Vorschaubild (`src`) und eine dieser Quellen:
+Ein Projekt kann zusätzlich ein Video haben – es erscheint dann über den Bildern:
 
 ```js
-{ type: "video", src: "images/portfolio/reel-vorschau.jpg", title: "Reel", category: "Reel", youtube: "VIDEO-ID" },
-{ type: "video", src: "images/portfolio/film.jpg",          title: "Imagefilm", category: "Imagefilm", vimeo: "123456789" },
-{ type: "video", src: "images/portfolio/clip.jpg",          title: "Clip", category: "Event", video: "videos/clip.mp4" },
+youtube: "VIDEO-ID",          // aus youtube.com/watch?v=VIDEO-ID
+vimeo: "123456789",           // oder Vimeo
+video: "videos/clip.mp4",     // oder eigene Videodatei
+vertical: true,               // für Hochformat-Videos (Reels/TikTok)
 ```
 
-YouTube wird im datenschutzfreundlichen „nocookie“-Modus eingebunden. Hochformat-Videos (Reels) werden
-automatisch hochkant angezeigt, wenn das Vorschaubild hochkant ist.
+YouTube und Vimeo werden erst geladen, wenn jemand auf „Abspielen“ tippt (datenschutzfreundlich,
+YouTube im „nocookie“-Modus).
 
 ### Über-mich-Foto
 

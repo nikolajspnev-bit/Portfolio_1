@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1410"/><stop offset="1" stop-color="#ff7a2f"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#ffd2a8" stop-opacity=".55"/><stop offset="1" stop-color="#ffd2a8" stop-opacity="0"/></radialGradient></defs>
+<rect width="1600" height="1067" fill="url(#s)"/>
+<circle cx="1259" cy="333" r="329" fill="url(#g)"/>
+<circle cx="1259" cy="333" r="103" fill="#ffd2a8"/>
+<polygon points="0,1067 0,572 200,648 400,535 600,659 800,572 1000,538 1200,562 1400,605 1600,516 1600,1067" fill="#2a1a12" opacity="0.78"/><polygon points="0,1067 0,651 200,642 400,682 600,699 800,683 1000,684 1200,637 1400,626 1600,699 1600,1067" fill="#1d130e" opacity="0.85"/><polygon points="0,1067 0,797 160,807 320,827 480,794 640,755 800,792 960,793 1120,758 1280,750 1440,759 1600,809 1600,1067" fill="#130d0a" opacity="0.92"/><polygon points="0,1067 0,941 107,912 213,912 320,950 427,932 533,907 640,950 747,953 853,904 960,943 1067,913 1173,912 1280,939 1387,903 1493,910 1600,949 1600,1067" fill="#0b0807" opacity="0.99"/>
+<text x="800" y="149" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="36" fill="#fff" fill-opacity=".6" letter-spacing="2.9">PLATZHALTER · GOLDEN HOUR 08</text>
+</svg>

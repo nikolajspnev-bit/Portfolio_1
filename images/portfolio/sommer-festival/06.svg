@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1600" width="1280" height="1600">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0c16"/><stop offset="1" stop-color="#e0513a"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#ffc1a0" stop-opacity=".55"/><stop offset="1" stop-color="#ffc1a0" stop-opacity="0"/></radialGradient></defs>
+<rect width="1280" height="1600" fill="url(#s)"/>
+<circle cx="405" cy="638" r="389" fill="url(#g)"/>
+<circle cx="405" cy="638" r="121" fill="#ffc1a0"/>
+<polygon points="0,1600 0,786 160,763 320,830 480,807 640,891 800,942 960,946 1120,887 1280,840 1280,1600" fill="#2b1220" opacity="0.78"/><polygon points="0,1600 0,1024 160,1041 320,1163 480,1003 640,1118 800,1068 960,1043 1120,1027 1280,1047 1280,1600" fill="#200d18" opacity="0.85"/><polygon points="0,1600 0,1213 116,1160 233,1214 349,1126 465,1174 582,1120 698,1249 815,1236 931,1172 1047,1122 1164,1238 1280,1257 1280,1600" fill="#150912" opacity="0.92"/><polygon points="0,1600 0,1413 107,1394 213,1365 320,1352 427,1408 533,1403 640,1340 747,1396 853,1362 960,1373 1067,1432 1173,1343 1280,1421 1280,1600" fill="#0c060a" opacity="0.99"/>
+<text x="640" y="224" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="44" fill="#fff" fill-opacity=".6" letter-spacing="3.5">PLATZHALTER · FESTIVAL 06</text>
+</svg>

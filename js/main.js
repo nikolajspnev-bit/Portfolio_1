@@ -87,20 +87,23 @@
 
   /* ---------- Hero-Collage (Startseite) ---------- */
   var collage = document.querySelector("[data-hero-collage]");
-  if (collage && Array.isArray(window.GALLERY)) {
-    var featured = window.GALLERY.filter(function (item) {
-      return item.featured;
+  if (collage && Array.isArray(window.PROJECTS)) {
+    var coverOf = function (project) {
+      var first = (project.images || [])[0];
+      return project.cover || (first && (first.src || first));
+    };
+    var withCover = window.PROJECTS.filter(coverOf);
+    var featured = withCover.filter(function (project) {
+      return project.featured;
     });
-    if (featured.length < 3) {
-      featured = featured.concat(
-        window.GALLERY.filter(function (item) {
-          return !item.featured;
-        })
-      );
-    }
-    featured.slice(0, 3).forEach(function (item) {
+    featured = featured.concat(
+      withCover.filter(function (project) {
+        return !project.featured;
+      })
+    );
+    featured.slice(0, 3).forEach(function (project) {
       collage.appendChild(
-        el("span", { class: "card" }, [el("img", { src: item.src, alt: "", loading: "eager", decoding: "async" })])
+        el("span", { class: "card" }, [el("img", { src: coverOf(project), alt: "", loading: "eager", decoding: "async" })])
       );
     });
     if (collage.children.length) {

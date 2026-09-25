@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1600" width="1600" height="1600">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1714"/><stop offset="1" stop-color="#b98a64"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#fff0dd" stop-opacity=".55"/><stop offset="1" stop-color="#fff0dd" stop-opacity="0"/></radialGradient></defs>
+<rect width="1600" height="1600" fill="url(#s)"/>
+<circle cx="350" cy="821" r="357" fill="url(#g)"/>
+<circle cx="350" cy="821" r="112" fill="#fff0dd"/>
+<polygon points="0,1600 0,958 200,1052 400,867 600,937 800,962 1000,851 1200,950 1400,1004 1600,838 1600,1600" fill="#3a2c22" opacity="0.78"/><polygon points="0,1600 0,1014 145,1042 291,989 436,1103 582,1065 727,1119 873,996 1018,1028 1164,1016 1309,1027 1455,1043 1600,1008 1600,1600" fill="#2c2119" opacity="0.85"/><polygon points="0,1600 0,1172 133,1131 267,1212 400,1223 533,1097 667,1134 800,1225 933,1135 1067,1240 1200,1187 1333,1210 1467,1201 1600,1105 1600,1600" fill="#1f1712" opacity="0.92"/><polygon points="0,1600 0,1385 107,1473 213,1382 320,1380 427,1439 533,1446 640,1436 747,1385 853,1377 960,1470 1067,1407 1173,1402 1280,1429 1387,1468 1493,1468 1600,1471 1600,1600" fill="#120d0a" opacity="0.99"/>
+<text x="800" y="224" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="54" fill="#fff" fill-opacity=".6" letter-spacing="4.4">PLATZHALTER · PRODUKT 01</text>
+</svg>

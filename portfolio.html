@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio – Nikolaj | Fotografie &amp; Videografie</title>
-  <meta name="description" content="Portfolio von Nikolaj: Fotos und Videos – Portraits, Events, Reels, Imagefilme und mehr.">
+  <meta name="description" content="Portfolio von Nikolaj: Shootings und Projekte – Portraits, Events, Reels, Imagefilme und mehr.">
   <meta name="theme-color" content="#0d0d0e">
   <meta property="og:title" content="Portfolio – Nikolaj">
   <meta property="og:description" content="Fotos und Videos – Portraits, Events, Reels, Imagefilme und mehr.">
@@ -33,20 +33,42 @@
   </header>
 
   <main id="inhalt">
-    <section class="page-hero">
-      <div class="container">
-        <span class="eyebrow reveal">Portfolio</span>
-        <h1 class="reveal" style="--delay:.08s">Meine <span class="accent">Arbeiten</span>.</h1>
-        <p class="reveal" style="--delay:.16s">Eine Auswahl meiner Fotos und Videos. Tippe auf ein Bild, um es groß anzusehen – Videos starten direkt.</p>
-      </div>
-    </section>
+    <!-- ================= ÜBERSICHT: alle Projekte ================= -->
+    <div data-view="overview">
+      <section class="page-hero">
+        <div class="container">
+          <span class="eyebrow reveal">Portfolio</span>
+          <h1 class="reveal" style="--delay:.08s">Meine <span class="accent">Arbeiten</span>.</h1>
+          <p class="reveal" style="--delay:.16s">Eine Auswahl meiner Shootings und Projekte. Tippe auf ein Projekt, um alle Bilder zu sehen.</p>
+        </div>
+      </section>
 
-    <section class="container" aria-label="Galerie">
-      <div class="filters" role="group" aria-label="Arbeiten filtern" data-filters></div>
-      <!-- Inhalte kommen aus js/gallery-data.js -->
-      <ul class="gallery" data-gallery></ul>
-      <noscript><p class="gallery-empty">Bitte aktiviere JavaScript, um die Galerie zu sehen.</p></noscript>
-    </section>
+      <section class="container" aria-label="Projekte">
+        <div class="filters" role="group" aria-label="Projekte filtern" data-filters></div>
+        <!-- Inhalte kommen aus js/projekte.js -->
+        <ul class="projects" data-projects></ul>
+        <noscript><p class="gallery-empty">Bitte aktiviere JavaScript, um das Portfolio zu sehen.</p></noscript>
+      </section>
+    </div>
+
+    <!-- ================= EINZELNES PROJEKT / SHOOTING (wird per JS gefüllt) ================= -->
+    <article class="project-view" data-view="project" hidden>
+      <div class="container">
+        <a class="back-link" href="portfolio.html" data-back>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Alle Projekte
+        </a>
+        <header class="project-header">
+          <span class="eyebrow" data-p-cat></span>
+          <h1 tabindex="-1" data-p-title></h1>
+          <ul class="project-meta" data-p-meta></ul>
+          <p class="project-desc" data-p-desc></p>
+        </header>
+        <div class="project-video" data-p-video hidden></div>
+        <ul class="gallery" data-p-images aria-label="Bilder des Shootings"></ul>
+        <div class="project-next" data-p-next></div>
+      </div>
+    </article>
 
     <section class="section">
       <div class="container cta-band reveal">
@@ -108,8 +130,8 @@
   </dialog>
 
   <script src="js/config.js"></script>
-  <script src="js/gallery-data.js"></script>
+  <script src="js/projekte.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/gallery.js"></script>
+  <script src="js/portfolio.js"></script>
 </body>
 </html>

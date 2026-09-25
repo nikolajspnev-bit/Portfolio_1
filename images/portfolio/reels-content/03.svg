@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600" width="900" height="1600">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#160f0b"/><stop offset="1" stop-color="#ff8c3a"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#fff0d6" stop-opacity=".55"/><stop offset="1" stop-color="#fff0d6" stop-opacity="0"/></radialGradient></defs>
+<rect width="900" height="1600" fill="url(#s)"/>
+<circle cx="683" cy="762" r="277" fill="url(#g)"/>
+<circle cx="683" cy="762" r="87" fill="#fff0d6"/>
+<polygon points="0,1600 0,773 100,911 200,787 300,855 400,709 500,796 600,716 700,796 800,768 900,788 900,1600" fill="#2d1a10" opacity="0.78"/><polygon points="0,1600 0,1053 82,972 164,889 245,992 327,1015 409,905 491,980 573,965 655,1018 736,912 818,962 900,982 900,1600" fill="#20130c" opacity="0.85"/><polygon points="0,1600 0,1277 75,1200 150,1228 225,1204 300,1231 375,1194 450,1269 525,1313 600,1256 675,1199 750,1239 825,1242 900,1254 900,1600" fill="#150c08" opacity="0.92"/><polygon points="0,1600 0,1397 69,1363 138,1407 208,1438 277,1441 346,1412 415,1359 485,1337 554,1336 623,1400 692,1359 762,1376 831,1346 900,1355 900,1600" fill="#0c0705" opacity="0.99"/>
+<text x="450" y="224" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="31" fill="#fff" fill-opacity=".6" letter-spacing="2.4">PLATZHALTER · REELS 03</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1416"/><stop offset="1" stop-color="#d9824a"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#fff1dd" stop-opacity=".55"/><stop offset="1" stop-color="#fff1dd" stop-opacity="0"/></radialGradient></defs>
+<rect width="1600" height="1067" fill="url(#s)"/>
+<circle cx="580" cy="331" r="273" fill="url(#g)"/>
+<circle cx="580" cy="331" r="85" fill="#fff1dd"/>
+<polygon points="0,1067 0,564 200,498 400,510 600,625 800,578 1000,504 1200,595 1400,564 1600,544 1600,1067" fill="#1c2426" opacity="0.78"/><polygon points="0,1067 0,658 160,657 320,676 480,704 640,662 800,621 960,723 1120,709 1280,614 1440,620 1600,638 1600,1067" fill="#151c1e" opacity="0.85"/><polygon points="0,1067 0,813 133,804 267,860 400,791 533,815 667,821 800,811 933,878 1067,861 1200,854 1333,815 1467,859 1600,852 1600,1067" fill="#0f1416" opacity="0.92"/><polygon points="0,1067 0,954 133,933 267,953 400,927 533,939 667,929 800,902 933,941 1067,930 1200,904 1333,903 1467,946 1600,951 1600,1067" fill="#090c0d" opacity="0.99"/>
+<text x="800" y="149" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="36" fill="#fff" fill-opacity=".6" letter-spacing="2.9">PLATZHALTER · BERGE &amp; WEITE 06</text>
+</svg>
