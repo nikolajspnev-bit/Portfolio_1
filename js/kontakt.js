@@ -230,11 +230,14 @@
       el("div", { class: "status-box" }, [
         el("span", { class: "status-icon", html: ICONS.check }),
         el("h3", { text: "Danke, " + v.vorname + "!" }),
-        el("p", {
-          text:
-            "Deine Anfrage ist bei mir angekommen. Ich melde mich so schnell wie möglich bei dir – per E-Mail an " +
-            v.email + (v.telefon ? " oder telefonisch." : "."),
-        }),
+        el("p", {}, [
+          "Deine Anfrage ist bei mir angekommen – ich melde mich so schnell wie möglich. ",
+          "Meine Antwort bekommst du an deine E-Mail-Adresse ",
+          el("strong", { text: v.email }),
+          v.telefon ? " oder telefonisch unter " : ".",
+          v.telefon ? el("strong", { text: v.telefon }) : null,
+          v.telefon ? "." : null,
+        ]),
         el("div", { class: "status-actions" }, [again]),
       ])
     );

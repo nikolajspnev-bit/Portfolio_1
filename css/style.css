@@ -1417,6 +1417,11 @@ fieldset.field {
   color: var(--muted);
   max-width: 520px;
 }
+.status-box p strong {
+  color: var(--text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
 .status-box.is-error {
   margin-top: 20px;
   padding: 18px 20px;
