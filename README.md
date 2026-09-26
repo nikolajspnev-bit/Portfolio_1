@@ -196,6 +196,19 @@ Als Freelancer brauchst du in Deutschland ein Impressum. Fülle in `impressum.ht
 `[eckigen Klammern]` aus und ersetze den Datenschutz-Teil durch eine vollständige Datenschutzerklärung
 (z. B. mit dem Generator von e-recht24.de oder datenschutz-generator.de).
 
+## Änderungen sofort sichtbar machen (Browser-Cache)
+
+Browser speichern CSS- und JavaScript-Dateien bis zu 10 Minuten zwischen. Damit nach einer Änderung
+an `css/` oder `js/` alle sofort die neue Version bekommen, hängen die Seiten eine Versionsnummer an
+(`js/kontakt.js?v=…`). Nach eigenen Änderungen an diesen Dateien einfach einmal ausführen:
+
+```bash
+python3 tools/version.py
+```
+
+Wenn du selbst gerade etwas nicht siehst: Seite neu laden (am Handy Tab schließen und neu öffnen,
+am PC Strg + Shift + R bzw. Cmd + Shift + R).
+
 ## Lokal ansehen
 
 Am besten über einen kleinen lokalen Server (dann funktionieren Schriften, Instagram- und YouTube-Feed wie online):

@@ -61,18 +61,20 @@
   }
 
   /* ---------- Zusatzfelder: Event-Auswahl bei "Events", Textfeld bei "Sonstiges" ---------- */
+  // (Prüft jeweils, ob das Element existiert – so bricht das Formular nie ab,
+  //  auch wenn der Browser kurzzeitig eine ältere Version der Seite zeigt.)
   function syncSubBoxes() {
     var art = radioValue("art");
     var showEvent = art === "event";
-    eventBox.hidden = !showEvent;
+    if (eventBox) eventBox.hidden = !showEvent;
     if (!showEvent) {
       form.querySelectorAll('input[name="anlass"]').forEach(function (input) {
         input.checked = false;
       });
     }
     var showOther = art === "sonstiges";
-    otherBox.hidden = !showOther;
-    if (!showOther) {
+    if (otherBox) otherBox.hidden = !showOther;
+    if (!showOther && OTHER_CHECK) {
       form.elements.sonstiges.value = "";
       setError(OTHER_CHECK, ""); // alte Fehlermeldung entfernen
     }
@@ -81,7 +83,7 @@
   /* ---------- Vorauswahl über den Link (?art=event) ---------- */
   var preset = new URLSearchParams(location.search).get("art");
   if (preset === "analog") {
-    form.elements.analog.checked = true; // vom Analog-Projekt im Portfolio
+    if (form.elements.analog) form.elements.analog.checked = true; // vom Analog-Projekt im Portfolio
   } else if (preset && /^[a-z-]+$/.test(preset)) {
     var presetRadio = form.querySelector('input[name="art"][value="' + preset + '"]');
     if (presetRadio) presetRadio.checked = true;
@@ -102,7 +104,10 @@
     { name: "sonstiges", error: "cf-sonstiges-error", msg: "Bitte schreib kurz, worum es geht – z. B. „Tiershooting“.",
       test: function (v) { return radioValue("art") !== "sonstiges" || v.trim().length >= 2; } },
     { name: "datenschutz", error: "cf-consent-error", checkbox: true, msg: "Bitte stimme zu, damit ich deine Anfrage bearbeiten darf." },
-  ];
+  ].filter(function (check) {
+    // nur Felder prüfen, die es auf der Seite auch gibt
+    return check.radio ? form.querySelector('input[name="' + check.name + '"]') : form.elements[check.name];
+  });
 
   var OTHER_CHECK = CHECKS.filter(function (check) { return check.name === "sonstiges"; })[0];
   syncSubBoxes();
@@ -161,7 +166,7 @@
     var f = form.elements;
     var art = ART_LABELS[radioValue("art")] || radioValue("art");
     var anlass = radioValue("anlass");
-    var sonstiges = radioValue("art") === "sonstiges" ? f.sonstiges.value.trim() : "";
+    var sonstiges = radioValue("art") === "sonstiges" && f.sonstiges ? f.sonstiges.value.trim() : "";
     return {
       vorname: f.vorname.value.trim(),
       nachname: f.nachname.value.trim(),
@@ -169,7 +174,7 @@
       telefon: f.telefon.value.trim(),
       art: art + (anlass ? " (" + anlass + ")" : "") + (sonstiges ? " (" + sonstiges + ")" : ""),
       medium: radioValue("medium"),
-      analog: f.analog.checked,
+      analog: !!(f.analog && f.analog.checked),
       datum: formatDate(f.datum.value),
       ort: f.ort.value.trim(),
       nachricht: f.nachricht.value.trim(),
