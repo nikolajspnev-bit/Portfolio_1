@@ -200,7 +200,20 @@
     });
   }
 
+  // Spaltenzahl passend zur Bildanzahl: 4 Bilder → 4 Spalten, 6 → 3, 8 → 4 … (so bleibt keine Spalte leer)
+  function galleryColumns(n) {
+    if (n <= 4) return Math.max(n, 1);
+    var empty3 = (3 - (n % 3)) % 3;
+    var empty4 = (4 - (n % 4)) % 4;
+    return empty4 < empty3 ? 4 : 3;
+  }
+
   function renderImages(project) {
+    var n = project.images.length;
+    pImages.style.setProperty("--cols-desktop", String(galleryColumns(n)));
+    pImages.style.setProperty("--cols-mobile", n === 1 ? "1" : "2");
+    // sehr wenige Bilder nicht riesig aufblasen
+    pImages.style.setProperty("--gallery-max", n === 1 ? "560px" : n === 2 ? "860px" : "none");
     pImages.replaceChildren();
     pImagesWrap.hidden = !project.images.length;
     pImagesHeading.hidden = !project.videos.length; // Überschrift "Fotos" nur, wenn es auch Videos gibt

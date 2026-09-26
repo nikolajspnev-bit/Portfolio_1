@@ -63,9 +63,18 @@ function bilder(ordner, anzahl, endung) {
   return liste;
 }
 
-// Die folgenden Projekte sind PLATZHALTER – ersetze sie durch deine eigenen Shootings.
-// (Die Ordner images/portfolio/… und videos/ enthalten nur Platzhalter-Dateien.)
+// Ab "golden-hour" sind die Projekte PLATZHALTER – ersetze sie nach und nach durch deine eigenen Shootings.
+// (Deren Ordner in images/portfolio/… und videos/ enthalten nur Platzhalter-Dateien.)
 window.PROJECTS = [
+  {
+    id: "talhof-beising",
+    title: "TalHof - Beising",
+    category: "Unternehmen",
+    date: "2026",
+    description: "Erntezeit auf dem TalHof Beising – Traktor und Mähdrescher im Einsatz, festgehalten im warmen Gegenlicht.",
+    featured: true,
+    images: bilder("talhof-beising", 4),
+  },
   {
     id: "golden-hour",
     title: "Golden Hour Portrait",
