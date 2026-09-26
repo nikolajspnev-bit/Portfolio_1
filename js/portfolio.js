@@ -151,7 +151,7 @@
   var backLink = projectView.querySelector("[data-back]");
 
   var ctaLink = document.querySelector("[data-cta-anfrage]");
-  var FORM_KEYS = ["portrait", "event", "produkt", "unternehmen", "social-media"];
+  var FORM_KEYS = ["portrait", "event", "produkt", "unternehmen", "social-media", "analog"];
 
   // "Anfrage stellen" wählt im Kontaktformular die passende Art vor (z. B. Event)
   function updateCta(project) {

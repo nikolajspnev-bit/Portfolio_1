@@ -1331,6 +1331,17 @@ fieldset.field {
   color: var(--on-orange);
   font-weight: 600;
 }
+.chip span svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  flex: none;
+}
+.chips-addon {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
 .chip input:focus-visible + span {
   outline: 2px solid var(--orange);
   outline-offset: 3px;

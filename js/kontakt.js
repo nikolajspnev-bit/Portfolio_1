@@ -4,7 +4,8 @@
  * Einstellungen in js/config.js (kontakt.email / kontakt.formEndpoint).
  *
  * Tipp: Mit einem Link wie  index.html?art=event#kontakt  ist die Art des Shootings
- * schon vorausgewählt (wird z. B. von der Portfolio-Seite genutzt).
+ * schon vorausgewählt (wird z. B. von der Portfolio-Seite genutzt); ?art=analog hakt
+ * "Auch analoge Fotos" an.
  */
 (function () {
   "use strict";
@@ -70,7 +71,9 @@
 
   /* ---------- Vorauswahl über den Link (?art=event) ---------- */
   var preset = new URLSearchParams(location.search).get("art");
-  if (preset && /^[a-z-]+$/.test(preset)) {
+  if (preset === "analog") {
+    form.elements.analog.checked = true; // vom Analog-Projekt im Portfolio
+  } else if (preset && /^[a-z-]+$/.test(preset)) {
     var presetRadio = form.querySelector('input[name="art"][value="' + preset + '"]');
     if (presetRadio) presetRadio.checked = true;
   }
@@ -151,6 +154,7 @@
       telefon: f.telefon.value.trim(),
       art: art + (anlass ? " (" + anlass + ")" : ""),
       medium: radioValue("medium"),
+      analog: f.analog.checked,
       datum: formatDate(f.datum.value),
       ort: f.ort.value.trim(),
       nachricht: f.nachricht.value.trim(),
@@ -165,6 +169,7 @@
       ["Telefon", v.telefon || "–"],
       ["Art des Shootings / Drehs", v.art],
       ["Foto / Video", v.medium || "–"],
+      ["Analoge Fotos (Film)", v.analog ? "Ja, gewünscht" : "–"],
       ["Wunschtermin", v.datum || "–"],
       ["Ort", v.ort || "–"],
       ["Nachricht", v.nachricht || "–"],

@@ -135,7 +135,8 @@ Solange keine Kanal-ID eingetragen ist, erscheint eine „Abonniere meinen YouTu
 
 Im Bereich **Kontakt** auf der Startseite gibt es ein Formular: Vor- und Nachname, E-Mail, Telefon
 (optional), Art des Shootings/Drehs (Portraits, Events → Geburtstag/Hochzeit/Feier, Produktbilder,
-Unternehmensbilder, Social Media Content, Sonstiges), Foto/Video, Wunschtermin, Ort und Nachricht.
+Unternehmensbilder, Social Media Content, Sonstiges), Foto/Video, „Auch analoge Fotos (auf Film)“,
+Wunschtermin, Ort und Nachricht.
 Die Anfragen kommen als E-Mail bei dir an – über den kostenlosen Dienst **FormSubmit** (ohne Anmeldung).
 
 **Einmalig aktivieren:**
