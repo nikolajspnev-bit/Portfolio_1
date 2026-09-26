@@ -213,36 +213,142 @@
         <div class="section-head reveal">
           <span class="eyebrow">05 — Kontakt</span>
           <h2>Lass uns zusammen etwas <span class="accent">erschaffen</span>.</h2>
-          <p>Du hast ein Projekt, ein Event oder eine Idee? Schreib mir oder ruf einfach an – ich melde mich schnell bei dir.</p>
+          <p>Du hast ein Projekt, ein Event oder eine Idee? Schick mir einfach eine Anfrage über das Formular – oder schreib bzw. ruf mich direkt an.</p>
         </div>
 
-        <div class="contact-grid">
-          <a class="contact-card reveal" href="mailto:nikolajtry.media@gmail.com?subject=Anfrage%20%C3%BCber%20dein%20Portfolio">
-            <span class="label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-              E-Mail
-            </span>
-            <span class="value">nikolajtry.media@gmail.com</span>
-            <span class="hint">Am besten für Anfragen &amp; Angebote</span>
-          </a>
+        <div class="contact-layout">
+          <form class="contact-form reveal" data-contact-form novalidate>
+            <div class="form-body" data-form-body>
+              <div class="form-row">
+                <div class="field">
+                  <label for="cf-vorname">Vorname <span class="req" aria-hidden="true">*</span></label>
+                  <input id="cf-vorname" name="vorname" type="text" autocomplete="given-name" required aria-describedby="cf-vorname-error">
+                  <p class="field-error" id="cf-vorname-error"></p>
+                </div>
+                <div class="field">
+                  <label for="cf-nachname">Nachname <span class="req" aria-hidden="true">*</span></label>
+                  <input id="cf-nachname" name="nachname" type="text" autocomplete="family-name" required aria-describedby="cf-nachname-error">
+                  <p class="field-error" id="cf-nachname-error"></p>
+                </div>
+              </div>
 
-          <a class="contact-card reveal" style="--delay:.08s" href="tel:+4915902631729">
-            <span class="label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Telefon
-            </span>
-            <span class="value">+49 1590 2631729</span>
-            <span class="hint">Anrufen oder Nachricht schreiben</span>
-          </a>
+              <div class="form-row">
+                <div class="field">
+                  <label for="cf-email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+                  <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="cf-email-error">
+                  <p class="field-error" id="cf-email-error"></p>
+                </div>
+                <div class="field">
+                  <label for="cf-telefon">Telefonnummer <span class="optional">(optional)</span></label>
+                  <input id="cf-telefon" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="+49 …" aria-describedby="cf-telefon-error">
+                  <p class="field-error" id="cf-telefon-error"></p>
+                </div>
+              </div>
 
-          <a class="contact-card reveal" style="--delay:.16s" href="https://fancy-bio.com/nikolajtry" target="_blank" rel="noopener">
-            <span class="label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg>
-              Links
-            </span>
-            <span class="value">fancy-bio.com/nikolajtry</span>
-            <span class="hint">Alle Kanäle auf einen Blick</span>
-          </a>
+              <fieldset class="field chips-field" aria-describedby="cf-art-error">
+                <legend>Was für ein Shooting oder Dreh? <span class="req" aria-hidden="true">*</span></legend>
+                <div class="chips">
+              <label class="chip"><input type="radio" name="art" value="portrait" required><span>Portraits</span></label>
+              <label class="chip"><input type="radio" name="art" value="event"><span>Events</span></label>
+              <label class="chip"><input type="radio" name="art" value="produkt"><span>Produktbilder</span></label>
+              <label class="chip"><input type="radio" name="art" value="unternehmen"><span>Unternehmensbilder</span></label>
+              <label class="chip"><input type="radio" name="art" value="social-media"><span>Social Media Content</span></label>
+              <label class="chip"><input type="radio" name="art" value="sonstiges"><span>Sonstiges</span></label>
+                </div>
+                <p class="field-error" id="cf-art-error"></p>
+              </fieldset>
+
+              <fieldset class="field chips-field chips-sub" data-event-types hidden>
+                <legend>Welches Event?</legend>
+                <div class="chips">
+              <label class="chip"><input type="radio" name="anlass" value="Geburtstag"><span>Geburtstag</span></label>
+              <label class="chip"><input type="radio" name="anlass" value="Hochzeit"><span>Hochzeit</span></label>
+              <label class="chip"><input type="radio" name="anlass" value="Feier"><span>Feier / Party</span></label>
+              <label class="chip"><input type="radio" name="anlass" value="Anderes Event"><span>Anderes Event</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field chips-field">
+                <legend>Foto, Video oder beides? <span class="optional">(optional)</span></legend>
+                <div class="chips">
+              <label class="chip"><input type="radio" name="medium" value="Foto"><span>Foto-Shooting</span></label>
+              <label class="chip"><input type="radio" name="medium" value="Video"><span>Video-Dreh</span></label>
+              <label class="chip"><input type="radio" name="medium" value="Foto & Video"><span>Foto &amp; Video</span></label>
+                </div>
+              </fieldset>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="cf-datum">Wunschtermin <span class="optional">(optional)</span></label>
+                  <input id="cf-datum" name="datum" type="date">
+                </div>
+                <div class="field">
+                  <label for="cf-ort">Ort <span class="optional">(optional)</span></label>
+                  <input id="cf-ort" name="ort" type="text" autocomplete="address-level2" placeholder="z. B. Hamburg">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="cf-nachricht">Deine Nachricht <span class="optional">(optional)</span></label>
+                <textarea id="cf-nachricht" name="nachricht" rows="5" placeholder="Erzähl mir kurz von deinem Projekt – Idee, Anzahl Personen, Stil …"></textarea>
+              </div>
+
+              <!-- Schutz vor Spam-Bots: Dieses Feld ist für Menschen unsichtbar -->
+              <div class="hp" aria-hidden="true">
+                <label>Bitte leer lassen <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+              </div>
+
+              <div class="field">
+                <label class="consent">
+                  <input type="checkbox" name="datenschutz" required aria-describedby="cf-consent-error">
+                  <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. Mehr dazu in der <a href="impressum.html#datenschutz">Datenschutzerklärung</a>. <span class="req" aria-hidden="true">*</span></span>
+                </label>
+                <p class="field-error" id="cf-consent-error"></p>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit" data-submit>
+                  <span data-submit-label>Anfrage senden</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+                <p class="form-note"><span class="req">*</span> Pflichtfelder</p>
+              </div>
+            </div>
+
+            <div class="form-status" data-form-status role="status" aria-live="polite" tabindex="-1"></div>
+          </form>
+
+          <aside class="contact-aside reveal" style="--delay:.1s" aria-label="Direkter Kontakt">
+            <p class="aside-title">Lieber direkt?</p>
+            <div class="contact-grid">
+              <a class="contact-card reveal" href="mailto:nikolajtry.media@gmail.com?subject=Anfrage%20%C3%BCber%20dein%20Portfolio">
+                <span class="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                  E-Mail
+                </span>
+                <span class="value">nikolajtry.media@gmail.com</span>
+                <span class="hint">Am besten für Anfragen &amp; Angebote</span>
+              </a>
+
+              <a class="contact-card reveal" style="--delay:.08s" href="tel:+4915902631729">
+                <span class="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  Telefon
+                </span>
+                <span class="value">+49 1590 2631729</span>
+                <span class="hint">Anrufen oder Nachricht schreiben</span>
+              </a>
+
+              <a class="contact-card reveal" style="--delay:.16s" href="https://fancy-bio.com/nikolajtry" target="_blank" rel="noopener">
+                <span class="label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg>
+                  Links
+                </span>
+                <span class="value">fancy-bio.com/nikolajtry</span>
+                <span class="hint">Alle Kanäle auf einen Blick</span>
+              </a>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -267,5 +373,6 @@
   <script src="js/media.js"></script>
   <script src="js/main.js"></script>
   <script src="js/youtube.js"></script>
+  <script src="js/kontakt.js"></script>
 </body>
 </html>

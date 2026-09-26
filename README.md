@@ -47,7 +47,8 @@ So legst du ein neues Shooting an:
 4. Die Platzhalter-Projekte (und ihre Ordner in `images/portfolio/`) löschen.
 
 - Das **erste Bild** ist automatisch das Cover. Ein anderes Cover setzt du mit `cover: "images/portfolio/hochzeit-anna/07.jpg"`.
-- Aus den **Kategorien** entstehen automatisch die Filter-Buttons über der Übersicht.
+- Aus den **Kategorien** entstehen automatisch die Filter-Buttons über der Übersicht
+  (aktuell: Portrait, Event, Unternehmen, Produkt, Social Media, Analog).
 - Mit `featured: true` erscheint das Cover zusätzlich in der Collage oben auf der Startseite (die ersten 3).
 - Heißen deine Dateien anders, geht auch eine Liste: `images: ["images/portfolio/x/a.jpg", "images/portfolio/x/b.jpg"]`.
 
@@ -130,7 +131,27 @@ Solange keine Kanal-ID eingetragen ist, erscheint eine „Abonniere meinen YouTu
 
 *Technik: Die Seite liest den öffentlichen RSS-Feed deines Kanals über den kostenlosen Dienst rss2json.com.*
 
-## 4. Online stellen mit GitHub Pages
+## 4. Kontaktformular
+
+Im Bereich **Kontakt** auf der Startseite gibt es ein Formular: Vor- und Nachname, E-Mail, Telefon
+(optional), Art des Shootings/Drehs (Portraits, Events → Geburtstag/Hochzeit/Feier, Produktbilder,
+Unternehmensbilder, Social Media Content, Sonstiges), Foto/Video, Wunschtermin, Ort und Nachricht.
+Die Anfragen kommen als E-Mail bei dir an – über den kostenlosen Dienst **FormSubmit** (ohne Anmeldung).
+
+**Einmalig aktivieren:**
+1. Seite online öffnen und selbst eine Test-Anfrage über das Formular abschicken.
+2. Du bekommst eine E-Mail von FormSubmit an `nikolajtry.media@gmail.com` → auf **„Activate Form“** klicken.
+3. Fertig – ab jetzt landen alle Anfragen direkt in deinem Postfach (Antworten gehen an die E-Mail des Kunden).
+
+Solange das Formular nicht aktiviert ist (oder falls FormSubmit mal nicht erreichbar ist), bietet die Seite
+automatisch an, die Anfrage per E-Mail zu schicken – mit allen Angaben schon ausgefüllt.
+
+- Die Empfänger-Adresse steht in `js/config.js` unter `kontakt`.
+- Die Auswahl-Möglichkeiten („Reiter“) änderst du in `index.html` im Bereich `KONTAKT`.
+- Aus einem Projekt im Portfolio heraus ist die passende Art schon vorausgewählt
+  (z. B. `index.html?art=event#kontakt`).
+
+## 5. Online stellen mit GitHub Pages
 
 1. Auf GitHub im Repository auf **Settings → Pages** gehen.
 2. Bei *Source* „Deploy from a branch“ wählen, Branch **main** und Ordner **/ (root)** → *Save*.
@@ -139,7 +160,7 @@ Solange keine Kanal-ID eingetragen ist, erscheint eine „Abonniere meinen YouTu
 
 Eine eigene Domain (z. B. `nikolajtry.media`) kannst du dort später unter *Custom domain* eintragen.
 
-## 5. Vor dem Veröffentlichen: Impressum
+## 6. Vor dem Veröffentlichen: Impressum
 
 Als Freelancer brauchst du in Deutschland ein Impressum. Fülle in `impressum.html` alle Angaben in
 `[eckigen Klammern]` aus und ersetze den Datenschutz-Teil durch eine vollständige Datenschutzerklärung

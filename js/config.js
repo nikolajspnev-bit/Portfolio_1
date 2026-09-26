@@ -35,4 +35,14 @@ window.SITE_CONFIG = {
     // Sollen YouTube Shorts auch angezeigt werden? (true = ja, false = nein)
     shorts: true,
   },
+
+  kontakt: {
+    // An diese Adresse gehen die Anfragen aus dem Kontaktformular.
+    email: "nikolajtry.media@gmail.com",
+
+    // Dienst, der das Formular per E-Mail an dich weiterleitet (FormSubmit, kostenlos, ohne Anmeldung).
+    // WICHTIG: Beim allerersten Absenden schickt FormSubmit dir eine E-Mail mit "Activate Form" –
+    // einmal draufklicken, danach kommen alle Anfragen automatisch bei dir an.
+    formEndpoint: "https://formsubmit.co/ajax/nikolajtry.media@gmail.com",
+  },
 };

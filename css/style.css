@@ -18,6 +18,7 @@
    Farben & Grundwerte – hier kannst du z. B. das Orange ändern
    ============================================================ */
 :root {
+  color-scheme: dark;
   --bg: #0d0d0e;
   --bg-2: #131315;
   --surface: #19191c;
@@ -29,6 +30,8 @@
   --orange-2: #ff8f4a;
   --orange-soft: rgba(255, 107, 26, 0.14);
   --on-orange: #140a04;
+  --danger: #ff6b6b;
+  --success: #5fd38d;
 
   --font-display: "Syne", "Arial Black", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -1161,6 +1164,301 @@ main {
 .contact-card .hint {
   font-size: 0.9rem;
   color: var(--muted);
+}
+
+/* ============================================================
+   Kontaktformular
+   ============================================================ */
+.contact-layout {
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+}
+@media (min-width: 980px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  }
+  .contact-aside {
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+  }
+  .contact-aside .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+.aside-title {
+  margin-bottom: 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-form {
+  padding: clamp(20px, 3.4vw, 36px);
+  border-radius: calc(var(--radius) + 4px);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.form-body {
+  display: grid;
+  gap: 20px;
+}
+.form-row {
+  display: grid;
+  gap: 20px;
+}
+@media (min-width: 600px) {
+  .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+fieldset.field {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.field > label,
+.field > legend {
+  padding: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.field > legend {
+  margin-bottom: 10px;
+}
+.req {
+  color: var(--orange);
+}
+.optional {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field input[type="date"],
+.field textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--text);
+  font: 400 1rem/1.5 var(--font-body); /* 16px: verhindert Zoom auf dem iPhone */
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+.field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #6f6c68;
+}
+.field input:hover,
+.field textarea:hover {
+  border-color: #3a3a40;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255, 107, 26, 0.18);
+  background: var(--bg);
+}
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+.field-error {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--danger);
+}
+.field-error:not(:empty) {
+  display: block;
+}
+
+/* Auswahl-Chips ("Reiter") */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  position: relative;
+  cursor: pointer;
+}
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  user-select: none;
+}
+.chip:hover span {
+  color: var(--text);
+  border-color: #4a4a50;
+}
+.chip input:checked + span {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--on-orange);
+  font-weight: 600;
+}
+.chip input:focus-visible + span {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+.chips-field[aria-invalid="true"] .chip span {
+  border-color: rgba(255, 107, 107, 0.6);
+}
+.chips-sub {
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--orange-soft);
+  animation: fade-up 0.35s var(--ease);
+}
+.chips-sub .chip span {
+  min-height: 40px;
+  background: var(--surface);
+}
+
+/* Datenschutz-Zustimmung */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 400 !important;
+  color: var(--muted) !important;
+  cursor: pointer;
+}
+.consent input {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+.consent a {
+  color: var(--orange);
+}
+
+/* Unsichtbares Anti-Spam-Feld */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-top: 4px;
+}
+.form-actions .btn {
+  min-width: 220px;
+}
+.form-actions .btn[disabled] {
+  opacity: 0.7;
+  cursor: progress;
+  transform: none;
+}
+@media (max-width: 599px) {
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+.form-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Rückmeldung nach dem Absenden */
+.form-status:empty {
+  display: none;
+}
+.form-status {
+  outline: none;
+}
+.status-box {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: clamp(8px, 2vw, 16px) 0;
+  animation: fade-up 0.4s var(--ease);
+}
+.status-box .status-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(95, 211, 141, 0.15);
+  color: var(--success);
+}
+.status-box .status-icon svg {
+  width: 28px;
+  height: 28px;
+}
+.status-box h3 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+.status-box p {
+  color: var(--muted);
+  max-width: 520px;
+}
+.status-box.is-error {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 107, 107, 0.08);
+}
+.status-box.is-error p {
+  color: var(--text);
+}
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.status-actions .btn {
+  min-height: 46px;
+  padding: 0 20px;
+  font-size: 0.95rem;
 }
 
 /* ============================================================

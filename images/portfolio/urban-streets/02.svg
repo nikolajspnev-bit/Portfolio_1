@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067">
-<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1118"/><stop offset="1" stop-color="#3d4f66"/></linearGradient>
-<radialGradient id="g"><stop offset="0" stop-color="#ffa35c" stop-opacity=".55"/><stop offset="1" stop-color="#ffa35c" stop-opacity="0"/></radialGradient></defs>
-<rect width="1600" height="1067" fill="url(#s)"/>
-<circle cx="689" cy="480" r="329" fill="url(#g)"/>
-<circle cx="689" cy="480" r="103" fill="#ffa35c"/>
-<polygon points="0,1067 0,607 229,602 457,538 686,598 914,521 1143,605 1371,614 1600,630 1600,1067" fill="#1a2230" opacity="0.78"/><polygon points="0,1067 0,651 145,686 291,652 436,731 582,707 727,758 873,670 1018,753 1164,676 1309,731 1455,739 1600,671 1600,1067" fill="#131a25" opacity="0.85"/><polygon points="0,1067 0,800 160,825 320,761 480,758 640,815 800,760 960,756 1120,784 1280,788 1440,774 1600,796 1600,1067" fill="#0d121a" opacity="0.92"/><polygon points="0,1067 0,914 123,917 246,908 369,897 492,883 615,896 738,886 862,881 985,909 1108,918 1231,868 1354,864 1477,901 1600,899 1600,1067" fill="#080b10" opacity="0.99"/>
-<text x="800" y="149" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="36" fill="#fff" fill-opacity=".6" letter-spacing="2.9">PLATZHALTER · URBAN STREETS 02</text>
-</svg>

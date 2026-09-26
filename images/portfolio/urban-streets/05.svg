@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1067 1600" width="1067" height="1600">
-<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1118"/><stop offset="1" stop-color="#3d4f66"/></linearGradient>
-<radialGradient id="g"><stop offset="0" stop-color="#ffa35c" stop-opacity=".55"/><stop offset="1" stop-color="#ffa35c" stop-opacity="0"/></radialGradient></defs>
-<rect width="1067" height="1600" fill="url(#s)"/>
-<circle cx="760" cy="819" r="345" fill="url(#g)"/>
-<circle cx="760" cy="819" r="108" fill="#ffa35c"/>
-<polygon points="0,1600 0,983 133,1020 267,866 400,988 534,942 667,883 800,916 934,887 1067,1026 1067,1600" fill="#1a2230" opacity="0.78"/><polygon points="0,1600 0,1120 107,1058 213,1087 320,985 427,1012 534,1124 640,1031 747,1164 854,982 960,1106 1067,1093 1067,1600" fill="#131a25" opacity="0.85"/><polygon points="0,1600 0,1209 107,1118 213,1215 320,1258 427,1234 534,1128 640,1139 747,1207 854,1232 960,1120 1067,1171 1067,1600" fill="#0d121a" opacity="0.92"/><polygon points="0,1600 0,1403 76,1445 152,1416 229,1349 305,1417 381,1382 457,1389 534,1356 610,1444 686,1416 762,1392 838,1448 915,1428 991,1389 1067,1383 1067,1600" fill="#080b10" opacity="0.99"/>
-<text x="534" y="224" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="36" fill="#fff" fill-opacity=".6" letter-spacing="2.9">PLATZHALTER · URBAN STREETS 05</text>
-</svg>

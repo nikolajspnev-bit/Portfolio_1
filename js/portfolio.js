@@ -150,6 +150,16 @@
   var pNext = projectView.querySelector("[data-p-next]");
   var backLink = projectView.querySelector("[data-back]");
 
+  var ctaLink = document.querySelector("[data-cta-anfrage]");
+  var FORM_KEYS = ["portrait", "event", "produkt", "unternehmen", "social-media"];
+
+  // "Anfrage stellen" wählt im Kontaktformular die passende Art vor (z. B. Event)
+  function updateCta(project) {
+    if (!ctaLink) return;
+    var key = project ? project.category.toLowerCase().replace(/\s+/g, "-") : "";
+    ctaLink.href = FORM_KEYS.indexOf(key) !== -1 ? "index.html?art=" + key + "#kontakt" : "index.html#kontakt";
+  }
+
   var baseTitle = document.title;
   var currentProject = null;
   var overviewScroll = 0;
@@ -271,6 +281,7 @@
     projectView.classList.add("view-enter");
 
     document.title = project.title + " – Portfolio | nikolajtry.media";
+    updateCta(project);
     window.scrollTo({ top: 0, behavior: "instant" });
     pTitle.focus({ preventScroll: true });
   }
@@ -281,6 +292,7 @@
     projectView.hidden = true;
     overviewView.hidden = false;
     document.title = baseTitle;
+    updateCta(null);
     window.scrollTo({ top: overviewScroll, behavior: "instant" });
     if (previous) {
       var card = cards.filter(function (c) { return c.project === previous; })[0];

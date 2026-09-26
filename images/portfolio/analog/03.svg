@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067">
+<defs><filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="5" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer></filter>
+<radialGradient id="v2" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></radialGradient></defs>
+<rect width="1600" height="1067" fill="#0b0b0b"/>
+<svg x="48" y="48" width="1504" height="971" viewBox="0 0 1504 971"><defs><linearGradient id="s2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34403f"/><stop offset="1" stop-color="#c7b08a"/></linearGradient>
+<radialGradient id="g2"><stop offset="0" stop-color="#f6e7cc" stop-opacity=".55"/><stop offset="1" stop-color="#f6e7cc" stop-opacity="0"/></radialGradient></defs>
+<rect width="1504" height="971" fill="url(#s2)"/>
+<circle cx="1089" cy="465" r="252" fill="url(#g2)"/>
+<circle cx="1089" cy="465" r="79" fill="#f6e7cc"/>
+<polygon points="0,971 0,476 188,510 376,474 564,519 752,531 940,506 1128,547 1316,519 1504,557 1504,971" fill="#3e4a45" opacity="0.78"/><polygon points="0,971 0,674 167,632 334,650 501,678 668,679 836,630 1003,669 1170,612 1337,664 1504,669 1504,971" fill="#313b37" opacity="0.85"/><polygon points="0,971 0,792 150,778 301,760 451,718 602,727 752,773 902,792 1053,709 1203,731 1354,771 1504,745 1504,971" fill="#252d2a" opacity="0.92"/><polygon points="0,971 0,814 100,837 201,794 301,810 401,856 501,837 602,845 702,804 802,846 902,805 1003,802 1103,859 1203,797 1303,852 1404,846 1504,835 1504,971" fill="#191f1d" opacity="0.99"/>
+<rect width="1504" height="971" fill="url(#v2)"/>
+<rect width="1504" height="971" filter="url(#grain)"/>
+<text x="752" y="136" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="33" fill="#fff" fill-opacity=".6" letter-spacing="2.6">PLATZHALTER · ANALOG 03</text></svg>
+<text x="67" y="33" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#e8a33c" fill-opacity=".85" letter-spacing="3.0">FILM 400   16</text>
+<text x="1533" y="1052" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#e8a33c" fill-opacity=".85" letter-spacing="3.0">16A</text>
+</svg>

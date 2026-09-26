@@ -13,7 +13,7 @@
  *     {
  *       id: "hochzeit-anna",
  *       title: "Hochzeit Anna & Tom",
- *       category: "Hochzeit",
+ *       category: "Event",
  *       date: "Mai 2026",
  *       location: "Hamburg",
  *       description: "Ein kurzer Text zum Shooting.",
@@ -23,7 +23,8 @@
  *  Felder:
  *    id           kurzer Name ohne Leerzeichen (wird Teil des Links: portfolio.html#/hochzeit-anna)
  *    title        Titel des Projekts
- *    category     z. B. "Portrait", "Event", "Produkt" – daraus entstehen die Filter-Buttons
+ *    category     z. B. "Portrait", "Event", "Produkt", "Unternehmen", "Social Media", "Analog"
+ *                 – daraus entstehen automatisch die Filter-Buttons im Portfolio
  *    date         optional, z. B. "Mai 2026"
  *    location     optional, z. B. "Berlin" oder "Studio"
  *    description  optional, kurzer Text zum Projekt
@@ -90,13 +91,13 @@ window.PROJECTS = [
     images: bilder("sommer-festival", 7, "svg"),
   },
   {
-    id: "urban-streets",
-    title: "Urban Streets",
-    category: "Street",
+    id: "business-shooting",
+    title: "Business Shooting",
+    category: "Unternehmen",
     date: "2026",
-    location: "Stadt",
-    description: "Streetstyle-Shooting bei Nacht – Stadtlichter, starke Kontraste und ein urbaner Look.",
-    images: bilder("urban-streets", 6, "svg"),
+    location: "Office",
+    description: "Team- und Mitarbeiterfotos für Website, LinkedIn und Presse – professionell, aber nahbar.",
+    images: bilder("business-shooting", 6, "svg"),
   },
   {
     id: "produktshooting",
@@ -121,12 +122,11 @@ window.PROJECTS = [
     images: bilder("reels-content", 4, "svg"),
   },
   {
-    id: "berge-weite",
-    title: "Berge & Weite",
-    category: "Landschaft",
+    id: "analog",
+    title: "Analog – auf Film",
+    category: "Analog",
     date: "2026",
-    location: "Outdoor",
-    description: "Landschaftsfotografie zwischen Sonnenaufgang und Abendrot.",
-    images: bilder("berge-weite", 6, "svg"),
+    description: "Fotos auf echtem Film – mit Korn, Charakter und dem besonderen Look, den man digital kaum nachbauen kann.",
+    images: bilder("analog", 6, "svg"),
   },
 ];
