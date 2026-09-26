@@ -23,7 +23,7 @@
  *  Felder:
  *    id           kurzer Name ohne Leerzeichen (wird Teil des Links: portfolio.html#/hochzeit-anna)
  *    title        Titel des Projekts
- *    category     z. B. "Portrait", "Event", "Produkt", "Unternehmen", "Social Media", "Analog", "Fuji X-E5"
+ *    category     z. B. "Portrait", "Event", "Produkt", "Unternehmen", "Automotive", "Social Media", "Analog", "Fuji X-E5"
  *                 – daraus entstehen automatisch die Filter-Buttons im Portfolio
  *    date         optional, z. B. "Mai 2026"
  *    location     optional, z. B. "Berlin" oder "Studio"
@@ -83,6 +83,15 @@ function bilder(ordner, anzahl, endung) {
 // Ab "golden-hour" sind die Projekte PLATZHALTER – ersetze sie nach und nach durch deine eigenen Shootings.
 // (Deren Ordner in images/portfolio/… und videos/ enthalten nur Platzhalter-Dateien.)
 window.PROJECTS = [
+  {
+    id: "e30-e28-schwarzwald",
+    title: "E30 und E28 - Ausfahrt durch den Schwarzwald",
+    category: "Automotive",
+    location: "Schwarzwald",
+    description: "Zwei BMW-Klassiker auf Tour: Rolling Shots auf kurvigen Landstraßen, ein Stopp im Wald und jede Menge Details – von der Heizclub-Front bis zu den goldenen Alpina-Felgen.",
+    featured: true,
+    images: bilder("e30-e28-schwarzwald", 14),
+  },
   {
     id: "talhof-beising",
     title: "TalHof - Beising",
