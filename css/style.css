@@ -125,7 +125,7 @@ p {
   border-radius: 6px;
 }
 
-/* verhindert seitliches Scrollen durch das schräge Laufband */
+/* verhindert seitliches Scrollen durch dekorative Elemente (z. B. Rahmen am Portrait) */
 main {
   overflow-x: clip;
 }
@@ -367,7 +367,11 @@ main {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(56px, 10vw, 120px) clamp(64px, 10vw, 128px);
+  padding-block: clamp(56px, 10vw, 120px) clamp(40px, 6vw, 72px);
+}
+/* "Über mich" folgt direkt auf den Einstieg – etwas weniger Abstand nach oben */
+#ueber-mich {
+  padding-top: clamp(40px, 6vw, 80px);
 }
 .hero::before {
   content: "";
@@ -529,44 +533,6 @@ main {
   letter-spacing: 0.04em;
   transform: rotate(-12deg);
   box-shadow: 0 16px 40px -12px rgba(255, 107, 26, 0.7);
-}
-
-/* ============================================================
-   Laufband
-   ============================================================ */
-.marquee {
-  overflow: hidden;
-  background: var(--orange);
-  color: var(--on-orange);
-  border-block: 1px solid rgba(0, 0, 0, 0.2);
-  transform: rotate(-1.2deg) scale(1.02);
-  margin-block: -10px;
-  position: relative;
-  z-index: 2;
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 28s linear infinite;
-}
-.marquee-track span {
-  display: inline-flex;
-  align-items: center;
-  gap: 28px;
-  padding: 16px 14px;
-  font: 800 clamp(1.1rem, 2.4vw, 1.6rem) / 1 var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-.marquee-track span::after {
-  content: "✦";
-  font-size: 0.8em;
-}
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* ============================================================
