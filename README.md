@@ -100,8 +100,10 @@ und sich automatisch aktualisiert:
    feedUrl: "https://feeds.behold.so/AbC123xyz",
    ```
 
-Fertig – ab dann zeigt die Startseite groß deinen **neuesten Post** (mit Datum und Text) plus
-die 4 davor. Neue Posts erscheinen automatisch (je nach Behold-Tarif mit etwas Verzögerung). Ein Klick öffnet den Post direkt auf Instagram. Solange keine Feed-URL eingetragen ist,
+Fertig – ab dann zeigt die Startseite deinen **neuesten Post** (mit Datum und Text) plus die davor.
+Das Layout passt sich an die Anzahl an: bei 2–3 Posts stehen alle gleich groß im Hochformat nebeneinander,
+ab 5 Posts gibt es einen großen und 4 kleine daneben. Mit `postCount: 3` in `js/config.js` bleibt es
+immer bei drei gleich großen Posts. Neue Posts erscheinen automatisch (je nach Behold-Tarif mit etwas Verzögerung). Ein Klick öffnet den Post direkt auf Instagram. Solange keine Feed-URL eingetragen ist,
 erscheint stattdessen eine „Folge mir auf Instagram“-Karte.
 
 Prüfe außerdem in `js/config.js`, ob `username` dein richtiger Instagram-Name ist.

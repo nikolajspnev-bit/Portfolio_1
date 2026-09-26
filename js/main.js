@@ -176,9 +176,23 @@
     return text.length > max ? text.slice(0, max).replace(/\s+\S*$/, "") + " …" : text;
   }
 
+  function postLink(post, extraClass, children) {
+    var link = el("a", { class: "insta-post" + (extraClass ? " " + extraClass : ""), href: post.url, target: "_blank", rel: "noopener" }, children);
+    link.insertAdjacentHTML("beforeend", mediaIcon(post.type));
+    return link;
+  }
+
   function renderPosts(posts) {
+    // Layout je nach Anzahl der Posts, damit keine Lücken entstehen:
+    //   1 Post      → einzeln, mittig
+    //   2–4 Posts   → alle gleich groß im Hochformat nebeneinander (max. 3)
+    //   5+ Posts    → ein großer Post + 4 kleine im 2×2-Raster
+    var count = Math.min(posts.length, Math.max(1, insta.postCount || 5));
+    var layout = count >= 5 ? "bento" : count > 1 ? "row" : "single";
+    count = layout === "bento" ? 5 : Math.min(count, 3);
+
     var latest = posts[0];
-    var more = posts.slice(1, Math.max(1, insta.postCount || 5));
+    var more = posts.slice(1, count);
     var dateText = latest.date && !isNaN(latest.date) ? dateFormat.format(latest.date) : "";
     var altText = latest.caption ? shorten(latest.caption, 120) : "Neuester Instagram-Post";
 
@@ -188,30 +202,32 @@
       el("span", { class: "open", html: "Auf Instagram ansehen " + ICONS.external }),
     ]);
 
-    var latestLink = el(
-      "a",
-      { class: "insta-post insta-post--latest", href: latest.url, target: "_blank", rel: "noopener" },
-      [el("img", { src: latest.image, alt: altText, decoding: "async" }), el("span", { class: "insta-badge", text: "Neuester Post" }), caption]
-    );
-    latestLink.insertAdjacentHTML("beforeend", mediaIcon(latest.type));
+    var latestLink = postLink(latest, "insta-post--latest", [
+      el("img", { src: latest.image, alt: altText, decoding: "async" }),
+      el("span", { class: "insta-badge", text: "Neuester Post" }),
+      caption,
+    ]);
 
-    var grid = el("div", { class: "insta-grid" + (more.length ? " has-more" : "") }, [latestLink]);
+    var grid = el("div", { class: "insta-grid is-" + layout, "data-count": String(count) }, [latestLink]);
+    grid.style.setProperty("--cols", String(count));
 
-    if (more.length) {
-      var moreBox = el("div", { class: "insta-more" });
-      more.forEach(function (post) {
-        var link = el("a", { class: "insta-post", href: post.url, target: "_blank", rel: "noopener" }, [
-          el("img", {
-            src: post.thumb,
-            alt: post.caption ? shorten(post.caption, 100) : "Instagram-Post",
-            loading: "lazy",
-            decoding: "async",
-          }),
-        ]);
-        link.insertAdjacentHTML("beforeend", mediaIcon(post.type));
-        moreBox.appendChild(link);
+    var smallPosts = more.map(function (post) {
+      return postLink(post, "", [
+        el("img", {
+          src: layout === "row" ? post.image : post.thumb, // in der Reihe sind die Posts groß → große Bildversion
+          alt: post.caption ? shorten(post.caption, 100) : "Instagram-Post",
+          loading: "lazy",
+          decoding: "async",
+        }),
+      ]);
+    });
+
+    if (layout === "bento") {
+      grid.appendChild(el("div", { class: "insta-more" }, smallPosts));
+    } else {
+      smallPosts.forEach(function (link) {
+        grid.appendChild(link);
       });
-      grid.appendChild(moreBox);
     }
 
     feedBox.replaceChildren(grid);

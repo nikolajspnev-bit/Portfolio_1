@@ -14,7 +14,9 @@ window.SITE_CONFIG = {
     // Solange das Feld leer ist, zeigt die Seite eine "Folge mir"-Karte an.
     feedUrl: "https://feeds.behold.so/uVALLJu02kJpRy2On70Y",
 
-    // Wie viele Posts insgesamt angezeigt werden (1 großer + kleine daneben).
+    // Wie viele Posts höchstens angezeigt werden. Das Layout passt sich an:
+    //   3 = alle gleich groß nebeneinander, 5 = ein großer + 4 kleine daneben.
+    // Hat dein Feed weniger Posts, wird automatisch das passende Layout gewählt.
     postCount: 5,
   },
 

@@ -730,12 +730,50 @@ main {
   display: grid;
   gap: 16px;
 }
+
+/* 1 Post: einzeln, mittig */
+.insta-grid.is-single .insta-post--latest {
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* 2–3 Posts: alle gleich groß im Hochformat nebeneinander */
+.insta-grid.is-row {
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+}
+.insta-grid.is-row .insta-post {
+  aspect-ratio: 4 / 5;
+  max-height: none;
+}
+.insta-grid.is-row[data-count="2"] {
+  max-width: 900px;
+  margin-inline: auto;
+}
+.insta-grid.is-row .insta-caption p {
+  -webkit-line-clamp: 2;
+}
+@media (max-width: 759px) {
+  /* Handy: neuester Post oben in voller Breite, die anderen darunter */
+  .insta-grid.is-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .insta-grid.is-row .insta-post--latest {
+    grid-column: 1 / -1;
+  }
+  .insta-grid.is-row[data-count="2"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* 5 Posts: großer Post + 2×2-Raster */
 @media (min-width: 860px) {
-  .insta-grid.has-more {
+  .insta-grid.is-bento {
     grid-template-columns: 1fr 1fr;
   }
   /* großer Post wird genauso hoch wie die kleinen Posts daneben */
-  .insta-grid.has-more .insta-post--latest {
+  .insta-grid.is-bento .insta-post--latest {
     aspect-ratio: auto;
     max-height: none;
     min-height: 420px;
@@ -777,11 +815,6 @@ main {
 .insta-post--latest {
   aspect-ratio: 4 / 5;
   max-height: 720px;
-}
-.insta-grid:not(.has-more) .insta-post--latest {
-  max-width: 560px;
-  width: 100%;
-  margin-inline: auto;
 }
 .insta-post--latest::after {
   content: "";
