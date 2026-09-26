@@ -1911,22 +1911,24 @@ fieldset.field {
 /* Bilder des Shootings (Masonry) */
 .gallery {
   --gap: clamp(8px, 1.4vw, 14px);
-  columns: var(--cols-mobile, 2);
-  column-gap: var(--gap);
-  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap);
   margin: 0 auto;
-  list-style: none;
   max-width: var(--gallery-max, none);
 }
-@media (min-width: 820px) {
-  .gallery {
-    /* Spaltenzahl kommt aus js/portfolio.js – passend zur Anzahl der Bilder, damit keine Spalte leer bleibt */
-    columns: var(--cols-desktop, 3);
-  }
+.g-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+/* Versetzt: jede zweite Spalte beginnt etwas tiefer ("eins höher, eins tiefer") */
+.g-col:nth-child(even) {
+  padding-top: calc(40% / var(--cols, 3));
 }
 .g-item {
-  break-inside: avoid;
-  margin-bottom: var(--gap);
   animation: fade-up 0.6s var(--ease) both;
 }
 .g-btn {

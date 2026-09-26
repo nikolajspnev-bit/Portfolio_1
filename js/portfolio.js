@@ -200,37 +200,63 @@
     });
   }
 
-  // Spaltenzahl passend zur Bildanzahl: 4 Bilder → 4 Spalten, 6 → 3, 8 → 4 … (so bleibt keine Spalte leer)
+  /* ---------- Versetzte Galerie: Bilder abwechselnd höher und tiefer ---------- */
+  var galleryItems = [];
+  var galleryCols = 0;
+
+  // Mehr als 5 Bilder: 3 oder 4 Spalten – je nachdem, wobei weniger Lücken bleiben
   function galleryColumns(n) {
-    if (n <= 4) return Math.max(n, 1);
     var empty3 = (3 - (n % 3)) % 3;
     var empty4 = (4 - (n % 4)) % 4;
     return empty4 < empty3 ? 4 : 3;
   }
 
+  function columnsFor(n) {
+    var width = window.innerWidth;
+    if (n <= 1) return 1;
+    if (width < 820) return 2; // Handy: zwei versetzte Spalten
+    var cols = n <= 5 ? n : galleryColumns(n); // bis 5 Bilder: eine versetzte "Welle"
+    if (width < 1100 && cols > 4) cols = 3; // Tablet: Bilder nicht zu schmal werden lassen
+    return cols;
+  }
+
+  // Bilder der Reihe nach (links → rechts) auf die Spalten verteilen
+  function layoutGallery(force) {
+    if (!galleryItems.length) return;
+    var cols = columnsFor(galleryItems.length);
+    if (!force && cols === galleryCols) return;
+    galleryCols = cols;
+    pImages.style.setProperty("--cols", String(cols));
+    var columns = [];
+    for (var c = 0; c < cols; c++) columns.push(el("div", { class: "g-col", role: "none" }));
+    galleryItems.forEach(function (item, i) {
+      columns[i % cols].appendChild(item);
+    });
+    pImages.replaceChildren.apply(pImages, columns);
+  }
+
   function renderImages(project) {
     var n = project.images.length;
-    pImages.style.setProperty("--cols-desktop", String(galleryColumns(n)));
-    pImages.style.setProperty("--cols-mobile", n === 1 ? "1" : "2");
     // sehr wenige Bilder nicht riesig aufblasen
     pImages.style.setProperty("--gallery-max", n === 1 ? "560px" : n === 2 ? "860px" : "none");
     pImages.replaceChildren();
     pImagesWrap.hidden = !project.images.length;
     pImagesHeading.hidden = !project.videos.length; // Überschrift "Fotos" nur, wenn es auch Videos gibt
     var offset = project.videos.length; // in der Lightbox kommen erst die Videos, dann die Fotos
-    project.images.forEach(function (image, index) {
+    galleryItems = project.images.map(function (image, index) {
       var btn = el("button", {
         class: "g-btn",
         type: "button",
         "aria-label": "Bild " + (index + 1) + " von " + project.images.length + " groß ansehen",
-      }, [el("img", { src: image.src, alt: image.alt || project.title + " – Bild " + (index + 1), loading: index < 4 ? "eager" : "lazy", decoding: "async" })]);
+      }, [el("img", { src: image.src, alt: image.alt || project.title + " – Bild " + (index + 1), loading: index < 6 ? "eager" : "lazy", decoding: "async" })]);
       btn.addEventListener("click", function () {
         openLightbox(project, offset + index, btn);
       });
-      var li = el("li", { class: "g-item" }, [btn]);
-      li.style.animationDelay = Math.min(index * 0.05, 0.6) + "s";
-      pImages.appendChild(li);
+      var item = el("div", { class: "g-item", role: "listitem" }, [btn]);
+      item.style.animationDelay = Math.min(index * 0.06, 0.6) + "s";
+      return item;
     });
+    layoutGallery(true);
   }
 
   function renderNext(project) {
@@ -264,7 +290,10 @@
   var resizeFrame = null;
   window.addEventListener("resize", function () {
     if (resizeFrame) cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(fitTitle);
+    resizeFrame = requestAnimationFrame(function () {
+      fitTitle();
+      if (!projectView.hidden) layoutGallery(false); // z. B. Handy gedreht → Spalten neu verteilen
+    });
   });
 
   function showProject(project) {

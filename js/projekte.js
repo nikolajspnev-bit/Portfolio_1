@@ -73,7 +73,7 @@ window.PROJECTS = [
     date: "2026",
     description: "Erntezeit auf dem TalHof Beising – Traktor und Mähdrescher im Einsatz, festgehalten im warmen Gegenlicht.",
     featured: true,
-    images: bilder("talhof-beising", 4),
+    images: bilder("talhof-beising", 5),
   },
   {
     id: "golden-hour",
