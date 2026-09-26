@@ -23,7 +23,7 @@
  *  Felder:
  *    id           kurzer Name ohne Leerzeichen (wird Teil des Links: portfolio.html#/hochzeit-anna)
  *    title        Titel des Projekts
- *    category     z. B. "Portrait", "Event", "Produkt", "Unternehmen", "Social Media", "Analog"
+ *    category     z. B. "Portrait", "Event", "Produkt", "Unternehmen", "Social Media", "Analog", "Fuji X-E5"
  *                 – daraus entstehen automatisch die Filter-Buttons im Portfolio
  *    date         optional, z. B. "Mai 2026"
  *    location     optional, z. B. "Berlin" oder "Studio"
@@ -51,6 +51,21 @@
  *     Tipp: Große Videos besser auf YouTube hochladen und nur den Link eintragen –
  *     eigene Dateien sollten klein sein (unter ca. 50 MB).
  *
+ *  FUJI-REZEPTE (optional) – Bilder nach Rezept gruppiert, mit Einstellungen und "Rezept kopieren":
+ *
+ *     rezepte: [
+ *       {
+ *         name: "Kodak Portra 400",
+ *         hinweis: "Warm, weich – perfekt für Golden Hour",      // optional
+ *         einstellungen: {
+ *           "Filmsimulation": "Classic Negative",
+ *           "Weißabgleich": "Auto, +2 Rot / −4 Blau",
+ *           // … beliebig viele Zeilen, Reihenfolge wie hier
+ *         },
+ *         images: bilder("fuji-rezepte/portra-400", 6),        // Ordner images/portfolio/fuji-rezepte/portra-400/
+ *       },
+ *     ],
+ *
  *  Reihenfolge hier = Reihenfolge auf der Seite (am besten neuestes Projekt oben).
  */
 
@@ -74,6 +89,53 @@ window.PROJECTS = [
     description: "Erntezeit auf dem TalHof Beising – Traktor und Mähdrescher im Einsatz, festgehalten im warmen Gegenlicht.",
     featured: true,
     images: bilder("talhof-beising", 5),
+  },
+  {
+    // Fuji X-E5 Rezepte – die zwei Rezepte unten sind BEISPIELE: Name, Einstellungen und Bilder ersetzen
+    id: "fuji-x-e5-rezepte",
+    title: "Fuji X-E5 Rezepte",
+    category: "Fuji X-E5",
+    description: "Direkt aus der Kamera: JPEGs mit meinen Film-Rezepten auf der Fujifilm X-E5 – ohne Nachbearbeitung.",
+    rezepte: [
+      {
+        name: "Warmer Film-Look (Beispiel)",
+        hinweis: "Warme Farben und weiche Kontraste – ideal für Sonne und Golden Hour.",
+        einstellungen: {
+          "Filmsimulation": "Classic Negative",
+          "Körnung": "Schwach, klein",
+          "Color Chrome": "Stark",
+          "Color Chrome FX Blau": "Schwach",
+          "Weißabgleich": "Auto, +2 Rot / −4 Blau",
+          "Dynamikbereich": "DR400",
+          "Lichter": "−1",
+          "Schatten": "+1",
+          "Farbe": "+2",
+          "Schärfe": "−2",
+          "Rauschreduzierung": "−4",
+          "Klarheit": "0",
+          "ISO": "Auto, bis 6400",
+          "Belichtung": "+1/3 bis +2/3",
+        },
+        images: bilder("fuji-rezepte/warmer-film", 4, "svg"),
+      },
+      {
+        name: "Schwarz-Weiß (Beispiel)",
+        hinweis: "Kräftiges Schwarz-Weiß mit viel Korn – für Street und Portraits.",
+        einstellungen: {
+          "Filmsimulation": "Acros + R-Filter",
+          "Körnung": "Stark, groß",
+          "Weißabgleich": "Auto",
+          "Dynamikbereich": "DR200",
+          "Lichter": "+1",
+          "Schatten": "+2",
+          "Schärfe": "+1",
+          "Rauschreduzierung": "−4",
+          "Klarheit": "+2",
+          "ISO": "Auto, bis 12800",
+        },
+        images: bilder("fuji-rezepte/schwarz-weiss", 4, "svg"),
+      },
+    ],
   },
   {
     id: "golden-hour",

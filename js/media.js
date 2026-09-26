@@ -59,20 +59,44 @@
     return video;
   }
 
+  function toImages(list) {
+    return (list || [])
+      .map(function (img) {
+        return typeof img === "string" ? { src: img } : img;
+      })
+      .filter(function (img) {
+        return img && img.src;
+      })
+      .map(function (img) {
+        return { type: "image", src: img.src, alt: img.alt || "" };
+      });
+  }
+
+  // Fuji-Rezepte: { name, hinweis, einstellungen: { "Filmsimulation": "…", … }, images: [...] }
+  function toRecipes(list) {
+    return (list || []).map(function (r, index) {
+      var name = r.name || "Rezept " + (index + 1);
+      var settingsObj = r.einstellungen || r.settings || {};
+      var settings = Object.keys(settingsObj).map(function (key) {
+        return [key, String(settingsObj[key])];
+      });
+      var images = toImages(r.images || r.bilder).map(function (img) {
+        img.recipe = name;
+        return img;
+      });
+      return { name: name, note: r.hinweis || r.note || "", settings: settings, images: images };
+    });
+  }
+
   function normalizeProjects(list) {
     var usedIds = {};
     return (Array.isArray(list) ? list : [])
       .map(function (raw, index) {
-        var images = (raw.images || raw.bilder || [])
-          .map(function (img) {
-            return typeof img === "string" ? { src: img } : img;
-          })
-          .filter(function (img) {
-            return img && img.src;
-          })
-          .map(function (img) {
-            return { type: "image", src: img.src, alt: img.alt || "" };
-          });
+        var recipes = toRecipes(raw.rezepte || raw.recipes);
+        var images = toImages(raw.images || raw.bilder);
+        recipes.forEach(function (recipe) {
+          images = images.concat(recipe.images); // Rezept-Bilder zählen mit (Cover, Anzahl, Großansicht)
+        });
 
         var videoEntries = [].concat(raw.videos || []);
         // ältere Schreibweise: ein Video direkt am Projekt
@@ -97,6 +121,7 @@
           cover: raw.cover || (images[0] && images[0].src) || (firstVideoCover && firstVideoCover.cover) || "",
           images: images,
           videos: videos,
+          recipes: recipes,
         };
       })
       .filter(function (project) {

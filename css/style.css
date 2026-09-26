@@ -1952,6 +1952,85 @@ fieldset.field {
   transform: scale(1.04);
 }
 
+/* Fuji-Rezepte: ein Abschnitt pro Rezept mit Einstellungen + Galerie */
+.recipes {
+  display: grid;
+  gap: clamp(40px, 6vw, 72px);
+}
+.recipe {
+  display: grid;
+  gap: 18px;
+  padding-top: clamp(24px, 3vw, 32px);
+  border-top: 1px solid var(--line);
+}
+.recipe-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+.recipe-title {
+  display: grid;
+  gap: 8px;
+}
+.recipe-title .eyebrow svg {
+  width: 16px;
+  height: 16px;
+}
+.recipe-title .eyebrow::before {
+  display: none;
+}
+.recipe-title h2 {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  overflow-wrap: break-word;
+}
+.recipe-note {
+  color: var(--muted);
+}
+.recipe-copy {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 0.92rem;
+}
+.recipe-settings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr));
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.recipe-settings > div {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 12px 14px;
+  /* dünne Trennlinien; die äußersten werden vom Rahmen verdeckt */
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 0 -1px -1px 0;
+}
+.recipe-settings dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.recipe-settings dd {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+@media (max-width: 480px) {
+  .recipe-settings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* Nächstes Projekt */
 .project-next {
   margin-top: clamp(40px, 7vw, 80px);

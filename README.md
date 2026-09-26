@@ -48,7 +48,7 @@ So legst du ein neues Shooting an:
 
 - Das **erste Bild** ist automatisch das Cover. Ein anderes Cover setzt du mit `cover: "images/portfolio/hochzeit-anna/07.jpg"`.
 - Aus den **Kategorien** entstehen automatisch die Filter-Buttons über der Übersicht
-  (aktuell: Portrait, Event, Unternehmen, Produkt, Social Media, Analog).
+  (aktuell: Unternehmen, Fuji X-E5, Portrait, Event, Produkt, Social Media, Analog).
 - Mit `featured: true` erscheint das Cover zusätzlich in der Collage oben auf der Startseite (die ersten 3).
 - Heißen deine Dateien anders, geht auch eine Liste: `images: ["images/portfolio/x/a.jpg", "images/portfolio/x/b.jpg"]`.
 
@@ -79,6 +79,32 @@ und spielen beim Antippen groß ab. Einfach den Link in `videos: [ … ]` eintra
   sollten klein sein (als MP4, unter ca. 50 MB – GitHub erlaubt max. 100 MB pro Datei).
 - YouTube und Vimeo werden erst geladen, wenn jemand auf „Abspielen“ tippt (YouTube im datenschutzfreundlichen „nocookie“-Modus).
 - Die Beispiel-Videos in `videos/` sind nur Platzhalter.
+
+### Fuji X-E5 Rezepte
+
+Die Galerie **„Fuji X-E5 Rezepte“** zeigt deine Bilder nach Rezept sortiert: Pro Rezept gibt es einen
+Abschnitt mit Namen, kurzem Hinweis, allen Einstellungen (als übersichtliches Datenblatt) und einem
+Button **„Rezept kopieren“**, mit dem Besucher die Einstellungen in die Zwischenablage kopieren können.
+In der Großansicht steht unter jedem Bild der Name des Rezepts.
+
+So fügst du ein Rezept hinzu:
+1. Ordner anlegen, z. B. `images/portfolio/fuji-rezepte/portra-400/`, Bilder als `01.jpg`, `02.jpg` … hinein.
+2. In `js/projekte.js` beim Projekt `fuji-x-e5-rezepte` unter `rezepte` einen Eintrag ergänzen:
+
+   ```js
+   {
+     name: "Kodak Portra 400",
+     hinweis: "Warm und weich – perfekt für Golden Hour",
+     einstellungen: {
+       "Filmsimulation": "Classic Negative",
+       "Körnung": "Schwach, klein",
+       "Weißabgleich": "Auto, +2 Rot / −4 Blau",
+       // … so viele Zeilen wie du möchtest
+     },
+     images: bilder("fuji-rezepte/portra-400", 6),
+   },
+   ```
+3. Die zwei Beispiel-Rezepte (und ihre Platzhalter-Ordner) löschen.
 
 ### Über-mich-Foto
 

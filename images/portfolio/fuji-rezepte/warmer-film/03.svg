@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2f2a"/><stop offset="1" stop-color="#e0a36e"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#fff0d2" stop-opacity=".5"/><stop offset="1" stop-color="#fff0d2" stop-opacity="0"/></radialGradient>
+<radialGradient id="v" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></radialGradient>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer></filter></defs>
+<rect width="1600" height="1067" fill="url(#s)"/>
+<circle cx="651" cy="453" r="254" fill="url(#g)"/><circle cx="651" cy="453" r="79" fill="#fff0d2"/>
+<polygon points="0,1067 0,653 229,581 457,635 686,607 914,659 1143,665 1371,624 1600,626 1600,1067" fill="#4d3a2e" opacity="0.80"/><polygon points="0,1067 0,698 178,685 356,693 533,726 711,759 889,729 1067,739 1244,706 1422,666 1600,707 1600,1067" fill="#3d2e25" opacity="0.86"/><polygon points="0,1067 0,850 145,797 291,859 436,835 582,839 727,801 873,854 1018,773 1164,845 1309,825 1455,823 1600,798 1600,1067" fill="#2e231c" opacity="0.92"/><polygon points="0,1067 0,891 123,907 246,914 369,952 492,885 615,934 738,938 862,896 985,899 1108,908 1231,916 1354,900 1477,905 1600,918 1600,1067" fill="#1f1813" opacity="0.98"/>
+<rect width="1600" height="1067" fill="url(#v)"/><rect width="1600" height="1067" filter="url(#grain)"/>
+<text x="800" y="149" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="36" fill="#fff" fill-opacity=".6" letter-spacing="2.9">PLATZHALTER · WARMER FILM 03</text>
+</svg>

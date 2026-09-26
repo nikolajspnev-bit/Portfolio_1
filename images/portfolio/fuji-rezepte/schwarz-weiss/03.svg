@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1e1e"/><stop offset="1" stop-color="#9d9d9d"/></linearGradient>
+<radialGradient id="g"><stop offset="0" stop-color="#f4f4f4" stop-opacity=".5"/><stop offset="1" stop-color="#f4f4f4" stop-opacity="0"/></radialGradient>
+<radialGradient id="v" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></radialGradient>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer></filter></defs>
+<rect width="1600" height="1067" fill="url(#s)"/>
+<circle cx="1134" cy="350" r="237" fill="url(#g)"/><circle cx="1134" cy="350" r="74" fill="#f4f4f4"/>
+<polygon points="0,1067 0,537 229,622 457,625 686,573 914,637 1143,565 1371,598 1600,617 1600,1067" fill="#4b4b4b" opacity="0.80"/><polygon points="0,1067 0,685 178,682 356,699 533,643 711,756 889,647 1067,710 1244,699 1422,672 1600,707 1600,1067" fill="#363636" opacity="0.86"/><polygon points="0,1067 0,797 145,795 291,778 436,838 582,818 727,783 873,818 1018,786 1164,850 1309,830 1455,778 1600,789 1600,1067" fill="#242424" opacity="0.92"/><polygon points="0,1067 0,945 123,948 246,935 369,937 492,943 615,912 738,897 862,948 985,890 1108,883 1231,889 1354,883 1477,942 1600,884 1600,1067" fill="#141414" opacity="0.98"/>
+<rect width="1600" height="1067" fill="url(#v)"/><rect width="1600" height="1067" filter="url(#grain)"/>
+<text x="800" y="149" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="36" fill="#fff" fill-opacity=".6" letter-spacing="2.9">PLATZHALTER · SCHWARZ-WEISS 03</text>
+</svg>
