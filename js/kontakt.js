@@ -29,6 +29,7 @@
     event: "Events",
     produkt: "Produktbilder",
     unternehmen: "Unternehmensbilder",
+    automotive: "Auto-Shooting",
     "social-media": "Social Media Content",
     sonstiges: "Sonstiges",
   };
