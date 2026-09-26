@@ -22,6 +22,7 @@
   var submitBtn = form.querySelector("[data-submit]");
   var submitLabel = form.querySelector("[data-submit-label]");
   var eventBox = form.querySelector("[data-event-types]");
+  var otherBox = form.querySelector("[data-other-box]");
   var phoneLink = document.querySelector('a[href^="tel:"]');
 
   var ART_LABELS = {
@@ -59,14 +60,21 @@
     return checked ? checked.value : "";
   }
 
-  /* ---------- Event-Unterauswahl nur bei "Events" zeigen ---------- */
-  function syncEventBox() {
-    var show = radioValue("art") === "event";
-    eventBox.hidden = !show;
-    if (!show) {
+  /* ---------- Zusatzfelder: Event-Auswahl bei "Events", Textfeld bei "Sonstiges" ---------- */
+  function syncSubBoxes() {
+    var art = radioValue("art");
+    var showEvent = art === "event";
+    eventBox.hidden = !showEvent;
+    if (!showEvent) {
       form.querySelectorAll('input[name="anlass"]').forEach(function (input) {
         input.checked = false;
       });
+    }
+    var showOther = art === "sonstiges";
+    otherBox.hidden = !showOther;
+    if (!showOther) {
+      form.elements.sonstiges.value = "";
+      setError(OTHER_CHECK, ""); // alte Fehlermeldung entfernen
     }
   }
 
@@ -78,7 +86,6 @@
     var presetRadio = form.querySelector('input[name="art"][value="' + preset + '"]');
     if (presetRadio) presetRadio.checked = true;
   }
-  syncEventBox();
 
   /* ---------- Prüfung der Eingaben ---------- */
   var CHECKS = [
@@ -91,8 +98,14 @@
     { name: "telefon", error: "cf-telefon-error", msg: "Bitte gib eine gültige Telefonnummer ein – oder lass das Feld leer.",
       test: function (v) { v = v.trim(); return !v || (/^[+()\d\s\/.-]+$/.test(v) && v.replace(/\D/g, "").length >= 6); } },
     { name: "art", error: "cf-art-error", radio: true, msg: "Bitte wähle aus, was für ein Shooting oder Dreh du dir wünschst." },
+    // Pflicht nur, wenn "Sonstiges" gewählt ist
+    { name: "sonstiges", error: "cf-sonstiges-error", msg: "Bitte schreib kurz, worum es geht – z. B. „Tiershooting“.",
+      test: function (v) { return radioValue("art") !== "sonstiges" || v.trim().length >= 2; } },
     { name: "datenschutz", error: "cf-consent-error", checkbox: true, msg: "Bitte stimme zu, damit ich deine Anfrage bearbeiten darf." },
   ];
+
+  var OTHER_CHECK = CHECKS.filter(function (check) { return check.name === "sonstiges"; })[0];
+  syncSubBoxes();
 
   function fieldOf(check) {
     if (check.radio) return form.querySelector('input[name="' + check.name + '"]').closest("fieldset");
@@ -132,7 +145,7 @@
   form.addEventListener("change", onChange);
   function onChange(event) {
     var name = event.target.name;
-    if (name === "art") syncEventBox();
+    if (name === "art") syncSubBoxes();
     CHECKS.forEach(function (check) {
       if (check.name === name && document.getElementById(check.error).textContent && isValid(check)) setError(check, "");
     });
@@ -148,12 +161,13 @@
     var f = form.elements;
     var art = ART_LABELS[radioValue("art")] || radioValue("art");
     var anlass = radioValue("anlass");
+    var sonstiges = radioValue("art") === "sonstiges" ? f.sonstiges.value.trim() : "";
     return {
       vorname: f.vorname.value.trim(),
       nachname: f.nachname.value.trim(),
       email: f.email.value.trim(),
       telefon: f.telefon.value.trim(),
-      art: art + (anlass ? " (" + anlass + ")" : ""),
+      art: art + (anlass ? " (" + anlass + ")" : "") + (sonstiges ? " (" + sonstiges + ")" : ""),
       medium: radioValue("medium"),
       analog: f.analog.checked,
       datum: formatDate(f.datum.value),
@@ -201,7 +215,7 @@
     var again = el("button", { class: "btn btn-ghost", type: "button", text: "Weitere Anfrage senden" });
     again.addEventListener("click", function () {
       form.reset();
-      syncEventBox();
+      syncSubBoxes();
       status.replaceChildren();
       body.hidden = false;
       form.elements.vorname.focus();

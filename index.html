@@ -264,6 +264,13 @@
                 </div>
               </fieldset>
 
+              <!-- erscheint nur bei "Sonstiges" -->
+              <div class="field chips-sub" data-other-box hidden>
+                <label for="cf-sonstiges">Worum geht's? <span class="req" aria-hidden="true">*</span></label>
+                <input id="cf-sonstiges" name="sonstiges" type="text" maxlength="80" autocomplete="off" placeholder="z. B. Tiershooting, Musikvideo, Bewerbungsfotos …" aria-describedby="cf-sonstiges-error">
+                <p class="field-error" id="cf-sonstiges-error"></p>
+              </div>
+
               <fieldset class="field chips-field">
                 <legend>Foto, Video oder beides? <span class="optional">(optional)</span></legend>
                 <div class="chips">
