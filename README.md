@@ -90,6 +90,13 @@ Dein **Lieblingsrezept** markierst du mit `favorit: true`: Es bekommt ein ★-Ab
 erster Stelle und liefert das Cover des Ordners. Jedes Rezept hat einen eigenen Link zum Teilen,
 z. B. `portfolio.html#/fuji-x-e5-rezepte/kodak-portra-400`.
 
+**Quellen meiner Rezepte:** meistens [Fuji X Weekly](https://fujixweekly.com/) oder
+[filmsimrecipes.com](https://filmsimrecipes.com/). Rezeptnamen dort nachschlagen, indem man die
+Einstellungen aus den Metadaten der Original-JPEGs (Filmsimulation, Körnung, Color Chrome,
+Weißabgleich-Verschiebung, Lichter/Schatten, Farbe, Schärfe, Rauschreduzierung, Klarheit,
+Dynamikbereich) mit den Rezepten vergleicht. Originale dafür über GitHub hochladen
+(„Add file → Upload files“), weil Chat/WhatsApp/Instagram die Metadaten entfernen.
+
 So fügst du ein Rezept hinzu:
 1. Ordner anlegen, z. B. `images/portfolio/fuji-rezepte/portra-400/`, Bilder als `01.jpg`, `02.jpg` … hinein.
 2. In `js/projekte.js` beim Projekt `fuji-x-e5-rezepte` unter `rezepte` einen Eintrag ergänzen:
