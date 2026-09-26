@@ -24,6 +24,8 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
     film:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>',
+    star:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>',
     copy:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
     check:
@@ -170,7 +172,10 @@
 
   var baseTitle = document.title;
   var currentProject = null;
+  var currentRecipe = null; // gesetzt, wenn ein einzelnes Fuji-Rezept offen ist
   var overviewScroll = 0;
+  var folderScroll = 0; // Scroll-Position im Rezept-Ordner
+  var backLabel = projectView.querySelector("[data-back-label]");
 
   function metaItem(icon, text) {
     return el("li", { html: icon }, [el("span", { text: text })]);
@@ -324,47 +329,76 @@
       .join("\n");
   }
 
-  function renderRecipes(project, startIndex) {
-    pRecipes.replaceChildren();
-    pRecipes.hidden = !project.recipes.length;
-    var index = startIndex;
-    project.recipes.forEach(function (recipe, r) {
-      var copyBtn = null;
-      if (navigator.clipboard && recipe.settings.length) {
-        copyBtn = el("button", { class: "btn btn-ghost recipe-copy", type: "button", html: ICONS.copy + " Rezept kopieren" });
-        copyBtn.addEventListener("click", function () {
-          navigator.clipboard.writeText(recipeText(recipe)).then(function () {
-            copyBtn.innerHTML = ICONS.check + " Kopiert!";
-            setTimeout(function () {
-              copyBtn.innerHTML = ICONS.copy + " Rezept kopieren";
-            }, 2000);
-          });
-        });
-      }
-      var settings = recipe.settings.length
-        ? el("dl", { class: "recipe-settings" }, recipe.settings.map(function (row) {
-            return el("div", {}, [el("dt", { text: row[0] }), el("dd", { text: row[1] })]);
-          }))
-        : null;
-      var galleryEl = el("div", { class: "gallery", role: "list", "aria-label": "Bilder mit dem Rezept " + recipe.name });
-      buildGallery(galleryEl, project, recipe.images, index);
-      index += recipe.images.length;
+  function filmSimulation(recipe) {
+    var row = recipe.settings.filter(function (r) { return /filmsim/i.test(r[0]); })[0];
+    return row ? row[1] : "";
+  }
 
-      pRecipes.appendChild(
-        el("section", { class: "recipe" }, [
-          el("div", { class: "recipe-head" }, [
-            el("div", { class: "recipe-title" }, [
-              el("span", { class: "eyebrow", html: ICONS.film + " Rezept " + (r < 9 ? "0" : "") + (r + 1) }),
-              el("h2", { text: recipe.name }),
-              recipe.note ? el("p", { class: "recipe-note", text: recipe.note }) : null,
-            ]),
-            copyBtn,
-          ]),
-          settings,
-          recipe.images.length ? galleryEl : null,
-        ])
-      );
+  function findRecipe(project, id) {
+    return project.recipes.filter(function (r) { return r.id === id; })[0] || null;
+  }
+
+  // Rezept-Ordner: eine Kachel pro Rezept
+  function renderRecipeCards(project) {
+    var list = el("ul", { class: "projects recipe-cards" });
+    project.recipes.forEach(function (recipe, index) {
+      var badges = el("span", { class: "project-badges" }, [
+        recipe.favorite ? el("span", { class: "project-badge is-fav", html: ICONS.star + " Lieblingsrezept" }) : null,
+        el("span", { class: "project-badge", html: ICONS.images + " " + recipe.images.length }),
+      ]);
+      var meta = [filmSimulation(recipe), countText(recipe.images.length, "Bild", "Bilder")].filter(Boolean).join(" · ");
+      var link = el("a", { class: "project-card", href: "#/" + project.id + "/" + recipe.id }, [
+        recipe.cover ? el("img", { src: recipe.cover, alt: "", loading: index < 6 ? "eager" : "lazy", decoding: "async" }) : null,
+        badges,
+        el("span", { class: "project-arrow", html: ICONS.arrow }),
+        el("span", { class: "project-info" }, [
+          el("span", { class: "project-cat", text: "Rezept " + (index < 9 ? "0" : "") + (index + 1) }),
+          el("span", { class: "project-title", text: recipe.name }),
+          el("span", { class: "project-meta-line", text: meta }),
+        ]),
+      ]);
+      link.addEventListener("click", function (event) {
+        openRecipe(event, project, recipe, 1);
+      });
+      var li = el("li", { class: "project-item" }, [link]);
+      li.style.animationDelay = Math.min(index * 0.06, 0.6) + "s";
+      list.appendChild(li);
     });
+    pRecipes.replaceChildren(el("section", { class: "shoot-section" }, [el("h2", { class: "shoot-heading", text: "Rezepte" }), list]));
+    pRecipes.hidden = false;
+  }
+
+  // Einzelnes Rezept: Einstellungen + Galerie
+  function renderRecipeDetail(recipe) {
+    var copyBtn = null;
+    if (navigator.clipboard && recipe.settings.length) {
+      copyBtn = el("button", { class: "btn btn-ghost recipe-copy", type: "button", html: ICONS.copy + " Rezept kopieren" });
+      copyBtn.addEventListener("click", function () {
+        navigator.clipboard.writeText(recipeText(recipe)).then(function () {
+          copyBtn.innerHTML = ICONS.check + " Kopiert!";
+          setTimeout(function () {
+            copyBtn.innerHTML = ICONS.copy + " Rezept kopieren";
+          }, 2000);
+        });
+      });
+    }
+    var settings = recipe.settings.length
+      ? el("div", { class: "recipe-detail" }, [
+          el("div", { class: "recipe-detail-head" }, [el("h2", { class: "shoot-heading", text: "Einstellungen" }), copyBtn]),
+          el("dl", { class: "recipe-settings" }, recipe.settings.map(function (row) {
+            return el("div", {}, [el("dt", { text: row[0] }), el("dd", { text: row[1] })]);
+          })),
+        ])
+      : null;
+    // Für die Großansicht: nur die Bilder dieses Rezepts
+    var lightboxProject = { title: recipe.name, category: "Fuji-Rezept", videos: [], images: recipe.images };
+    var galleryEl = el("div", { class: "gallery", role: "list", "aria-label": "Bilder mit dem Rezept " + recipe.name });
+    buildGallery(galleryEl, lightboxProject, recipe.images, 0);
+    pRecipes.replaceChildren(
+      settings,
+      recipe.images.length ? el("section", { class: "shoot-section" }, [el("h2", { class: "shoot-heading", text: "Bilder" }), galleryEl]) : null
+    );
+    pRecipes.hidden = false;
   }
 
   function renderImages(project) {
@@ -376,10 +410,29 @@
     });
     pImagesWrap.hidden = !plainImages.length;
     pImagesHeading.hidden = !project.videos.length; // Überschrift "Fotos" nur, wenn es auch Videos gibt
-    var start = project.videos.length; // in der Großansicht kommen erst die Videos, dann die Fotos
-    buildGallery(pImages, project, plainImages, start);
-    renderRecipes(project, start + plainImages.length);
+    buildGallery(pImages, project, plainImages, project.videos.length); // Großansicht: erst Videos, dann Fotos
+    if (project.recipes.length) renderRecipeCards(project);
+    else {
+      pRecipes.replaceChildren();
+      pRecipes.hidden = true;
+    }
     layoutGallery(true);
+  }
+
+  function renderNextRecipe(project, recipe) {
+    pNext.replaceChildren();
+    if (project.recipes.length < 2) return;
+    var next = project.recipes[(project.recipes.indexOf(recipe) + 1) % project.recipes.length];
+    pNext.appendChild(
+      el("a", { class: "next-project", href: "#/" + project.id + "/" + next.id, "data-recipe": "" }, [
+        next.cover ? el("img", { src: next.cover, alt: "", loading: "lazy", decoding: "async" }) : null,
+        el("span", { class: "next-text" }, [
+          el("span", { class: "next-label", text: "Nächstes Rezept" }),
+          el("span", { class: "next-title", text: next.name }),
+        ]),
+        el("span", { class: "project-arrow", html: ICONS.arrow }),
+      ])
+    );
   }
 
   function renderNext(project) {
@@ -420,7 +473,10 @@
   });
 
   function showProject(project) {
+    var backFromRecipe = currentRecipe && currentProject === project;
     currentProject = project;
+    currentRecipe = null;
+    backLabel.textContent = "Alle Projekte";
     pCat.textContent = project.category;
     pCat.hidden = !project.category;
     pTitle.textContent = project.title;
@@ -448,6 +504,44 @@
 
     document.title = project.title + " – Portfolio | nikolajtry.media";
     updateCta(project);
+    window.scrollTo({ top: backFromRecipe ? folderScroll : 0, behavior: "instant" });
+    pTitle.focus({ preventScroll: true });
+  }
+
+  function showRecipe(project, recipe) {
+    currentProject = project;
+    currentRecipe = recipe;
+    backLabel.textContent = project.title; // zurück zum Rezept-Ordner
+    pCat.textContent = (project.category || "Fuji") + " · Rezept";
+    pCat.hidden = false;
+    pTitle.textContent = recipe.name;
+
+    pMeta.replaceChildren();
+    if (recipe.favorite) pMeta.appendChild(metaItem(ICONS.star, "Lieblingsrezept"));
+    if (filmSimulation(recipe)) pMeta.appendChild(metaItem(ICONS.film, filmSimulation(recipe)));
+    if (recipe.images.length) pMeta.appendChild(metaItem(ICONS.images, countText(recipe.images.length, "Bild", "Bilder")));
+
+    pDesc.textContent = recipe.note;
+    pDesc.hidden = !recipe.note;
+
+    pVideos.replaceChildren();
+    pVideosWrap.hidden = true;
+    pImages.replaceChildren();
+    pImagesWrap.hidden = true;
+    galleries = [];
+    renderRecipeDetail(recipe);
+    layoutGallery(true);
+    renderNextRecipe(project, recipe);
+
+    overviewView.hidden = true;
+    projectView.hidden = false;
+    fitTitle();
+    projectView.classList.remove("view-enter");
+    void projectView.offsetWidth;
+    projectView.classList.add("view-enter");
+
+    document.title = recipe.name + " – " + project.title + " | nikolajtry.media";
+    updateCta(project);
     window.scrollTo({ top: 0, behavior: "instant" });
     pTitle.focus({ preventScroll: true });
   }
@@ -455,6 +549,7 @@
   function showOverview() {
     var previous = currentProject;
     currentProject = null;
+    currentRecipe = null;
     projectView.hidden = true;
     overviewView.hidden = false;
     document.title = baseTitle;
@@ -472,9 +567,12 @@
   function route() {
     var hash = decodeURIComponent(location.hash || "");
     if (hash.indexOf("#/") === 0) {
-      var project = findProject(hash.slice(2));
+      var parts = hash.slice(2).split("/");
+      var project = findProject(parts[0]);
       if (project) {
-        showProject(project);
+        var recipe = parts[1] ? findRecipe(project, parts[1]) : null;
+        if (recipe) showRecipe(project, recipe);
+        else showProject(project);
         return;
       }
     } else if (hash && hash !== "#") {
@@ -492,12 +590,22 @@
     return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
   }
 
-  function openProject(event, id, newDepth) {
+  function openProject(event, id, newDepth, recipeDepth) {
     if (!isPlainClick(event)) return; // Strg/Cmd-Klick öffnet normal in neuem Tab
     event.preventDefault();
     if (!currentProject) overviewScroll = window.scrollY;
-    history.pushState({ depth: newDepth }, "", "#/" + id);
+    history.pushState({ depth: newDepth, recipeDepth: recipeDepth || 0 }, "", "#/" + id);
     route();
+  }
+
+  function openRecipe(event, project, recipe, recipeDepth) {
+    if (!isPlainClick(event)) return;
+    if (!currentRecipe) folderScroll = window.scrollY;
+    openProject(event, project.id + "/" + recipe.id, depth() + 1, recipeDepth);
+  }
+
+  function recipeDepth() {
+    return (history.state && history.state.recipeDepth) || 0;
   }
 
   cards.forEach(function (card) {
@@ -508,11 +616,23 @@
 
   pNext.addEventListener("click", function (event) {
     var link = event.target.closest("a.next-project");
-    if (link) openProject(event, link.getAttribute("href").slice(2), depth() + 1);
+    if (!link) return;
+    var isRecipe = link.hasAttribute("data-recipe");
+    openProject(event, link.getAttribute("href").slice(2), depth() + 1, isRecipe ? recipeDepth() + 1 : 0);
   });
 
   backLink.addEventListener("click", function (event) {
     event.preventDefault();
+    if (currentRecipe) {
+      // aus einem Rezept zurück in den Rezept-Ordner
+      if (recipeDepth() > 0) {
+        history.go(-recipeDepth());
+      } else {
+        history.pushState({ depth: depth(), recipeDepth: 0 }, "", "#/" + currentProject.id);
+        route();
+      }
+      return;
+    }
     if (depth() > 0) {
       history.go(-depth()); // zurück zur Übersicht, Browser-Verlauf bleibt sauber
     } else {

@@ -51,11 +51,13 @@
  *     Tipp: Große Videos besser auf YouTube hochladen und nur den Link eintragen –
  *     eigene Dateien sollten klein sein (unter ca. 50 MB).
  *
- *  FUJI-REZEPTE (optional) – Bilder nach Rezept gruppiert, mit Einstellungen und "Rezept kopieren":
+ *  FUJI-REZEPTE (optional) – das Projekt wird zum "Ordner": pro Rezept eine Kachel,
+ *  jedes Rezept hat eine eigene Seite mit Einstellungen, "Rezept kopieren" und Bildern:
  *
  *     rezepte: [
  *       {
  *         name: "Kodak Portra 400",
+ *         favorit: true,                                            // optional: ★ Lieblingsrezept, steht immer zuerst
  *         hinweis: "Warm, weich – perfekt für Golden Hour",      // optional
  *         einstellungen: {
  *           "Filmsimulation": "Classic Negative",
@@ -99,6 +101,7 @@ window.PROJECTS = [
     rezepte: [
       {
         name: "Warmer Film-Look (Beispiel)",
+        favorit: true,
         hinweis: "Warme Farben und weiche Kontraste – ideal für Sonne und Golden Hour.",
         einstellungen: {
           "Filmsimulation": "Classic Negative",

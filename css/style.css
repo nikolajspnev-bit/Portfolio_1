@@ -1952,41 +1952,38 @@ fieldset.field {
   transform: scale(1.04);
 }
 
-/* Fuji-Rezepte: ein Abschnitt pro Rezept mit Einstellungen + Galerie */
+/* Fuji-Rezepte: Ordner mit Rezept-Kacheln bzw. Rezept-Seite mit Einstellungen + Bildern */
 .recipes {
   display: grid;
-  gap: clamp(40px, 6vw, 72px);
+  gap: clamp(32px, 5vw, 56px);
 }
-.recipe {
+.recipe-cards {
+  margin-top: 4px;
+}
+.project-badge.is-fav {
+  background: var(--orange);
+  color: var(--on-orange);
+}
+.project-badge.is-fav svg {
+  color: var(--on-orange);
+}
+.recipe-detail {
   display: grid;
-  gap: 18px;
-  padding-top: clamp(24px, 3vw, 32px);
-  border-top: 1px solid var(--line);
+  gap: 4px;
 }
-.recipe-head {
+.recipe-detail-head {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 14px 24px;
+  gap: 8px 16px;
 }
-.recipe-title {
-  display: grid;
-  gap: 8px;
+.recipe-detail-head .shoot-heading {
+  flex: 1;
+  margin-bottom: 12px;
 }
-.recipe-title .eyebrow svg {
-  width: 16px;
-  height: 16px;
-}
-.recipe-title .eyebrow::before {
-  display: none;
-}
-.recipe-title h2 {
-  font-size: clamp(1.6rem, 4vw, 2.5rem);
-  overflow-wrap: break-word;
-}
-.recipe-note {
-  color: var(--muted);
+.recipe-detail-head .recipe-copy {
+  margin-bottom: 12px;
 }
 .recipe-copy {
   min-height: 44px;

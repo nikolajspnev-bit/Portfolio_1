@@ -82,10 +82,12 @@ und spielen beim Antippen groß ab. Einfach den Link in `videos: [ … ]` eintra
 
 ### Fuji X-E5 Rezepte
 
-Die Galerie **„Fuji X-E5 Rezepte“** zeigt deine Bilder nach Rezept sortiert: Pro Rezept gibt es einen
-Abschnitt mit Namen, kurzem Hinweis, allen Einstellungen (als übersichtliches Datenblatt) und einem
-Button **„Rezept kopieren“**, mit dem Besucher die Einstellungen in die Zwischenablage kopieren können.
-In der Großansicht steht unter jedem Bild der Name des Rezepts.
+**„Fuji X-E5 Rezepte“** ist ein Ordner im Portfolio: Tippt man darauf, erscheint pro Rezept eine Kachel
+(mit Filmsimulation und Anzahl Bilder). Jedes Rezept hat seine eigene Seite mit allen Einstellungen als
+Datenblatt, einem Button **„Rezept kopieren“** und der Galerie – plus „Nächstes Rezept“.
+Dein **Lieblingsrezept** markierst du mit `favorit: true`: Es bekommt ein ★-Abzeichen, steht immer an
+erster Stelle und liefert das Cover des Ordners. Jedes Rezept hat einen eigenen Link zum Teilen,
+z. B. `portfolio.html#/fuji-x-e5-rezepte/kodak-portra-400`.
 
 So fügst du ein Rezept hinzu:
 1. Ordner anlegen, z. B. `images/portfolio/fuji-rezepte/portra-400/`, Bilder als `01.jpg`, `02.jpg` … hinein.
@@ -94,6 +96,7 @@ So fügst du ein Rezept hinzu:
    ```js
    {
      name: "Kodak Portra 400",
+     favorit: true,                     // optional: dein Lieblingsrezept
      hinweis: "Warm und weich – perfekt für Golden Hour",
      einstellungen: {
        "Filmsimulation": "Classic Negative",

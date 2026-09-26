@@ -72,10 +72,14 @@
       });
   }
 
-  // Fuji-Rezepte: { name, hinweis, einstellungen: { "Filmsimulation": "…", … }, images: [...] }
+  // Fuji-Rezepte: { name, favorit, hinweis, einstellungen: { "Filmsimulation": "…", … }, images: [...] }
   function toRecipes(list) {
-    return (list || []).map(function (r, index) {
+    var usedIds = {};
+    var recipes = (list || []).map(function (r, index) {
       var name = r.name || "Rezept " + (index + 1);
+      var id = slugify(r.id || name) || "rezept-" + (index + 1);
+      if (usedIds[id]) id += "-" + (index + 1);
+      usedIds[id] = true;
       var settingsObj = r.einstellungen || r.settings || {};
       var settings = Object.keys(settingsObj).map(function (key) {
         return [key, String(settingsObj[key])];
@@ -84,8 +88,18 @@
         img.recipe = name;
         return img;
       });
-      return { name: name, note: r.hinweis || r.note || "", settings: settings, images: images };
+      return {
+        id: id,
+        name: name,
+        favorite: !!(r.favorit || r.favorite),
+        note: r.hinweis || r.note || "",
+        settings: settings,
+        images: images,
+        cover: r.cover || (images[0] && images[0].src) || "",
+      };
     });
+    // Lieblingsrezept(e) immer zuerst
+    return recipes.filter(function (r) { return r.favorite; }).concat(recipes.filter(function (r) { return !r.favorite; }));
   }
 
   function normalizeProjects(list) {
@@ -118,7 +132,7 @@
           location: raw.location || "",
           description: raw.description || "",
           featured: !!raw.featured,
-          cover: raw.cover || (images[0] && images[0].src) || (firstVideoCover && firstVideoCover.cover) || "",
+          cover: raw.cover || (recipes[0] && recipes[0].cover) || (images[0] && images[0].src) || (firstVideoCover && firstVideoCover.cover) || "",
           images: images,
           videos: videos,
           recipes: recipes,
