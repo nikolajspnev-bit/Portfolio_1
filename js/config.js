@@ -27,13 +27,13 @@ window.SITE_CONFIG = {
     // Damit automatisch deine NEUESTEN Videos erscheinen, trage hier deine
     // Kanal-ID ein – sie beginnt mit "UC…" (wo du sie findest: siehe README.md).
     // Solange das Feld leer ist, zeigt die Seite eine "Abonnieren"-Karte an.
-    channelId: "",
+    channelId: "UCS1gYw85ppcSfh2U5Exw0pA",
 
-    // Wie viele Videos insgesamt angezeigt werden (1 großes + kleine daneben).
-    videoCount: 4,
+    // Wie viele Videos angezeigt werden (1 = nur das neueste, größer = 1 großes + kleine daneben).
+    videoCount: 1,
 
     // Sollen YouTube Shorts auch angezeigt werden? (true = ja, false = nein)
-    shorts: true,
+    shorts: false,
   },
 
   kontakt: {

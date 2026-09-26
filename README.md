@@ -140,8 +140,8 @@ Prüfe außerdem in `js/config.js`, ob `username` dein richtiger Instagram-Name 
 
 ## 3. YouTube: immer das neueste Video
 
-Auf der Startseite erscheint automatisch dein **neuestes YouTube-Video** groß (mit Titel und Datum),
-daneben die 3 davor. Ein Klick öffnet das Video auf YouTube. Dafür brauchst du nur deine **Kanal-ID**
+Auf der Startseite erscheint automatisch dein **neuestes YouTube-Video** groß (mit Titel und Datum).
+Ein Klick öffnet das Video auf YouTube. Dafür brauchst du nur deine **Kanal-ID**
 – kein Konto bei einem anderen Dienst:
 
 1. Deine Kanal-ID finden (beginnt mit `UC…`, ca. 24 Zeichen):
@@ -155,7 +155,8 @@ daneben die 3 davor. Ein Klick öffnet das Video auf YouTube. Dafür brauchst du
    ```
 
 Fertig. Neue Videos erscheinen automatisch (mit etwas Verzögerung, meist unter einer Stunde).
-Mit `shorts: false` blendest du Shorts aus, mit `videoCount` stellst du die Anzahl ein.
+Aktuell eingestellt: **nur das neueste Video, ohne Shorts** (`videoCount: 1`, `shorts: false`).
+Mit z. B. `videoCount: 4` erscheinen zusätzlich die 3 Videos davor, mit `shorts: true` auch Shorts.
 Solange keine Kanal-ID eingetragen ist, erscheint eine „Abonniere meinen YouTube-Kanal“-Karte.
 
 *Technik: Die Seite liest den öffentlichen RSS-Feed deines Kanals über den kostenlosen Dienst rss2json.com.*
