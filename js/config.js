@@ -12,7 +12,7 @@ window.SITE_CONFIG = {
     // einen kostenlosen Feed von https://behold.so (Anleitung in README.md).
     // Trage hier die Feed-URL ein, z. B. "https://feeds.behold.so/AbC123xyz".
     // Solange das Feld leer ist, zeigt die Seite eine "Folge mir"-Karte an.
-    feedUrl: "",
+    feedUrl: "https://feeds.behold.so/uVALLJu02kJpRy2On70Y",
 
     // Wie viele Posts insgesamt angezeigt werden (1 großer + kleine daneben).
     postCount: 5,
