@@ -2034,6 +2034,8 @@ fieldset.field {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
+  /* lange Wörter wie "Rauschreduzierung" auf schmalen Handys mit Bindestrich trennen */
+  hyphens: auto;
 }
 .recipe-settings dd {
   margin: 0;
@@ -2044,6 +2046,14 @@ fieldset.field {
 @media (max-width: 480px) {
   .recipe-settings {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .recipe-settings dt {
+    letter-spacing: 0.05em;
+  }
+}
+@media (max-width: 360px) {
+  .recipe-settings dt {
+    font-size: 0.65rem;
   }
 }
 

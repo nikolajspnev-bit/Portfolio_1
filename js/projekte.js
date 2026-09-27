@@ -111,9 +111,9 @@ window.PROJECTS = [
       {
         name: "Ilford HP5 Plus",
         hinweis: "Kontrastreiches Schwarz-Weiß mit tiefen Schatten und kräftigem, grobem Korn.",
-        // Quelle: Rezeptkarte „Ilford HP5 Plus 400“ (FujiStyle)
+        // Grundlage: Rezeptkarte „Ilford HP5 Plus 400“ (FujiStyle), mit Acros statt Monochrom
         einstellungen: {
-          "Filmsimulation": "Monochrom",
+          "Filmsimulation": "Acros",
           "Körnung": "Stark, groß",
           "Color Chrome": "Aus",
           "Color Chrome FX Blau": "Aus",
@@ -125,6 +125,8 @@ window.PROJECTS = [
           "Schärfe": "−2",
           "Rauschreduzierung": "−4",
           "Klarheit": "0",
+          "ISO": "100 bis 6400",
+          "Belichtung": "−2/3 bis +2/3",
         },
         images: bilder("fuji-rezepte/ilford-hp5-plus", 9),
       },
