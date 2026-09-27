@@ -126,7 +126,7 @@ window.PROJECTS = [
           "Rauschreduzierung": "−4",
           "Klarheit": "0",
           "ISO": "100 bis 6400",
-          "Belichtung": "−2/3 bis +2/3",
+          "Exp.": "−2/3 bis +2/3",
         },
         images: bilder("fuji-rezepte/ilford-hp5-plus", 9),
       },
