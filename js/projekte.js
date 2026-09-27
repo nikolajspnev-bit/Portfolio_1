@@ -110,11 +110,20 @@ window.PROJECTS = [
     rezepte: [
       {
         name: "Ilford HP5 Plus",
-        hinweis: "Körniges Schwarz-Weiß mit weichen Lichtern und tiefen Schatten.",
-        // Einstellungen folgen, sobald die Original-JPEGs (mit Metadaten) ausgelesen sind.
-        // Solange die Liste leer ist, blendet die Seite den Einstellungs-Block einfach aus.
-        einstellungen: {},
-        images: bilder("fuji-rezepte/ilford-hp5-plus", 6),
+        hinweis: "Kontrastreiches Schwarz-Weiß mit kräftigem Korn – Rezept von Fuji X Weekly.",
+        // Quelle: https://fujixweekly.com/2018/12/01/my-fujifilm-x100f-ilford-hp5-plus-film-simulation-recipe/
+        einstellungen: {
+          "Filmsimulation": "Acros (auch +Y, +R oder +G)",
+          "Dynamikbereich": "DR200",
+          "Lichter": "+4",
+          "Schatten": "+2",
+          "Schärfe": "0",
+          "Rauschreduzierung": "−3",
+          "Körnung": "Stark",
+          "ISO": "Auto, bis 6400",
+          "Belichtung": "meist 0",
+        },
+        images: bilder("fuji-rezepte/ilford-hp5-plus", 9),
       },
     ],
   },
