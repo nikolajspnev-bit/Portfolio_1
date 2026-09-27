@@ -133,6 +133,20 @@ window.PROJECTS = [
     ],
   },
   {
+    id: "analog-volvo-golf",
+    title: "Volvo 850 & Golf II",
+    category: "Analog",
+    description: "Zwei Klassiker auf Film: Volvo 850 und VW Golf II vor einer alten Fachwerkscheune – echte Analogfotos mit Korn und warmen Farben.",
+    images: bilder("analog-volvo-golf", 12),
+  },
+  {
+    id: "analog",
+    title: "Analog – auf Film",
+    category: "Analog",
+    description: "Unterwegs mit der Analogkamera: Stadt, See und Berge – mit Korn, Charakter und dem besonderen Look, den man digital kaum nachbauen kann.",
+    images: bilder("analog", 15),
+  },
+  {
     id: "golden-hour",
     title: "Golden Hour Portrait",
     category: "Portrait",
@@ -186,13 +200,5 @@ window.PROJECTS = [
     ],
     featured: true,
     images: bilder("reels-content", 4, "svg"),
-  },
-  {
-    id: "analog",
-    title: "Analog – auf Film",
-    category: "Analog",
-    date: "2026",
-    description: "Fotos auf echtem Film – mit Korn, Charakter und dem besonderen Look, den man digital kaum nachbauen kann.",
-    images: bilder("analog", 6, "svg"),
   },
 ];
