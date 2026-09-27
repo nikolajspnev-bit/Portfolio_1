@@ -394,10 +394,11 @@
     var lightboxProject = { title: recipe.name, category: "Fuji-Rezept", videos: [], images: recipe.images };
     var galleryEl = el("div", { class: "gallery", role: "list", "aria-label": "Bilder mit dem Rezept " + recipe.name });
     buildGallery(galleryEl, lightboxProject, recipe.images, 0);
-    pRecipes.replaceChildren(
+    // null-Einträge (keine Einstellungen / keine Bilder) weglassen – sonst stünde "null" als Text da
+    pRecipes.replaceChildren.apply(pRecipes, [
       settings,
-      recipe.images.length ? el("section", { class: "shoot-section" }, [el("h2", { class: "shoot-heading", text: "Bilder" }), galleryEl]) : null
-    );
+      recipe.images.length ? el("section", { class: "shoot-section" }, [el("h2", { class: "shoot-heading", text: "Bilder" }), galleryEl]) : null,
+    ].filter(Boolean));
     pRecipes.hidden = false;
   }
 

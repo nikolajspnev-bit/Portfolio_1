@@ -115,7 +115,8 @@ So fügst du ein Rezept hinzu:
      images: bilder("fuji-rezepte/portra-400", 6),
    },
    ```
-3. Die zwei Beispiel-Rezepte (und ihre Platzhalter-Ordner) löschen.
+3. Kennst du die Einstellungen (noch) nicht, einfach `einstellungen: {}` lassen – dann wird der
+   Einstellungs-Block samt „Rezept kopieren“ ausgeblendet und nur die Galerie gezeigt.
 
 ### Über-mich-Foto
 

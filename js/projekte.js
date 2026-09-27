@@ -102,50 +102,19 @@ window.PROJECTS = [
     images: bilder("talhof-beising", 5),
   },
   {
-    // Fuji X-E5 Rezepte – die zwei Rezepte unten sind BEISPIELE: Name, Einstellungen und Bilder ersetzen
+    // Fuji X-E5 Rezepte – ein Eintrag pro Rezept (Anleitung in README.md)
     id: "fuji-x-e5-rezepte",
     title: "Fuji X-E5 Rezepte",
     category: "Fuji X-E5",
     description: "Direkt aus der Kamera: JPEGs mit meinen Film-Rezepten auf der Fujifilm X-E5 – ohne Nachbearbeitung.",
     rezepte: [
       {
-        name: "Warmer Film-Look (Beispiel)",
-        favorit: true,
-        hinweis: "Warme Farben und weiche Kontraste – ideal für Sonne und Golden Hour.",
-        einstellungen: {
-          "Filmsimulation": "Classic Negative",
-          "Körnung": "Schwach, klein",
-          "Color Chrome": "Stark",
-          "Color Chrome FX Blau": "Schwach",
-          "Weißabgleich": "Auto, +2 Rot / −4 Blau",
-          "Dynamikbereich": "DR400",
-          "Lichter": "−1",
-          "Schatten": "+1",
-          "Farbe": "+2",
-          "Schärfe": "−2",
-          "Rauschreduzierung": "−4",
-          "Klarheit": "0",
-          "ISO": "Auto, bis 6400",
-          "Belichtung": "+1/3 bis +2/3",
-        },
-        images: bilder("fuji-rezepte/warmer-film", 4, "svg"),
-      },
-      {
-        name: "Schwarz-Weiß (Beispiel)",
-        hinweis: "Kräftiges Schwarz-Weiß mit viel Korn – für Street und Portraits.",
-        einstellungen: {
-          "Filmsimulation": "Acros + R-Filter",
-          "Körnung": "Stark, groß",
-          "Weißabgleich": "Auto",
-          "Dynamikbereich": "DR200",
-          "Lichter": "+1",
-          "Schatten": "+2",
-          "Schärfe": "+1",
-          "Rauschreduzierung": "−4",
-          "Klarheit": "+2",
-          "ISO": "Auto, bis 12800",
-        },
-        images: bilder("fuji-rezepte/schwarz-weiss", 4, "svg"),
+        name: "Ilford HP5 Plus",
+        hinweis: "Körniges Schwarz-Weiß mit weichen Lichtern und tiefen Schatten.",
+        // Einstellungen folgen, sobald die Original-JPEGs (mit Metadaten) ausgelesen sind.
+        // Solange die Liste leer ist, blendet die Seite den Einstellungs-Block einfach aus.
+        einstellungen: {},
+        images: bilder("fuji-rezepte/ilford-hp5-plus", 6),
       },
     ],
   },
