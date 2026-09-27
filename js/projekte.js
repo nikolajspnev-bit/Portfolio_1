@@ -110,18 +110,21 @@ window.PROJECTS = [
     rezepte: [
       {
         name: "Ilford HP5 Plus",
-        hinweis: "Kontrastreiches Schwarz-Weiß mit kräftigem Korn – Rezept von Fuji X Weekly.",
-        // Quelle: https://fujixweekly.com/2018/12/01/my-fujifilm-x100f-ilford-hp5-plus-film-simulation-recipe/
+        hinweis: "Kontrastreiches Schwarz-Weiß mit tiefen Schatten und kräftigem, grobem Korn.",
+        // Quelle: Rezeptkarte „Ilford HP5 Plus 400“ (FujiStyle)
         einstellungen: {
-          "Filmsimulation": "Acros (auch +Y, +R oder +G)",
-          "Dynamikbereich": "DR200",
-          "Lichter": "+4",
-          "Schatten": "+2",
-          "Schärfe": "0",
-          "Rauschreduzierung": "−3",
-          "Körnung": "Stark",
-          "ISO": "Auto, bis 6400",
-          "Belichtung": "meist 0",
+          "Filmsimulation": "Monochrom",
+          "Körnung": "Stark, groß",
+          "Color Chrome": "Aus",
+          "Color Chrome FX Blau": "Aus",
+          "Weißabgleich": "Tageslicht, +1 Rot / −8 Blau",
+          "Dynamikbereich": "DR400",
+          "Lichter": "−1",
+          "Schatten": "+1",
+          "Farbe": "0",
+          "Schärfe": "−2",
+          "Rauschreduzierung": "−4",
+          "Klarheit": "0",
         },
         images: bilder("fuji-rezepte/ilford-hp5-plus", 9),
       },
