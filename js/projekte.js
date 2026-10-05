@@ -85,7 +85,7 @@ function bilder(ordner, anzahl, endung) {
 window.PROJECTS = [
   {
     id: "e30-e28-schwarzwald",
-    title: "E30 und E28: Ausfahrt durch den Schwarzwald",
+    title: "E30 und E28 - Ausfahrt durch den Schwarzwald",
     category: "Automotive",
     location: "Schwarzwald",
     description: "Zwei BMW-Klassiker auf Tour: Rolling Shots auf kurvigen Landstraßen, ein Stopp im Wald und jede Menge Details, von der Heizclub-Front bis zu den goldenen Alpina-Felgen.",
