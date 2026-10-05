@@ -85,19 +85,19 @@ function bilder(ordner, anzahl, endung) {
 window.PROJECTS = [
   {
     id: "e30-e28-schwarzwald",
-    title: "E30 und E28 - Ausfahrt durch den Schwarzwald",
+    title: "E30 und E28: Ausfahrt durch den Schwarzwald",
     category: "Automotive",
     location: "Schwarzwald",
-    description: "Zwei BMW-Klassiker auf Tour: Rolling Shots auf kurvigen Landstraßen, ein Stopp im Wald und jede Menge Details – von der Heizclub-Front bis zu den goldenen Alpina-Felgen.",
+    description: "Zwei BMW-Klassiker auf Tour: Rolling Shots auf kurvigen Landstraßen, ein Stopp im Wald und jede Menge Details, von der Heizclub-Front bis zu den goldenen Alpina-Felgen.",
     featured: true,
     images: bilder("e30-e28-schwarzwald", 14),
   },
   {
     id: "talhof-beising",
-    title: "TalHof - Beising",
+    title: "TalHof Beising",
     category: "Unternehmen",
     date: "2026",
-    description: "Erntezeit auf dem TalHof Beising – Traktor und Mähdrescher im Einsatz, festgehalten im warmen Gegenlicht.",
+    description: "Erntezeit auf dem TalHof Beising: Traktor und Mähdrescher im Einsatz, festgehalten im warmen Gegenlicht.",
     featured: true,
     images: bilder("talhof-beising", 5),
   },
@@ -106,7 +106,7 @@ window.PROJECTS = [
     id: "fuji-x-e5-rezepte",
     title: "Fuji X-E5 Rezepte",
     category: "Fuji X-E5",
-    description: "Direkt aus der Kamera: JPEGs mit meinen Film-Rezepten auf der Fujifilm X-E5 – ohne Nachbearbeitung.",
+    description: "Direkt aus der Kamera: JPEGs mit meinen Film-Rezepten auf der Fujifilm X-E5, ganz ohne Nachbearbeitung.",
     rezepte: [
       {
         name: "Ilford HP5 Plus",
@@ -136,14 +136,14 @@ window.PROJECTS = [
     id: "analog-volvo-golf",
     title: "Volvo 850 & Golf II",
     category: "Analog",
-    description: "Zwei Klassiker auf Film: Volvo 850 und VW Golf II vor einer alten Fachwerkscheune – echte Analogfotos mit Korn und warmen Farben.",
+    description: "Zwei Klassiker auf Film: Volvo 850 und VW Golf II vor einer alten Fachwerkscheune. Echte Analogfotos mit Korn und warmen Farben.",
     images: bilder("analog-volvo-golf", 12),
   },
   {
     id: "analog",
-    title: "Analog – auf Film",
+    title: "Analog auf Film",
     category: "Analog",
-    description: "Unterwegs mit der Analogkamera: Stadt, See und Berge – mit Korn, Charakter und dem besonderen Look, den man digital kaum nachbauen kann.",
+    description: "Unterwegs mit der Analogkamera in der Stadt, am See und in den Bergen. Mit Korn, Charakter und dem besonderen Look, den man digital kaum nachbauen kann.",
     images: bilder("analog", 15),
   },
   {
@@ -152,7 +152,7 @@ window.PROJECTS = [
     category: "Portrait",
     date: "2026",
     location: "Outdoor",
-    description: "Portrait-Shooting zur goldenen Stunde – warmes Licht, natürliche Posen und ganz viel Atmosphäre.",
+    description: "Portrait-Shooting zur goldenen Stunde: warmes Licht, natürliche Posen und ganz viel Atmosphäre.",
     featured: true,
     images: bilder("golden-hour", 8, "svg"),
   },
@@ -162,7 +162,7 @@ window.PROJECTS = [
     category: "Event",
     date: "2026",
     location: "Open Air",
-    description: "Aftermovie und Fotos vom Festival – die Energie der Menge, Lichter und die besten Momente auf und vor der Bühne.",
+    description: "Aftermovie und Fotos vom Festival: die Energie der Menge, Lichter und die besten Momente auf und vor der Bühne.",
     videos: [
       // Platzhalter-Video – ersetze es z. B. durch "https://www.youtube.com/watch?v=…"
       { link: "videos/festival-aftermovie.mp4", cover: "images/portfolio/sommer-festival/video-cover.jpg", title: "Aftermovie" },
@@ -176,7 +176,7 @@ window.PROJECTS = [
     category: "Unternehmen",
     date: "2026",
     location: "Office",
-    description: "Team- und Mitarbeiterfotos für Website, LinkedIn und Presse – professionell, aber nahbar.",
+    description: "Team- und Mitarbeiterfotos für Website, LinkedIn und Presse. Professionell, aber nahbar.",
     images: bilder("business-shooting", 6, "svg"),
   },
   {
@@ -193,7 +193,7 @@ window.PROJECTS = [
     title: "Reels & Social Content",
     category: "Social Media",
     date: "2026",
-    description: "Kurzvideos im Hochformat für Instagram und TikTok – geplant, gedreht und geschnitten.",
+    description: "Kurzvideos im Hochformat für Instagram und TikTok: geplant, gedreht und geschnitten.",
     videos: [
       // Platzhalter-Video – ersetze es z. B. durch "https://youtube.com/shorts/…"
       { link: "videos/reel-01.mp4", cover: "images/portfolio/reels-content/video-cover.jpg", title: "Reel", vertical: true },

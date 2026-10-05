@@ -298,7 +298,7 @@
         class: "g-btn",
         type: "button",
         "aria-label": "Bild " + number + " von " + project.images.length + (image.recipe ? " (" + image.recipe + ")" : "") + " groß ansehen",
-      }, [el("img", { src: image.src, alt: image.alt || project.title + " – Bild " + number, loading: number <= 6 ? "eager" : "lazy", decoding: "async" })]);
+      }, [el("img", { src: image.src, alt: image.alt || project.title + ", Bild " + number, loading: number <= 6 ? "eager" : "lazy", decoding: "async" })]);
       btn.addEventListener("click", function () {
         openLightbox(project, startIndex + index, btn);
       });
@@ -503,7 +503,7 @@
     void projectView.offsetWidth;
     projectView.classList.add("view-enter");
 
-    document.title = project.title + " – Portfolio | nikolajtry.media";
+    document.title = project.title + " | Portfolio | nikolajtry.media";
     updateCta(project);
     window.scrollTo({ top: backFromRecipe ? folderScroll : 0, behavior: "instant" });
     pTitle.focus({ preventScroll: true });
@@ -541,7 +541,7 @@
     void projectView.offsetWidth;
     projectView.classList.add("view-enter");
 
-    document.title = recipe.name + " – " + project.title + " | nikolajtry.media";
+    document.title = recipe.name + " | " + project.title + " | nikolajtry.media";
     updateCta(project);
     window.scrollTo({ top: 0, behavior: "instant" });
     pTitle.focus({ preventScroll: true });
@@ -690,7 +690,7 @@
   }
 
   function mediaNode(item) {
-    var label = lbProject.title + " – " + (item.type === "image" ? "Bild" : "Video");
+    var label = lbProject.title + ": " + (item.type === "image" ? "Bild" : "Video");
     if (item.type === "image") return el("img", { src: item.src, alt: item.alt || label });
     if (item.kind === "youtube") {
       return embed("https://www.youtube-nocookie.com/embed/" + encodeURIComponent(item.id) + "?autoplay=1&rel=0&playsinline=1", item.vertical, label);

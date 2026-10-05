@@ -97,11 +97,11 @@
       test: function (v) { return v.trim().length >= 2; } },
     { name: "email", error: "cf-email-error", msg: "Bitte gib eine gültige E-Mail-Adresse ein.",
       test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); } },
-    { name: "telefon", error: "cf-telefon-error", msg: "Bitte gib eine gültige Telefonnummer ein – oder lass das Feld leer.",
+    { name: "telefon", error: "cf-telefon-error", msg: "Bitte gib eine gültige Telefonnummer ein oder lass das Feld leer.",
       test: function (v) { v = v.trim(); return !v || (/^[+()\d\s\/.-]+$/.test(v) && v.replace(/\D/g, "").length >= 6); } },
     { name: "art", error: "cf-art-error", radio: true, msg: "Bitte wähle aus, was für ein Shooting oder Dreh du dir wünschst." },
     // Pflicht nur, wenn "Sonstiges" gewählt ist
-    { name: "sonstiges", error: "cf-sonstiges-error", msg: "Bitte schreib kurz, worum es geht – z. B. „Tiershooting“.",
+    { name: "sonstiges", error: "cf-sonstiges-error", msg: "Bitte schreib kurz, worum es geht, z. B. „Tiershooting“.",
       test: function (v) { return radioValue("art") !== "sonstiges" || v.trim().length >= 2; } },
     { name: "datenschutz", error: "cf-consent-error", checkbox: true, msg: "Bitte stimme zu, damit ich deine Anfrage bearbeiten darf." },
   ].filter(function (check) {
@@ -186,18 +186,18 @@
     return [
       ["Name", v.vorname + " " + v.nachname],
       ["E-Mail", v.email],
-      ["Telefon", v.telefon || "–"],
+      ["Telefon", v.telefon || "keine Angabe"],
       ["Art des Shootings / Drehs", v.art],
-      ["Foto / Video", v.medium || "–"],
-      ["Analoge Fotos (Film)", v.analog ? "Ja, gewünscht" : "–"],
-      ["Wunschtermin", v.datum || "–"],
-      ["Ort", v.ort || "–"],
-      ["Nachricht", v.nachricht || "–"],
+      ["Foto / Video", v.medium || "keine Angabe"],
+      ["Analoge Fotos (Film)", v.analog ? "Ja, gewünscht" : "Nein"],
+      ["Wunschtermin", v.datum || "keine Angabe"],
+      ["Ort", v.ort || "keine Angabe"],
+      ["Nachricht", v.nachricht || "keine Angabe"],
     ];
   }
 
   function subjectOf(v) {
-    return "Neue Anfrage: " + v.art + " – " + v.vorname + " " + v.nachname;
+    return "Neue Anfrage: " + v.art + " von " + v.vorname + " " + v.nachname;
   }
 
   function mailtoLink(v) {
@@ -231,7 +231,7 @@
         el("span", { class: "status-icon", html: ICONS.check }),
         el("h3", { text: "Danke, " + v.vorname + "!" }),
         el("p", {}, [
-          "Deine Anfrage ist bei mir angekommen – ich melde mich so schnell wie möglich. ",
+          "Deine Anfrage ist bei mir angekommen. Ich melde mich so schnell wie möglich. ",
           "Meine Antwort bekommst du an deine E-Mail-Adresse ",
           el("strong", { text: v.email }),
           v.telefon ? " oder telefonisch unter " : ".",
@@ -255,8 +255,8 @@
         el("p", {}, [
           el("strong", { text: "Das hat leider nicht geklappt. " }),
           needsActivation
-            ? "Das Formular wird gerade eingerichtet. Schick mir deine Anfrage bitte per E-Mail – deine Angaben sind dort schon eingetragen."
-            : "Deine Anfrage konnte gerade nicht gesendet werden. Schick sie mir einfach per E-Mail – deine Angaben sind dort schon eingetragen.",
+            ? "Das Formular wird gerade eingerichtet. Schick mir deine Anfrage bitte per E-Mail. Deine Angaben sind dort schon eingetragen."
+            : "Deine Anfrage konnte gerade nicht gesendet werden. Schick sie mir einfach per E-Mail. Deine Angaben sind dort schon eingetragen.",
         ]),
         actions,
       ])
