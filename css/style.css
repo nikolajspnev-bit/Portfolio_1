@@ -356,12 +356,19 @@ main {
   text-transform: uppercase;
   color: var(--orange);
 }
-.eyebrow::before {
+.eyebrow::before,
+.eyebrow-line {
   content: "";
+  flex: none;
   width: 28px;
   height: 2px;
   background: currentColor;
   border-radius: 2px;
+}
+/* Strich zwischen Nummer und Titel ("01 —— Über mich"), gleich lang wie der vordere;
+   gleicht den Buchstabenabstand nach der Nummer aus, damit beide Abstände gleich sind */
+.eyebrow-line {
+  margin-left: -0.16em;
 }
 
 /* ============================================================
