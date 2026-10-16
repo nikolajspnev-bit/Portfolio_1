@@ -504,14 +504,14 @@ main {
   opacity: 0;
   transform: scale(1.06);
 }
-/* Karte 1 ist die große Hauptkarte mit orangem Rahmen und liegt vorne */
+/* Karte 1 ist die große Hauptkarte mit orangem Rahmen; die kleine Karte rechts unten liegt davor */
 .hero-collage .card:nth-child(1) {
   width: 64%;
   height: 76%;
   left: 0;
   top: 6%;
   transform: rotate(-5deg);
-  z-index: 3;
+  z-index: 2;
   border: 3px solid var(--orange);
 }
 .hero-collage .card:nth-child(2) {
@@ -528,7 +528,7 @@ main {
   right: 0;
   bottom: 0;
   transform: rotate(-2deg);
-  z-index: 2;
+  z-index: 3;
 }
 .hero-collage:hover .card:nth-child(1) {
   transform: rotate(-7deg) translate(-8px, -4px);
