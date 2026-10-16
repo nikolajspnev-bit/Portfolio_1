@@ -102,6 +102,14 @@ window.PROJECTS = [
     images: bilder("talhof-beising", 5),
   },
   {
+    id: "diandra-pferd",
+    title: "Diandra & Pferd im Herbstwald",
+    category: "Pferde",
+    date: "Herbst 2024",
+    description: "Herbstliches Pferdeshooting mit Diandra: erst im Reitoutfit auf dem Platz und im Wald, dann im grünen Kleid zwischen buntem Laub.",
+    images: bilder("diandra-pferd", 21),
+  },
+  {
     // Fuji X-E5 Rezepte – ein Eintrag pro Rezept (Anleitung in README.md)
     id: "fuji-x-e5-rezepte",
     title: "Fuji X-E5 Rezepte",
