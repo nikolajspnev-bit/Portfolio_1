@@ -325,7 +325,7 @@ main {
    Abschnitte allgemein
    ============================================================ */
 .section {
-  padding-block: clamp(72px, 11vw, 136px);
+  padding-block: clamp(55px, 7vw, 95px);
 }
 .section-alt {
   background: var(--bg-2);
