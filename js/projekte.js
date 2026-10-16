@@ -29,7 +29,12 @@
  *    location     optional, z. B. "Berlin" oder "Studio"
  *    description  optional, kurzer Text zum Projekt
  *    cover        optional, Cover-Bild der Kachel (sonst wird das erste Bild genommen)
- *    featured     true = Cover erscheint in der Collage auf der Startseite (die ersten 3)
+ *    startseite   optional, Bildnummern für die Collage oben auf der Startseite, z. B. [1, 6, 9]
+ *                 – die Bilder aller Projekte wechseln dort automatisch durch
+ *    featured     true = ohne "startseite" erscheint wenigstens das Cover in der Collage
+ *    neu          optional, z. B. neu: "Pferde-Shooting" – zeigt auf der Startseite einen "Neu"-Hinweis,
+ *                 der direkt zum Projekt führt, und ein "Neu"-Abzeichen auf der Kachel
+ *                 (wieder löschen, wenn das Projekt nicht mehr neu ist)
  *    images       die Bilder des Shootings (optional bei reinen Video-Projekten) – mit bilder("ordner", anzahl)
  *                 oder als Liste: ["images/portfolio/x/a.jpg", "images/portfolio/x/b.jpg"]
  *
@@ -91,6 +96,7 @@ window.PROJECTS = [
     description: "Zwei BMW-Klassiker auf Tour: Rolling Shots auf kurvigen Landstraßen, ein Stopp im Wald und jede Menge Details, von der Heizclub-Front bis zu den goldenen Alpina-Felgen.",
     featured: true,
     images: bilder("e30-e28-schwarzwald", 14),
+    startseite: [1, 7, 13],
   },
   {
     id: "talhof-beising",
@@ -100,20 +106,24 @@ window.PROJECTS = [
     description: "Erntezeit auf dem TalHof Beising: Traktor und Mähdrescher im Einsatz, festgehalten im warmen Gegenlicht.",
     featured: true,
     images: bilder("talhof-beising", 5),
+    startseite: [1, 3],
   },
   {
     id: "diandra-pferd",
     title: "Diandra & Pferd im Herbstwald",
     category: "Pferde",
     date: "Herbst 2024",
+    neu: "Pferde-Shooting",
     description: "Herbstliches Pferdeshooting mit Diandra: erst im Reitoutfit auf dem Platz und im Wald, dann im grünen Kleid zwischen buntem Laub.",
     images: bilder("diandra-pferd", 21),
+    startseite: [1, 6, 9],
   },
   {
     // Fuji X-E5 Rezepte – ein Eintrag pro Rezept (Anleitung in README.md)
     id: "fuji-x-e5-rezepte",
     title: "Fuji X-E5 Rezepte",
     category: "Fuji X-E5",
+    startseite: [1, 3],
     description: "Direkt aus der Kamera: JPEGs mit meinen Film-Rezepten auf der Fujifilm X-E5, ganz ohne Nachbearbeitung.",
     rezepte: [
       {
@@ -146,6 +156,7 @@ window.PROJECTS = [
     category: "Analog",
     description: "Zwei Klassiker auf Film: Volvo 850 und VW Golf II vor einer alten Fachwerkscheune. Echte Analogfotos mit Korn und warmen Farben.",
     images: bilder("analog-volvo-golf", 12),
+    startseite: [1, 3, 5],
   },
   {
     id: "analog",
@@ -153,6 +164,7 @@ window.PROJECTS = [
     category: "Analog",
     description: "Unterwegs mit der Analogkamera in der Stadt, am See und in den Bergen. Mit Korn, Charakter und dem besonderen Look, den man digital kaum nachbauen kann.",
     images: bilder("analog", 15),
+    startseite: [1, 3, 5],
   },
   {
     id: "golden-hour",

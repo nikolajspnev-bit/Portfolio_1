@@ -82,6 +82,9 @@
     link.appendChild(coverNode(project, index < 6 ? "eager" : "lazy"));
 
     var badges = el("span", { class: "project-badges" });
+    if (project.newLabel) {
+      badges.appendChild(el("span", { class: "project-badge is-new", text: "Neu" }));
+    }
     if (project.images.length) {
       badges.appendChild(el("span", { class: "project-badge", html: ICONS.images + " " + project.images.length }));
     }

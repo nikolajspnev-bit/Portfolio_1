@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preload" href="fonts/syne-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261016-2117">
+  <link rel="stylesheet" href="css/style.css?v=20261016-2137">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -58,8 +58,11 @@
           </div>
         </div>
 
-        <!-- wird automatisch mit den Covern der "featured"-Projekte aus js/projekte.js gefüllt -->
-        <a class="hero-collage reveal" style="--delay:.2s" href="portfolio.html" aria-label="Zum Portfolio" data-hero-collage></a>
+        <!-- wird automatisch gefüllt: Bilder aus "startseite" in js/projekte.js wechseln durch,
+             ein Projekt mit "neu" bekommt den Neu-Hinweis -->
+        <div class="hero-visual reveal" style="--delay:.2s" data-hero-visual>
+          <a class="hero-collage" href="portfolio.html" aria-label="Zum Portfolio" data-hero-collage></a>
+        </div>
       </div>
     </section>
 
@@ -379,11 +382,11 @@
     </div>
   </footer>
 
-  <script src="js/config.js?v=20261016-2117"></script>
-  <script src="js/projekte.js?v=20261016-2117"></script>
-  <script src="js/media.js?v=20261016-2117"></script>
-  <script src="js/main.js?v=20261016-2117"></script>
-  <script src="js/youtube.js?v=20261016-2117"></script>
-  <script src="js/kontakt.js?v=20261016-2117"></script>
+  <script src="js/config.js?v=20261016-2137"></script>
+  <script src="js/projekte.js?v=20261016-2137"></script>
+  <script src="js/media.js?v=20261016-2137"></script>
+  <script src="js/main.js?v=20261016-2137"></script>
+  <script src="js/youtube.js?v=20261016-2137"></script>
+  <script src="js/kontakt.js?v=20261016-2137"></script>
 </body>
 </html>

@@ -50,7 +50,13 @@ So legst du ein neues Shooting an:
 - Das **erste Bild** ist automatisch das Cover. Ein anderes Cover setzt du mit `cover: "images/portfolio/hochzeit-anna/07.jpg"`.
 - Aus den **Kategorien** entstehen automatisch die Filter-Buttons über der Übersicht
   (aktuell: Unternehmen, Fuji X-E5, Portrait, Event, Produkt, Social Media, Analog).
-- Mit `featured: true` erscheint das Cover zusätzlich in der Collage oben auf der Startseite (die ersten 3).
+- **Collage oben auf der Startseite:** Mit `startseite: [1, 6, 9]` wählst du Bildnummern eines Projekts aus.
+  Die Bilder aller Projekte wechseln dort automatisch durch (alle 3 Sekunden eine der drei Karten).
+  Projekte ohne `startseite`, aber mit `featured: true`, zeigen dort wenigstens ihr Cover.
+  Platzhalter-Grafiken (.svg) erscheinen nie auf der Startseite.
+- **„Neu“-Hinweis:** Mit `neu: "Pferde-Shooting"` bekommt ein Projekt oben an der Collage einen
+  Hinweis „Neu: Pferde-Shooting“, der direkt zum Projekt führt, und ein „Neu“-Abzeichen auf seiner Kachel.
+  Wenn das Projekt nicht mehr neu ist, die Zeile einfach wieder löschen.
 - Heißen deine Dateien anders, geht auch eine Liste: `images: ["images/portfolio/x/a.jpg", "images/portfolio/x/b.jpg"]`.
 
 ### Videos im Portfolio

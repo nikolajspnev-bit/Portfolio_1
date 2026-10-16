@@ -100,24 +100,112 @@
   /* ---------- Hero-Collage (Startseite) ---------- */
   var collage = document.querySelector("[data-hero-collage]");
   if (collage && window.PortfolioMedia) {
-    var withCover = window.PortfolioMedia.normalizeProjects(window.PROJECTS).filter(function (project) {
-      return project.cover;
-    });
-    var featured = withCover.filter(function (project) {
-      return project.featured;
-    });
-    featured = featured.concat(
-      withCover.filter(function (project) {
-        return !project.featured;
+    var heroProjects = window.PortfolioMedia.normalizeProjects(window.PROJECTS);
+    var CARDS = 3;
+    var isPhoto = function (src) {
+      return src && !/\.svg$/i.test(src); // Platzhalter-Grafiken nie auf der Startseite zeigen
+    };
+
+    // Bilder pro Projekt: die unter "startseite" gewählten, sonst das Cover der "featured"-Projekte
+    var picksPerProject = heroProjects
+      .map(function (project) {
+        var list = project.highlights.length ? project.highlights : project.featured ? [project.cover] : [];
+        return list.filter(isPhoto).map(function (src) {
+          return { src: src, project: project.id };
+        });
       })
-    );
-    featured.slice(0, 3).forEach(function (project) {
-      collage.appendChild(
-        el("span", { class: "card" }, [el("img", { src: project.cover, alt: "", loading: "eager", decoding: "async" })])
-      );
+      .filter(function (list) {
+        return list.length;
+      });
+    // zu wenig ausgewählt? Dann mit den Covern der übrigen echten Projekte auffüllen
+    if (picksPerProject.length < CARDS) {
+      heroProjects.forEach(function (project) {
+        var known = picksPerProject.some(function (list) { return list[0].project === project.id; });
+        if (!known && isPhoto(project.cover) && picksPerProject.length < CARDS) {
+          picksPerProject.push([{ src: project.cover, project: project.id }]);
+        }
+      });
+    }
+
+    // Reißverschluss: erst von jedem Projekt das erste Bild, dann das zweite …
+    // und so auf die Karten verteilt, dass jede Karte nach und nach alle Projekte zeigt
+    var queues = [[], [], []];
+    var rounds = Math.max.apply(null, [0].concat(picksPerProject.map(function (list) { return list.length; })));
+    for (var round = 0; round < rounds; round++) {
+      var slot = 0;
+      picksPerProject.forEach(function (list) {
+        if (!list[round]) return;
+        queues[(slot + round) % CARDS].push(list[round]);
+        slot++;
+      });
+    }
+    queues = queues.filter(function (queue) { return queue.length; });
+
+    var shown = [];
+    queues.forEach(function (queue, index) {
+      var card = el("span", { class: "card" }, [el("img", { src: queue[0].src, alt: "", loading: "eager", decoding: "async" })]);
+      collage.appendChild(card);
+      shown.push({ card: card, queue: queue, pos: 0 });
     });
     if (collage.children.length) {
       collage.appendChild(el("span", { class: "sticker", html: "Foto<br>✦<br>Video" }));
+    }
+
+    // Bilder durchwechseln: alle 3 Sekunden ist eine Karte dran, jede Karte also alle 9 Sekunden
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var canRotate = shown.some(function (entry) { return entry.queue.length > 1; });
+    if (canRotate && !reduceMotion) {
+      var onScreen = true;
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          onScreen = entries[0].isIntersecting;
+        }).observe(collage);
+      }
+      var turn = 0;
+      var advance = function (entry) {
+        var queue = entry.queue;
+        if (queue.length < 2) return;
+        // nächstes Bild, das gerade nicht schon auf einer anderen Karte zu sehen ist
+        var visible = shown.map(function (other) { return other.queue[other.pos].project; });
+        var next = (entry.pos + 1) % queue.length;
+        for (var tries = 0; tries < queue.length - 1; tries++) {
+          var candidate = (entry.pos + 1 + tries) % queue.length;
+          if (visible.indexOf(queue[candidate].project) === -1) {
+            next = candidate;
+            break;
+          }
+        }
+        var img = el("img", { src: queue[next].src, alt: "", decoding: "async", class: "is-entering" });
+        var swap = function () {
+          entry.pos = next;
+          entry.card.appendChild(img);
+          void img.offsetWidth; // Startzustand übernehmen, damit die Überblendung läuft
+          img.classList.remove("is-entering");
+          setTimeout(function () {
+            while (entry.card.firstChild && entry.card.firstChild !== img) entry.card.removeChild(entry.card.firstChild);
+          }, 1400);
+        };
+        if (img.decode) img.decode().then(swap, swap);
+        else img.onload = swap;
+      };
+      setInterval(function () {
+        if (document.hidden || !onScreen) return;
+        advance(shown[turn % shown.length]);
+        turn++;
+      }, 3000);
+    }
+
+    // "Neu"-Hinweis zum neuesten Projekt (Feld "neu" in js/projekte.js)
+    var newest = heroProjects.filter(function (project) { return project.newLabel; })[0];
+    var visual = document.querySelector("[data-hero-visual]");
+    if (newest && visual && collage.children.length) {
+      visual.appendChild(
+        el("a", { class: "hero-new", href: "portfolio.html#/" + newest.id }, [
+          el("span", { class: "hero-new-tag", text: "Neu" }),
+          el("span", { class: "hero-new-text", text: newest.newLabel }),
+          el("span", { class: "hero-new-arrow", html: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' }),
+        ])
+      );
     }
   }
 

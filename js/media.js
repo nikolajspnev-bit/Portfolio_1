@@ -124,6 +124,11 @@
         usedIds[id] = true;
 
         var firstVideoCover = videos.filter(function (v) { return v.cover; })[0];
+        // Bilder für die Collage auf der Startseite: Bildnummern (1 = erstes Bild) oder Pfade
+        var highlights = [].concat(raw.startseite || []).map(function (entry) {
+          var img = typeof entry === "number" ? images[entry - 1] : { src: entry };
+          return img && img.src;
+        }).filter(Boolean);
         return {
           id: id,
           title: raw.title || "Projekt",
@@ -132,6 +137,9 @@
           location: raw.location || "",
           description: raw.description || "",
           featured: !!raw.featured,
+          highlights: highlights,
+          // "Neu"-Hinweis: neu: "Pferde-Shooting" (eigener Text) oder neu: true (Projekttitel)
+          newLabel: raw.neu ? (typeof raw.neu === "string" ? raw.neu : raw.title || "Neues Projekt") : "",
           cover: raw.cover || (recipes[0] && recipes[0].cover) || (images[0] && images[0].src) || (firstVideoCover && firstVideoCover.cover) || "",
           images: images,
           videos: videos,
