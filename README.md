@@ -51,7 +51,7 @@ So legst du ein neues Shooting an:
 - Aus den **Kategorien** entstehen automatisch die Filter-Buttons über der Übersicht
   (aktuell: Unternehmen, Fuji X-E5, Portrait, Event, Produkt, Social Media, Analog).
 - **Collage oben auf der Startseite:** Mit `startseite: [1, 6, 9]` wählst du Bildnummern eines Projekts aus.
-  Die Bilder aller Projekte wechseln dort automatisch durch (alle 3 Sekunden eine der drei Karten).
+  Die Bilder aller Projekte wechseln dort automatisch durch (alle 4,5 Sekunden eine der drei Karten).
   Projekte ohne `startseite`, aber mit `featured: true`, zeigen dort wenigstens ihr Cover.
   Platzhalter-Grafiken (.svg) erscheinen nie auf der Startseite.
 - **„Neu“-Hinweis:** Mit `neu: "Pferde-Shooting"` bekommt ein Projekt oben an der Collage einen

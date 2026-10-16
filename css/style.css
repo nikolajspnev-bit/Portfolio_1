@@ -498,36 +498,37 @@ main {
   height: 100%;
   object-fit: cover;
   /* Überblenden beim Bildwechsel, dazu ein ganz langsamer Zoom */
-  transition: opacity 1.2s var(--ease), transform 8s linear;
+  transition: opacity 1.5s var(--ease), transform 12s linear;
 }
 .hero-collage .card img.is-entering {
   opacity: 0;
   transform: scale(1.06);
 }
+/* Karte 1 ist die große Hauptkarte mit orangem Rahmen und liegt vorne */
 .hero-collage .card:nth-child(1) {
-  width: 62%;
-  height: 74%;
+  width: 64%;
+  height: 76%;
   left: 0;
   top: 6%;
   transform: rotate(-5deg);
-  z-index: 2;
+  z-index: 3;
+  border: 3px solid var(--orange);
 }
 .hero-collage .card:nth-child(2) {
-  width: 56%;
-  height: 50%;
+  width: 54%;
+  height: 48%;
   right: 0;
   top: 0;
   transform: rotate(4deg);
   z-index: 1;
 }
 .hero-collage .card:nth-child(3) {
-  width: 52%;
-  height: 46%;
-  right: 4%;
+  width: 48%;
+  height: 42%;
+  right: 0;
   bottom: 0;
   transform: rotate(-2deg);
-  z-index: 3;
-  border: 3px solid var(--orange);
+  z-index: 2;
 }
 .hero-collage:hover .card:nth-child(1) {
   transform: rotate(-7deg) translate(-8px, -4px);

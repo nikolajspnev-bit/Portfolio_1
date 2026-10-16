@@ -151,7 +151,7 @@
       collage.appendChild(el("span", { class: "sticker", html: "Foto<br>✦<br>Video" }));
     }
 
-    // Bilder durchwechseln: alle 3 Sekunden ist eine Karte dran, jede Karte also alle 9 Sekunden
+    // Bilder durchwechseln: alle 4,5 Sekunden ist eine Karte dran, jede Karte also alle 13,5 Sekunden
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var canRotate = shown.some(function (entry) { return entry.queue.length > 1; });
     if (canRotate && !reduceMotion) {
@@ -183,7 +183,7 @@
           img.classList.remove("is-entering");
           setTimeout(function () {
             while (entry.card.firstChild && entry.card.firstChild !== img) entry.card.removeChild(entry.card.firstChild);
-          }, 1400);
+          }, 1700);
         };
         if (img.decode) img.decode().then(swap, swap);
         else img.onload = swap;
@@ -192,7 +192,7 @@
         if (document.hidden || !onScreen) return;
         advance(shown[turn % shown.length]);
         turn++;
-      }, 3000);
+      }, 4500);
     }
 
     // "Neu"-Hinweis zum neuesten Projekt (Feld "neu" in js/projekte.js)
