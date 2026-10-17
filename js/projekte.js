@@ -119,6 +119,16 @@ window.PROJECTS = [
     startseite: [1, 6, 9],
   },
   {
+    id: "holzruecken-steisslingen",
+    title: "Holzrücken mit Pferd",
+    category: "Pferde",
+    date: "September 2024",
+    location: "Steißlingen",
+    description: "Waldarbeit wie früher: Im Fichtenwald bei Steißlingen zieht ein Rückepferd die gefällten Stämme aus dem Bestand, während die Forstleute die Bäume fällen und die Ketten anlegen.",
+    images: bilder("holzruecken-steisslingen", 16),
+    startseite: [1, 6],
+  },
+  {
     // Fuji X-E5 Rezepte – ein Eintrag pro Rezept (Anleitung in README.md)
     id: "fuji-x-e5-rezepte",
     title: "Fuji X-E5 Rezepte",
