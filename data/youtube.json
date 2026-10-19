@@ -1,0 +1,40 @@
+{
+  "channelId": "UCS1gYw85ppcSfh2U5Exw0pA",
+  "videos": [
+    {
+      "id": "7dE69HDhDjE",
+      "title": "Little Winter Edit",
+      "published": "2023-12-31T11:00:06+00:00",
+      "url": "https://www.youtube.com/watch?v=7dE69HDhDjE",
+      "isShort": false
+    },
+    {
+      "id": "iXfgXcmS5GM",
+      "title": "Bock auf Forza Horizon Vibes?",
+      "published": "2022-11-01T20:55:10+00:00",
+      "url": "https://www.youtube.com/shorts/iXfgXcmS5GM",
+      "isShort": true
+    },
+    {
+      "id": "-bMQV3S1uco",
+      "title": "M4 CarPorn",
+      "published": "2022-09-10T10:00:07+00:00",
+      "url": "https://www.youtube.com/watch?v=-bMQV3S1uco",
+      "isShort": false
+    },
+    {
+      "id": "2AqPsSxdCi8",
+      "title": "SlateLake Treffen",
+      "published": "2022-07-31T07:00:00+00:00",
+      "url": "https://www.youtube.com/watch?v=2AqPsSxdCi8",
+      "isShort": false
+    },
+    {
+      "id": "Up__NmWxMLE",
+      "title": "My first Bike Edit",
+      "published": "2022-07-03T11:20:19+00:00",
+      "url": "https://www.youtube.com/watch?v=Up__NmWxMLE",
+      "isShort": false
+    }
+  ]
+}
