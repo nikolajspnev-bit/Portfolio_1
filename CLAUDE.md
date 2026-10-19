@@ -20,3 +20,5 @@ Antworten an Nikolaj auf Deutsch.
 - Nach jeder Änderung an CSS/JS `python3 tools/version.py` ausführen (Cache-Versionen in den HTML-Dateien).
 - Vor dem Push im Browser testen (Handy- und Desktop-Breite).
 - Fuji-Rezepte stammen meist von Fuji X Weekly oder filmsimrecipes.com.
+- YouTube-Bereich liest `data/youtube.json`. Die Datei schreibt der GitHub-Workflow
+  `.github/workflows/youtube-feed.yml` (alle 4 Stunden); nicht von Hand bearbeiten.
