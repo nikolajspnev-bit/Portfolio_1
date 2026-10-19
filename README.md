@@ -169,12 +169,18 @@ Ein Klick öffnet das Video auf YouTube. Dafür brauchst du nur deine **Kanal-ID
    channelId: "UCxxxxxxxxxxxxxxxxxxxxxx",
    ```
 
-Fertig. Neue Videos erscheinen automatisch (mit etwas Verzögerung, meist unter einer Stunde).
+Fertig. Neue Videos erscheinen automatisch (mit etwas Verzögerung, spätestens nach etwa 4 Stunden).
 Aktuell eingestellt: **nur das neueste Video, ohne Shorts** (`videoCount: 1`, `shorts: false`).
 Mit z. B. `videoCount: 4` erscheinen zusätzlich die 3 Videos davor, mit `shorts: true` auch Shorts.
 Solange keine Kanal-ID eingetragen ist, erscheint eine „Abonniere meinen YouTube-Kanal“-Karte.
 
-*Technik: Die Seite liest den öffentlichen RSS-Feed deines Kanals über den kostenlosen Dienst rss2json.com.*
+*Technik: Ein automatischer Ablauf auf GitHub (`.github/workflows/youtube-feed.yml`) holt alle 4 Stunden
+den öffentlichen RSS-Feed deines Kanals und speichert die Videos in `data/youtube.json`. Die Startseite
+liest diese Datei; nur falls sie fehlt, fragt sie ersatzweise den Dienst rss2json.com.
+Sofort aktualisieren: auf GitHub unter **Actions → YouTube-Feed → Run workflow**.
+Wichtig: Der zeitgesteuerte Ablauf läuft nur, wenn `main` der Standard-Branch des Repos ist
+(Settings → General → Default branch). GitHub pausiert solche Abläufe außerdem, wenn im Repo
+60 Tage lang nichts passiert; dann kommt eine E-Mail, und ein Klick auf „Enable workflow“ reicht.*
 
 ## 4. Kontaktformular
 

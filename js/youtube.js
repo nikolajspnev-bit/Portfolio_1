@@ -3,9 +3,9 @@
  * deines Kanals. Ein Klick öffnet das Video auf YouTube.
  * Einstellungen in js/config.js (youtube.channelId).
  *
- * Technik: YouTube stellt für jeden Kanal einen öffentlichen RSS-Feed bereit.
- * Weil Browser diesen nicht direkt lesen dürfen, wird er über rss2json.com geladen
- * (kostenlos, ohne Anmeldung).
+ * Technik: Ein automatischer Ablauf auf GitHub (.github/workflows/youtube-feed.yml) holt alle
+ * 4 Stunden den RSS-Feed des Kanals und speichert die Videos in data/youtube.json.
+ * Diese Datei wird hier gelesen. Nur falls sie fehlt, wird ersatzweise rss2json.com gefragt.
  */
 (function () {
   "use strict";
@@ -70,20 +70,38 @@
     return isNaN(d) ? null : d;
   }
 
-  function normalize(data) {
-    var items = (data && data.items) || [];
-    return items
-      .map(function (item) {
-        var id = videoIdOf(item);
-        var isShort = /\/shorts\//.test(item.link || "");
-        return {
-          id: id,
-          title: item.title || "",
-          url: isShort ? "https://www.youtube.com/shorts/" + id : "https://www.youtube.com/watch?v=" + id,
-          date: parseDate(item.pubDate),
-          isShort: isShort,
-        };
-      })
+  // Format der eigenen Datei data/youtube.json
+  function fromOwnFile(data) {
+    return ((data && data.videos) || []).map(function (video) {
+      var date = video.published ? new Date(video.published) : null;
+      return {
+        id: video.id,
+        title: video.title || "",
+        url: video.url || "https://www.youtube.com/watch?v=" + video.id,
+        date: date && !isNaN(date) ? date : null,
+        isShort: !!video.isShort,
+      };
+    });
+  }
+
+  // Format von rss2json.com (Ersatz)
+  function fromRss2json(data) {
+    return ((data && data.items) || []).map(function (item) {
+      var id = videoIdOf(item);
+      var isShort = /\/shorts\//.test(item.link || "");
+      return {
+        id: id,
+        title: item.title || "",
+        url: isShort ? "https://www.youtube.com/shorts/" + id : "https://www.youtube.com/watch?v=" + id,
+        date: parseDate(item.pubDate),
+        isShort: isShort,
+      };
+    });
+  }
+
+  // Shorts ausblenden (falls eingestellt) und nach Datum sortieren
+  function prepare(videos) {
+    return videos
       .filter(function (video) {
         return video.id && (yt.shorts !== false || !video.isShort);
       })
@@ -164,27 +182,39 @@
   var feedUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=" + channelId;
   var apiUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feedUrl);
 
-  var controller = "AbortController" in window ? new AbortController() : null;
-  var timeout = setTimeout(function () {
-    if (controller) controller.abort();
-  }, 8000);
+  function getJson(url, ms) {
+    var controller = "AbortController" in window ? new AbortController() : null;
+    var timer = setTimeout(function () {
+      if (controller) controller.abort();
+    }, ms);
+    return fetch(url, controller ? { signal: controller.signal, cache: "no-cache" } : { cache: "no-cache" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("nicht erreichbar (" + response.status + ")");
+        return response.json();
+      })
+      .finally(function () {
+        clearTimeout(timer);
+      });
+  }
 
-  fetch(apiUrl, controller ? { signal: controller.signal } : undefined)
-    .then(function (response) {
-      if (!response.ok) throw new Error("Feed nicht erreichbar (" + response.status + ")");
-      return response.json();
-    })
+  function needVideos(videos) {
+    if (!videos.length) throw new Error("Keine Videos gefunden");
+    return videos;
+  }
+
+  getJson("data/youtube.json", 6000)
     .then(function (data) {
-      if (data && data.status && data.status !== "ok") throw new Error(data.message || "Feed-Fehler");
-      var videos = normalize(data);
-      if (!videos.length) throw new Error("Keine Videos gefunden");
-      render(videos);
+      return needVideos(prepare(fromOwnFile(data)));
     })
+    .catch(function () {
+      return getJson(apiUrl, 8000).then(function (data) {
+        if (data && data.status && data.status !== "ok") throw new Error(data.message || "Feed-Fehler");
+        return needVideos(prepare(fromRss2json(data)));
+      });
+    })
+    .then(render)
     .catch(function (error) {
       console.warn("YouTube-Feed konnte nicht geladen werden:", error);
       renderFallback();
-    })
-    .finally(function () {
-      clearTimeout(timeout);
     });
 })();
