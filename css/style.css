@@ -26,9 +26,9 @@
   --line: #2b2b30;
   --text: #f4f1ec;
   --muted: #a6a29c;
-  --orange: #fb5d0f; /* exakt das Orange aus dem Logo */
-  --orange-2: #ff7a33;
-  --orange-soft: rgba(251, 93, 15, 0.14);
+  --orange: #ff7800; /* exakt das Orange aus dem Logo */
+  --orange-2: #ff9433;
+  --orange-soft: rgba(255, 120, 0, 0.14);
   --on-orange: #140a04;
   --danger: #ff6b6b;
   --success: #5fd38d;
@@ -199,11 +199,11 @@ main {
 .btn-primary {
   background: var(--orange);
   color: var(--on-orange);
-  box-shadow: 0 10px 30px -10px rgba(251, 93, 15, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(255, 120, 0, 0.6);
 }
 .btn-primary:hover {
   background: var(--orange-2);
-  box-shadow: 0 14px 36px -10px rgba(251, 93, 15, 0.75);
+  box-shadow: 0 14px 36px -10px rgba(255, 120, 0, 0.75);
 }
 
 .btn-ghost {
@@ -260,18 +260,18 @@ main {
   width: auto;
 }
 .logo-full {
-  height: 36px;
+  height: 44px;
 }
 .logo-icon {
   display: none !important;
-  height: 34px;
+  height: 38px;
 }
 @media (max-width: 640px) {
   .logo-full {
-    height: 28px;
+    height: 36px;
   }
 }
-/* Auf schmalen Handys nur das "N", damit das Menü daneben Platz hat */
+/* Auf schmalen Handys nur das Monogramm, damit das Menü daneben Platz hat */
 @media (max-width: 479px) {
   .logo-full {
     display: none !important;
@@ -392,7 +392,7 @@ main {
   aspect-ratio: 1;
   right: -20%;
   top: -35%;
-  background: radial-gradient(circle closest-side, rgba(251, 93, 15, 0.26), transparent);
+  background: radial-gradient(circle closest-side, rgba(255, 120, 0, 0.26), transparent);
 }
 .hero .container {
   display: grid;
@@ -454,15 +454,15 @@ main {
   height: 8px;
   border-radius: 50%;
   background: var(--orange);
-  box-shadow: 0 0 0 0 rgba(251, 93, 15, 0.6);
+  box-shadow: 0 0 0 0 rgba(255, 120, 0, 0.6);
   animation: pulse 2.2s infinite;
 }
 @keyframes pulse {
   70% {
-    box-shadow: 0 0 0 10px rgba(251, 93, 15, 0);
+    box-shadow: 0 0 0 10px rgba(255, 120, 0, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(251, 93, 15, 0);
+    box-shadow: 0 0 0 0 rgba(255, 120, 0, 0);
   }
 }
 
@@ -556,7 +556,7 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   transform: rotate(-12deg);
-  box-shadow: 0 16px 40px -12px rgba(251, 93, 15, 0.7);
+  box-shadow: 0 16px 40px -12px rgba(255, 120, 0, 0.7);
 }
 
 /* "Neu"-Hinweis oben an der Collage – führt direkt zum neuesten Projekt */
@@ -586,7 +586,7 @@ main {
 .hero-new:hover,
 .hero-new:focus-visible {
   transform: rotate(-3deg) translateY(-3px);
-  border-color: rgba(251, 93, 15, 0.6);
+  border-color: rgba(255, 120, 0, 0.6);
 }
 .hero-new-tag {
   padding: 4px 10px;
@@ -596,7 +596,7 @@ main {
   font: 800 0.72rem/1 var(--font-display);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 0 0 0 rgba(251, 93, 15, 0.6);
+  box-shadow: 0 0 0 0 rgba(255, 120, 0, 0.6);
   animation: pulse 2.2s infinite;
 }
 .hero-new-text {
@@ -727,7 +727,7 @@ main {
   transition: transform 0.5s var(--ease);
 }
 .service:hover {
-  border-color: rgba(251, 93, 15, 0.5);
+  border-color: rgba(255, 120, 0, 0.5);
   transform: translateY(-4px);
 }
 .service:hover::after {
@@ -955,7 +955,7 @@ main {
   text-align: center;
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: radial-gradient(circle at 50% 0%, rgba(251, 93, 15, 0.18), transparent 60%), var(--surface);
+  background: radial-gradient(circle at 50% 0%, rgba(255, 120, 0, 0.18), transparent 60%), var(--surface);
 }
 .insta-fallback .ig-icon {
   display: grid;
@@ -1034,7 +1034,7 @@ main {
   transition: border-color 0.3s;
 }
 .yt-latest:hover {
-  border-color: rgba(251, 93, 15, 0.6);
+  border-color: rgba(255, 120, 0, 0.6);
 }
 .yt-latest:hover .yt-thumb img,
 .yt-item:hover .yt-thumb img {
@@ -1088,7 +1088,7 @@ main {
   transition: border-color 0.3s, background-color 0.3s;
 }
 .yt-item:hover {
-  border-color: rgba(251, 93, 15, 0.6);
+  border-color: rgba(255, 120, 0, 0.6);
   background: var(--surface-2);
 }
 .yt-item .yt-thumb {
@@ -1323,7 +1323,7 @@ fieldset.field {
 .field textarea:focus {
   outline: none;
   border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(251, 93, 15, 0.18);
+  box-shadow: 0 0 0 3px rgba(255, 120, 0, 0.18);
   background: var(--bg);
 }
 .field input[aria-invalid="true"],
@@ -1547,7 +1547,7 @@ fieldset.field {
 }
 .footer-logo img {
   display: block;
-  height: 52px;
+  height: 64px;
   width: auto;
   max-width: 100%;
 }
@@ -1581,7 +1581,7 @@ fieldset.field {
   aspect-ratio: 1;
   left: -200px;
   top: -420px;
-  background: radial-gradient(circle closest-side, rgba(251, 93, 15, 0.22), transparent);
+  background: radial-gradient(circle closest-side, rgba(255, 120, 0, 0.22), transparent);
 }
 .page-hero .container {
   display: grid;
@@ -1687,7 +1687,7 @@ fieldset.field {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, transparent 30%, transparent 45%, rgba(0, 0, 0, 0.85) 100%);
 }
 .project-card:hover {
-  border-color: rgba(251, 93, 15, 0.6);
+  border-color: rgba(255, 120, 0, 0.6);
 }
 .project-card:hover img,
 .project-card:hover video,
@@ -1805,7 +1805,7 @@ fieldset.field {
   aspect-ratio: 1;
   right: -260px;
   top: -440px;
-  background: radial-gradient(circle closest-side, rgba(251, 93, 15, 0.2), transparent);
+  background: radial-gradient(circle closest-side, rgba(255, 120, 0, 0.2), transparent);
   pointer-events: none;
 }
 .project-view.view-enter {
@@ -1972,7 +1972,7 @@ fieldset.field {
   border-radius: 50%;
   background: var(--orange);
   color: var(--on-orange);
-  box-shadow: 0 14px 40px -8px rgba(251, 93, 15, 0.7);
+  box-shadow: 0 14px 40px -8px rgba(255, 120, 0, 0.7);
   transition: transform 0.35s var(--ease);
 }
 .video-play svg {
