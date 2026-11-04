@@ -91,9 +91,7 @@
 
   /* ---------- Prüfung der Eingaben ---------- */
   var CHECKS = [
-    { name: "vorname", error: "cf-vorname-error", msg: "Bitte gib deinen Vornamen ein.",
-      test: function (v) { return v.trim().length >= 2; } },
-    { name: "nachname", error: "cf-nachname-error", msg: "Bitte gib deinen Nachnamen ein.",
+    { name: "name", error: "cf-name-error", msg: "Bitte gib deinen Namen ein.",
       test: function (v) { return v.trim().length >= 2; } },
     { name: "email", error: "cf-email-error", msg: "Bitte gib eine gültige E-Mail-Adresse ein.",
       test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); } },
@@ -168,8 +166,7 @@
     var anlass = radioValue("anlass");
     var sonstiges = radioValue("art") === "sonstiges" && f.sonstiges ? f.sonstiges.value.trim() : "";
     return {
-      vorname: f.vorname.value.trim(),
-      nachname: f.nachname.value.trim(),
+      name: f.name.value.trim().replace(/\s+/g, " "),
       email: f.email.value.trim(),
       telefon: f.telefon.value.trim(),
       art: art + (anlass ? " (" + anlass + ")" : "") + (sonstiges ? " (" + sonstiges + ")" : ""),
@@ -184,7 +181,7 @@
 
   function mailFields(v) {
     return [
-      ["Name", v.vorname + " " + v.nachname],
+      ["Name", v.name],
       ["E-Mail", v.email],
       ["Telefon", v.telefon || "keine Angabe"],
       ["Art des Shootings / Drehs", v.art],
@@ -197,7 +194,7 @@
   }
 
   function subjectOf(v) {
-    return "Neue Anfrage: " + v.art + " von " + v.vorname + " " + v.nachname;
+    return "Neue Anfrage: " + v.art + " von " + v.name;
   }
 
   function mailtoLink(v) {
@@ -223,13 +220,13 @@
       syncSubBoxes();
       status.replaceChildren();
       body.hidden = false;
-      form.elements.vorname.focus();
+      form.elements.name.focus();
     });
     body.hidden = true;
     status.replaceChildren(
       el("div", { class: "status-box" }, [
         el("span", { class: "status-icon", html: ICONS.check }),
-        el("h3", { text: "Danke, " + v.vorname + "!" }),
+        el("h3", { text: "Danke, " + v.name.split(" ")[0] + "!" }), // nur der Vorname
         el("p", {}, [
           "Deine Anfrage ist bei mir angekommen. Ich melde mich so schnell wie möglich. ",
           "Meine Antwort bekommst du an deine E-Mail-Adresse ",

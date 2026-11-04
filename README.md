@@ -1,4 +1,4 @@
-# nikolajtry.media – Portfolio-Webseite
+# TRy.media – Portfolio-Webseite
 
 Portfolio für Fotografie & Videografie. Reines HTML/CSS/JavaScript, ohne Build-Schritt,
 läuft kostenlos auf **GitHub Pages**. Funktioniert auf Desktop und Handy.
@@ -184,7 +184,7 @@ Wichtig: Der zeitgesteuerte Ablauf läuft nur, wenn `main` der Standard-Branch d
 
 ## 4. Kontaktformular
 
-Im Bereich **Kontakt** auf der Startseite gibt es ein Formular: Vor- und Nachname, E-Mail, Telefon
+Im Bereich **Kontakt** auf der Startseite gibt es ein Formular: Name, E-Mail, Telefon
 (optional), Art des Shootings/Drehs (Portraits, Events → Geburtstag/Hochzeit/Feier, Produktbilder,
 Unternehmensbilder, Auto-Shooting, Social Media Content, Sonstiges → kurzes Pflichtfeld „Worum geht's?“), Foto/Video, „Auch analoge Fotos (auf Film)“,
 Wunschtermin, Ort und Nachricht.

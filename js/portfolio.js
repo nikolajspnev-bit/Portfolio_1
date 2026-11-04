@@ -506,7 +506,7 @@
     void projectView.offsetWidth;
     projectView.classList.add("view-enter");
 
-    document.title = project.title + " | Portfolio | nikolajtry.media";
+    document.title = project.title + " | Portfolio | TRy.media";
     updateCta(project);
     window.scrollTo({ top: backFromRecipe ? folderScroll : 0, behavior: "instant" });
     pTitle.focus({ preventScroll: true });
@@ -544,7 +544,7 @@
     void projectView.offsetWidth;
     projectView.classList.add("view-enter");
 
-    document.title = recipe.name + " | " + project.title + " | nikolajtry.media";
+    document.title = recipe.name + " | " + project.title + " | TRy.media";
     updateCta(project);
     window.scrollTo({ top: 0, behavior: "instant" });
     pTitle.focus({ preventScroll: true });
