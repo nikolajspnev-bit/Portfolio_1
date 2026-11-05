@@ -18,7 +18,7 @@ läuft kostenlos auf **GitHub Pages**. Funktioniert auf Desktop und Handy.
 | `videos/` | Ordner für eigene Videodateien (MP4) |
 | `index.html` | Texte der Startseite (Über mich, Leistungen, Kontakt) |
 | `images/about.jpg` | Dein Portrait für "Über mich" |
-| `images/logo.webp`, `logo-full.webp`, `logo-icon.webp` | Logo im Menü (ohne „FOTO / VIDEO“), im Footer (komplett) und als „N“ auf dem Handy; Browser-Tab-Symbol: `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` |
+| `images/logo.webp`, `logo-full.webp`, `logo-icon.webp` | Logo im Menü (ohne „FOTO / VIDEO“), im Footer (komplett) und als „TRy“-Zeichen auf dem Handy; Browser-Tab-Symbol: `try-favicon-32.png`, `try-favicon-192.png`, `try-apple-touch-icon.png` (bei einem neuen Logo neue Dateinamen wählen, sonst zeigen Handys lange das alte Symbol) |
 | `css/style.css` | Design – ganz oben bei `:root` kannst du z. B. das Orange (`--orange`) ändern |
 
 ## 1. Eigene Shootings ins Portfolio
